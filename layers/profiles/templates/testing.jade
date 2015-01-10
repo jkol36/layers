@@ -1,0 +1,7 @@
+html
+	body
+		p hello
+		form(role="form", action="{% url 'home' %}", method="POST")
+			- csrf_token
+			{{forms.userform}}
+			button(type="submit", value="submit") Submit
