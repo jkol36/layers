@@ -7,7 +7,7 @@ def home(request):
 	if request.POST:
 		userform = UserForm(request.POST)
 		if userform.is_valid():
-			print "view is printing"
+			userform.save()
 		else:
 			print userform.errors
 	forms  = {'userform':UserForm}
