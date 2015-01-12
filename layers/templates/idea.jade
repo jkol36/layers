@@ -36,7 +36,14 @@ block content
         .form
           .row
             .col-md-8.col-md-offset-4
-              form#background_info(role="form", action="#", method="POST")
+              {% if messages %}
+              {% for message in messages %}
+              {% if messages.tags == error %}
+              div.alert.alert-danger{{message}}
+              {%endif%}
+              {%endfor%}
+              {%endif%}
+              form#background_info(role="form", action="{% url 'get_started' %}", method="POST")
                 - csrf_token
                   {% for field in forms.userform %}
                   .form-group
@@ -47,7 +54,11 @@ block content
                     {{field.label_tag}} {{field}}
                   {%endfor%}
                   .form-group
+                    label(for='budget') Budget: 
+                    input.form-control#budget(name='budget', placeholder='eg. Min $100')
+                  .form-group
                     button.btn.btn-xlarge.btn-primary(type="submit", value="submit", form="background_info") Next
+              
 
           .row
             .col-md-8.col-md-offset-4.guarantee

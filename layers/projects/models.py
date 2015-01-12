@@ -7,7 +7,7 @@ from sorl.thumbnail import ImageField
 class Project(models.Model):
 	title = models.CharField(max_length=250, blank=False)
 	description = models.CharField(max_length=400, blank=False)
-	profiles = models.ManyToManyField(Layers_Profile)
+	profiles = models.ManyToManyField(Layers_Profile, blank=True)
 	budget = models.IntegerField(null=True, blank=True)
 	due_date = models.DateField(null=False, blank=False)
 	designer_assigned = models.BooleanField(default=False, blank=True)
