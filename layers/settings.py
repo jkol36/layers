@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'layers.profiles',
     'layers.projects',
+    'layers.get_started',
     'sorl.thumbnail',
 )
 
@@ -82,12 +83,16 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
-TEMPLATE_URL = '/templates/'
-TEMPLATE_ROOT = os.path.join(BASE_DIR, 'templates')
+TEMPLATE_DIRS = (
+    os.path.join(BASE_DIR, 'layers/templates'),
+    )
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'layers/static/'),
+)
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = '/static/'
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = '/media/'
 AUTH_USER_MODEL = 'profiles.Profile'
 
 TEMPLATE_LOADERS = (

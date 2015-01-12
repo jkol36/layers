@@ -1,0 +1,174 @@
+extends ./partials/_base.jade
+
+block title
+  title 43 Layers - Home
+
+block content
+  include  ./partials/_header.jade
+  .content
+    .hero
+      p
+        | Design You Own
+        span#product
+        | For
+        span#occasion
+      h2 Your Ideas Brought to Life by World Class Designers and Makers
+      .container
+        .row
+          form(action="{% url 'get_started' %}", method="get")
+            - csrf_token
+            .col-md-3.col-md-offset-3
+              include ./partials/_select.jade
+            .col-md-3
+              button(type='submit').btn.btn-primary.btn-block Get Started
+    // end of .hero
+    
+    .creations
+      h2 Recent Customer Creations
+      .container
+          .row
+            .col-md-4.creation
+                .creation-picture
+                  img(src='{{STATIC_URL}}images/Deer_stir_products_page.jpg')
+                h3 Animal Stir Sticks &amp; Centerpieces
+                p
+                  | Kaella wanted to create wooden animal themed stir sticks and table centerpieces for her friend&apos;s baby shower. This is what she came up with.
+            .col-md-4.creation
+                .creation-picture
+                  img(src='{{STATIC_URL}}images/Cufflinks_products.jpg', data-toggle="modal", data-target="#recent-creation")
+                h3 Monogram Fighting Irish Cufflinks
+                p
+                  | Josh, a Notre Dame grad, was having his wedding at his alma mater in South Bend, he wanted to create some special gifts for his groomsmen. This is what they wore.
+            .col-md-4.creation
+                .creation-picture
+                  img(src='{{STATIC_URL}}images/Key_horizontal.jpg')
+                h3 Keys to Love
+                p
+                  | Kelly had the idea to design a set of decorative skeleton keys to give to her fianc&eacute;. Each one had a different phrase, a different &quot;key to love.&quot; This is how they turned out.
+    // end of .creations
+      
+    .testimonial
+      h2 What Our Customers Are Saying
+      .container
+        p
+          | &ldquo; Thank you SO much for the picture!!! I can't wait to see it in person! I can't believe the detail of the work you can do! Love! So excited! Thank you so much! Also, excited to work with you on the other projects! &rdquo;
+        p
+          | &mdash; Meghan M
+    // end of .testimonial
+    
+    .process
+      h2 How It Works
+      .container
+          .row
+            .col-md-3
+              a.step.submit.center-block(href='#submit')
+              h3 1. Submit Your Idea
+            .col-md-3
+              a.step.meet.center-block(href='#meet')
+              h3 2. Meet Your Designer
+            .col-md-3
+              a.step.view.center-block(href='#view')
+              h3 3. View Digital Preview
+            .col-md-3
+              a.step.hold.center-block(href='#hold')
+              h3 4. Hold In Your Hands
+    // end of .process
+
+    #submit.step-detail.step1
+      .container
+        .row
+          .col-md-12.step-icon
+            img(src='{{STATIC_URL/icons/Lightbulb_icon_75px.png')
+        .row
+          .col-md-6
+            .row
+              .col-md-2.col-xs-2
+                h1.step-number 1
+              .col-md-10.col-xs-10
+                h2.step-name Submit Your Design Idea
+                h3.step-description Get Inspired and Tell Us What You Want to Make
+                p.step-paragraph
+                  | Fill out a design brief and add pictures and/or sketches to an Idea Board to communicate the vision for your product. If you need some inspiration, let us know, we can help!
+          .col-md-6.step-picture
+            img(src='{{STATIC_URL}}icons/submit_your_idea_imac.png')
+    // end of .step1
+
+    #meet.step-detail.step2
+      .container
+        .row
+          .col-md-12.step-icon
+            img(src='{{STATIC_URL}}icons/Chat_icon_non_hover.png')
+        .row
+          .col-md-6.col-md-push-6
+            .row
+              .col-md-10.col-xs-10
+                h2.step-name Start Collaborating
+                h3.step-description Meet Your Designer and Start Your Project
+                p.step-paragraph
+                  | We will assign you a designer from our network of world-class product designers. Once you start your project, you will be directed to our design center where you&apos;ll communicate directly with your designer.
+              .col-md-2.col-xs-2
+                h1.step-number 2
+          .col-md-6.col-md-pull-6.step-picture
+            img(src='{{STATIC_URL}}icons/Start_collaborating_Imac.png')
+    // end of .step2
+
+    #view.step-detail.step3
+      .container
+        .row
+          .col-md-12.step-icon
+            img(src='{{STATIC_URL}}icons/ScreenIcon_icon_75px.png')
+        .row
+          .col-md-6
+            .row
+              .col-md-2.col-xs-2
+                h1.step-number 3
+              .col-md-10.col-xs-10
+                h2.step-name View Digital Preview
+                h3.step-description Bring Your Idea to Life on Screen Before Making Your Order
+                p.step-paragraph
+                  | As soon as you and your designer agree on a design, your designer will send across a life-like digital preview of your product. Iterate on your product design until you are in love.
+          .col-md-6.step-picture
+            img(src='{{STATIC_URL}}icons/view_digital_product.png')
+    // end of .step3
+
+    #hold.step-detail.step4
+      .container
+        .row
+          .col-md-12.step-icon
+            img(src='{{STATIC_URL}}icons/Holdinyourhand_icon_non_hover.png')
+        .row
+          .col-md-6.col-md-push-6
+            .row
+              .col-md-10.col-xs-10
+                h2.step-name Hold It In Your Hands 
+                h3.step-description Choose Material and Ship the Design to Your Door
+                p.step-paragraph
+                  | Once you agree on a final design, just choose the material and finish you want your product in and get it delivered to your door. You can literally hold your idea in your hands.
+              .col-md-2.col-xs-2
+                h1.step-number 4
+          .col-md-6.col-md-pull-6.step-picture
+            img(src='{{STATIC_URL}}icons/holdinyourhandimac.png')
+        form(action="idea.html", method="get")
+          button.btn.btn-primary.btn-block.get-started Get Started
+    // end of .step4
+    
+    .contact
+      h2 Want To Know More?
+      .container
+          .row
+            .col-xs-6.col-md-3.col-md-offset-3
+              a(href="faq.html").btn.btn-md.btn-contact.btn-block FAQ
+            .col-xs-6.col-md-3
+              a(href="contact.html").btn.btn-md.btn-contact.btn-block Contact Us
+          .row.text-center
+            a(href='https://www.facebook.com/pages/43Layers/273568439486440')
+              img(src='{{STATIC_URL}}icons/Facebook_icon_50px.png')
+            a(href='https://twitter.com/43Layers')
+              img(src='{{STATIC_URL}}icons/Twitter_icon_50px.png')
+            a(href='http://instagram.com/43layers')
+              img(src='{{STATIC_URL}}icons/Instagram_icon_50px.png')
+            a(href='http://www.pinterest.com/43layers')
+              img(src='{{STATIC_URL}}icons/Pintrest_icon_50px.png')
+
+  include ./partials/_footer.jade
+

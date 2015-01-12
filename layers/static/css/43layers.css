@@ -1,0 +1,981 @@
+/* FONT STACK */
+@import url(http://fonts.googleapis.com/css?family=Lato:400,700|Lora:400,700|Bentham);
+
+
+/* MAIN LAYOUT */
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.wrapper {
+    min-height: 100%;
+    position: relative;
+}
+
+.content {
+    padding-top: 50px;
+}
+
+
+/* TRANSITIONS */
+/* Apply transition-duration to smooth :hover transitions */
+*:hover{
+    transition-duration: 0.5s;
+}
+
+
+/* FONTS & TEXT */
+
+html {
+    color: #4e4d4d;
+    font-size: 100%;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+}
+
+h1 {
+    font-family: 'Bentham', sans-serif;
+}
+
+h2 {
+    text-align: center;
+    font-size: 1.8rem;
+    font-family: 'Bentham', sans-serif;
+}
+
+h3 {
+    text-align: center;
+    font-size: 1.1rem;
+    font-family: 'Lato', sans-serif;
+}
+
+p {
+    font-size: 1rem;
+    font-family: 'Lato', sans-serif;
+}
+
+
+/* FORM CONTROLS */
+
+.form-control, .form-control:focus {
+    outline: 0;
+    padding: 17px;
+    border: 1px solid #ccc;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.form-group {
+    padding: 15px 0;
+}
+
+
+/* Removes a small shadow in input boxes only seen in iOS (Safari and Chrome) */
+.input-newsletter {
+    -webkit-appearance: none;
+}
+
+
+/* BUTTONS */
+
+.btn, .btn:hover, .btn:active, .btn:focus {
+    border-radius: 0;
+    text-transform: uppercase;
+    outline: none;
+    box-shadow: none;
+    margin-right: 5px;
+    min-width: 90px;
+}
+
+.btn-primary {
+    background-color: #20cb92;
+    border-color: #20cb92;
+}
+
+.btn-primary:hover, .btn-primary:active, .btn-primary:focus {
+    background-color: #999;
+    border-color: #999;
+}
+
+.btn-secondary {
+    background-color: #686b6a;
+    border-color: #686b6a;
+    color: #fff;
+}
+
+.btn-secondary:hover, .btn-secondary:active, .btn-primary:focus {
+    background-color: #999;
+    border-color: #999;
+    color: #fff;
+}
+
+.btn-default, .btn-default:hover, .btn-default:active, .btn-primary:focus {
+    color: #ccc;
+}
+
+.btn-contact {
+    color: #fff;
+    border-color: #fff;
+    font-size: 0.8rem;
+}
+
+.btn-contact:hover, .btn-primary:focus {
+    color: #fff;
+    background-color: #20cb92;
+}
+
+.btn-xlarge {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 140px;
+    padding: 18px 24px;
+    font-size: 1.2rem;
+}
+
+
+/* DATEPICKER */
+/* Customization for the rome datepicker */
+
+.rd-days tr th, .rd-days tr td {
+    padding: 5px;
+}
+
+.rd-days tr td:hover {
+    color: #fff;
+    background-color: #20cb92;
+}
+
+
+/* NAVIGATION BAR */
+
+.navbar {
+    background: #fff;
+    padding: 10px;
+    -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 0 0 4px rgba(0,0,0,0.4);
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
+    text-transform: uppercase;
+}
+
+.navbar-nav > li > a {
+    font-size: 1rem;
+    font-family: 'Lato', sans-serif;
+    text-align: center;
+}
+
+.navbar-nav {
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-fixed-top .nav {
+    padding: 15px 0;
+}
+
+
+/* HERO */
+
+.hero {
+    background-image: url('../images/Hero_highres_full_width.jpg') no-repeat;
+    background-repeat: no-repeat;
+    background-position: center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    transition: background-image 3s ease-in-out;
+}
+
+.hero #product {
+    text-transform: uppercase;
+    color: #fff;
+    background-color: #20cb92;
+}
+
+.hero #occasion {
+    text-transform: uppercase;
+    color: #fff;
+    background-color: #d0b0d9;
+}
+
+.hero p {
+    font-size: 2.3rem;
+}
+
+.hero h1, .hero h2, .hero h3, .hero p {
+    font-family: 'Bentham', serif;
+    text-align: center;
+}
+
+.hero .selectize-input {
+    height: 0.05402160864%;
+    border-radius: 0px;
+    padding: 10px 16px;
+}
+
+
+/* RECENT CUSTOMER CREATIONS */
+
+.creations, .creation {
+    margin: 50px 0;
+}
+
+.creation-picture {
+    display: block;
+    width: 85%;
+    margin: 0 auto;
+}
+
+.creation-picture img {
+    width: 100%;
+    max-height: 275px;
+}
+
+.creation p {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+
+/* TESTIMONIAL */
+
+.testimonial {
+    height: 100%;
+    padding: 30px 0;
+    background: url('../images/Quote_highres_full_width.jpg') no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-position: center center;
+    color: #fff;
+}
+
+.testimonial p {
+    padding-top: 20px;
+    text-align: center;
+    font-family: 'Lato', sans-serif;
+}
+
+
+/* PROCESS */
+
+.process {
+    padding-top: 30px;
+    padding-bottom: 80px;
+}
+
+.process .col-md-3 {
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.process a {
+    width: 75px;
+    height: 75px;
+    display: block;
+}
+
+.step {
+    margin-top: 50px;
+}
+
+.step:hover + h3 {
+    color: #20cb92;
+}
+
+.submit {
+    background: transparent url('../icons/Lightbulb_icon_75px.png');
+}
+
+.submit:hover {
+    background: transparent url('../icons/lightbulb_icon_75_green_hover.png');
+}
+
+.meet {
+    background: transparent url('../icons/Chat_icon_non_hover.png');
+}
+
+.meet:hover {
+    background: transparent url('../icons/Chat_icon_hover.png');
+}
+
+.view {
+    background: transparent url('../icons/ScreenIcon_icon_75px.png');
+}
+
+.view:hover {
+    background: transparent url('../icons/Screen_Hover_icon_75px.png');
+}
+
+.hold {
+    background: transparent url('../icons/Holdinyourhand_icon_non_hover.png');
+}
+
+.hold:hover {
+    background: transparent url('../icons/Holdinyourhand_icon_hover.png');
+}
+
+
+
+/* STEP DETAILS */
+
+.step-detail {
+    padding: 50px 20px;
+}
+
+.step-detail h1 {
+    margin: 0;
+    padding: 0;
+}
+
+.step-number {
+    margin: 0;
+    padding: 0;
+    font-family: 'Lora', sans-serif;
+}
+
+.step-name {
+    margin: 10px 0 0;
+    padding: 0;
+}
+
+.step-description {
+    margin: 10px 0 0;
+    padding: 0;
+}
+
+.step-paragraph {
+    margin: 10px 0 0;
+    padding: 0;
+}
+
+.step-icon img {
+    display: block;
+    margin: 10px auto;
+}
+
+.step-picture img {
+    display: block;
+    width: 100%;
+    margin: 20px auto;
+}
+
+
+/* STEP 1: SUBMIT YOUR DESIGN IDEA */
+
+.step1 {
+    color: #fff;
+    background: url('../images/Idea_BKG-IMG_High_Res.jpg') no-repeat center;
+    background-size: cover;
+}
+
+.step1, .step1 h2, .step1 h3 {
+    text-align: left;
+}
+
+
+/* STEP 2: MEET YOUR DESGINER */
+
+.step2, .step2 h2, .step2 h3 {
+    text-align: right;
+}
+
+
+/* STEP 3: VIEW DIGITAL PREVIEW */
+
+.step3 {
+    color: #fff;
+    background: url('../images/View_BKG_IMG.jpg') no-repeat center;
+    background-size: cover;
+}
+
+.step3, .step3 h2, .step3 h3 {
+    text-align: left;
+}
+
+
+/* STEP 4: HOLD IN YOUR HANDS */
+
+.step4, .step4 h2, .step4 h3 {
+    text-align: right;
+}
+
+.get-started, .get-started:hover {
+    display: block;
+    width: 236px;
+    height: 42px;
+    margin: 40px auto;
+}
+
+
+/* FOOTER */
+
+.footer {
+    width: 100%;
+    min-height: 100px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 20px 10px;
+    background-color :#686b6a;
+}
+
+.footer .form-control {
+    border: 3px solid #fff;
+}
+
+.btn-newsletter {
+    padding: 9px 12px;
+    margin-left: 5px !important;
+}
+
+.footer-links {
+    margin: 10px auto 10px;
+    padding: 0;
+    list-style: none;
+}
+
+.footer-links li {
+    margin: 0;
+    padding: 0;
+    width: 24%;
+    text-align: center;
+    display: inline-block;
+}
+
+.footer-links li a {
+    font-size: 0.8rem;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.copy {
+    text-align: center;
+    font-weight: 100;
+    color: #fff;
+    margin-top: 10px;
+}
+
+
+/* ABOUT, PRIVACY, TERMS, CONTACT, FAQ AND CONTACT */
+
+.about {
+    margin: 40px 0;
+    text-align: center;
+}
+
+.about-section {
+    padding: 40px 0;
+}
+
+.privacy, .terms, .contact-page {
+    text-align: center;
+    padding: 50px 0;
+}
+
+.faq {
+    padding: 50px 0;
+}
+
+.faq h2 {
+    padding: 10px;
+    text-align: left;
+}
+
+.faq h3 {
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.about h2, .privacy h2, .terms h2, .contact-page h2, .faq h2,
+.about h3, .privacy h3, .terms h3, .contact-page h3 {
+    margin: 40px 0 0;
+}
+
+.about h1, .privacy h1, .terms h1, .contact-page h1, .faq h1 {
+
+}
+
+.contact-page {
+    background: url('../images/Footer_background_image_desktop.jpg') no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-position: center center;
+    color: #fff;
+}
+
+.form-contact {
+    margin: 20px 0;
+}
+
+.faq .panel {
+    box-shadow: none;
+}
+
+.faq .panel-default {
+    border: 0;
+}
+
+.faq .panel-heading {
+    border: none;
+}
+
+.faq .panel-default > .panel-heading {
+    background: none;
+    border: 0;
+}
+
+/* Overrides Bootstrap's border for panels */
+.panel-group .panel-heading + .panel-collapse > .panel-body {
+    border: 0;
+}
+
+.question, .question:hover, .question:visited, .question:active,
+.question:focus {
+    font-family: 'Bentham', serif;
+    color: #20cb92;
+    font-weight: 400;
+    font-size: 1.2rem;
+}
+
+
+/* CONTACT */
+
+.contact {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    background: url('../images/Footer_background_image_desktop.jpg') no-repeat center center;
+    background-size: cover;
+}
+
+.contact h2 {
+    color: #fff;
+}
+
+.contact img, .contact-page img {
+    padding-left:10px;
+    padding-right:10px;
+    padding-top:20px;
+}
+
+.contact img:hover, .contact img:active {
+    filter: brightness(40%);
+    -webkit-filter: brightness(40%);
+    -moz-filter: brightness(40%);
+    -o-filter: brightness(40%);
+    -ms-filter: brightness(40%);
+}
+
+
+/* LOGIN AND SIGNUP */
+
+.login {
+    margin: 50px;
+    text-align: center;
+}
+
+.login p {
+    margin: 5px 0;
+}
+
+.login p a {
+    color: #20cb92;
+}
+
+
+/* SUBMIT YOUR IDEA FORM */
+
+.submit-your-idea {
+    margin: 80px 0;
+}
+
+.submit-your-idea h2 {
+    margin-top: 0;
+}
+
+.submit-your-idea .process {
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+.process-mobile {
+    padding-top: 40px;
+    padding-bottom: 80px;
+}
+
+.process-mobile li {
+    width: 23%;
+    height: 20px;
+    background: #ccc;
+    margin-left: 4px !important;
+}
+
+.process-mobile li.active {
+    background: #20cb92;
+}
+
+.process-mobile li:first-child {
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+.process-mobile li:last-child {
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.submit-your-idea .submit {
+    background: transparent url('../icons/lightbulb_icon_75_green_hover.png');
+}
+
+.submit-your-idea .meet {
+    background: transparent url('../icons/Chat_icon_non_hover.png');
+}
+
+.submit-your-idea .view {
+    background: transparent url('../icons/ScreenIcon_icon_75px.png');
+}
+
+.submit-your-idea .hold {
+    background: transparent url('../icons/Holdinyourhand_icon_non_hover.png');
+}
+
+.submit-your-idea label {
+    font-family: 'Lato', sans-serife;
+    font-size: 1rem;
+}
+
+.guarantee {
+    padding: 40px 15px;
+}
+
+.guarantee span {
+    padding: 10px;
+    border-radius: 50%;
+    color: #fff;
+    background: #20cb92;
+}
+
+.guarantee p {
+    margin: 0;
+}
+
+.guarantee p.subheading {
+    color: #686b6a;
+    font-size: 0.75rem;
+}
+
+/* INSPIRATION BOARD */
+
+.inspiration {
+    width: 80%;
+    margin: 10%;
+    background-color: #e6e6e6;
+    border: 2px dashed #686b6a;
+}
+
+.dropzone {
+    width: 90%;
+    min-height: 225px;
+    margin: 40px auto;
+    background-color: #e6e6e6;
+    border: 2px dashed #686b6a;
+}
+
+.dz-message {
+    font-family: 'Bentham', sans-serif;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+
+/* MY ACCOUNT */
+
+.my-account {
+    padding: 50px 0;
+}
+
+.my-account img {
+    width: 100%;
+}
+
+.my-account .social {
+    text-align: left;
+}
+
+.my-account .social img {
+    width: 30px;
+    height: 30px;
+    margin-left: 4px;
+}
+
+.my-account .description {
+    min-height: 160px;
+}
+
+.profile, .menu, .notifications, .current-projects, .favorites,
+.order-history, .settings  {
+    padding: 10px;
+    margin: 20px 0;
+    border: 1px solid #ccc;
+}
+
+.menu-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu-links li {
+    padding: 5px;
+}
+
+.menu-links li a {
+    color: #000;
+    font-weight: bold;
+}
+
+.menu-links li a:hover {
+    color: #20cb92;
+}
+
+.profile .name {
+    margin: 5px 0;
+    text-align: left;
+}
+
+.profile-picture {
+    width: 100%;
+}
+
+.current-projects a, .notifications a {
+    color: #20cb92;
+}
+
+
+
+/* MEDIA QUERIES */
+
+@media(max-width:767px) {
+    body {
+	font-size: 1rem;
+    }
+
+    .navbar-fixed-top .navbar-brand {
+	padding: 0 15px;
+    }
+
+    .content {
+	padding-bottom: 160px;
+    }
+
+    .hero {
+	padding: 50px 10px 100px;
+    }
+
+    .hero p {
+	min-height: 114px;
+	font-size: 1.7rem;
+	white-space: pre;
+    }
+
+    .hero h2 {
+	font-size: 1.2rem;
+	margin-top: 20px 0;
+    }
+
+    .hero h3 {	
+	margin: 60px 0;
+	font-size: 0.6rem;
+    }
+
+    .hero select {
+	font-size: 0.6rem;
+    }
+
+    .step-number {
+	font-size: 4rem;
+    }
+    
+    .step-name {
+	margin-left: 10px;
+	font-size: 1.2rem;
+    }
+    
+    .step-description {
+	margin-left: 10px;
+	font-size: 0.9rem;
+    }
+
+    .step-paragraph {
+	margin-left: 10px;
+	font-size: 0.8rem;
+    }
+
+    .form-newsletter {
+	padding-top: 10px;
+    }
+
+    .copy {
+	font-size: 0.6rem;
+    }
+
+    /* Makes text in placeholder smaller */
+    ::-webkit-input-placeholder {
+	font-size: 0.8rem;
+    }
+
+    :-moz-placeholder {
+	font-size: 0.8rem;
+    }
+
+    ::-moz-placeholder {
+	font-size: 0.8rem;
+    }
+
+    :-ms-input-placeholder {  
+	font-size: 0.8rem;
+    }
+
+    /* Aligns vertically the text in the textarea of the Submit Your Idea form */
+    .submit-your-idea textarea {
+	height: 5.5rem;
+    }
+
+    .submit-your-idea h2 {
+	font-size: 1.4rem;
+	text-align: left;
+    }
+
+    .submit-your-idea .process {
+	display: none;
+    }
+
+    .btn-center {
+	display: block;
+	margin: 0 auto;
+    }
+
+    .my-account .btn-default {
+	margin-top: 10px;
+    }
+}
+
+@media(min-width:768px) {
+    .hero {
+	padding: 50px 10px 100px;
+    }
+}
+
+@media(min-width:992px) {
+    .hero p {
+	font-size: 3rem;
+    }
+    
+    .submit-your-idea .process-mobile {
+	display: none;
+    }
+
+    .guarantee p {
+	margin-left: -80px;
+    }
+
+    .my-account .social {
+	padding: 0 50px;
+	text-align: right;
+    }
+}
+
+@media(min-width:1200px) {
+    body {
+	font-size: 1rem;
+    }
+
+    .content {
+	padding-bottom: 125px;
+    }
+
+    .hero {
+	padding: 150px 0;
+    }
+
+    .hero p {
+	font-size: 3rem;
+    }
+
+    .hero h2 {
+	margin: 60px 0;
+	font-size: 2.5rem;
+    }
+
+    .hero h3 {	
+	margin: 60px 0;
+	font-size: 1rem;
+    }
+
+    .hero button {
+	height: 42px;
+    }
+
+    .step-number {
+	font-size: 4rem;
+    }
+    
+    .step-name {
+	margin-left: 10px;
+	font-size: 2.5rem;
+    }
+    
+    .step-description {
+	margin-left: 10px;
+	font-size: 1.5rem;
+    }
+
+    .step-paragraph {
+	margin-left: 10px;
+	font-size: 1rem;
+    }
+
+    .form-newsletter {
+	margin-top: 10px;
+    }
+
+    .about-section {
+	padding: 40px 160px;
+    }
+
+    .privacy, .terms, .contact-page, .faq {
+	padding: 80px 0;
+    }
+
+    .copy {
+	font-size: 0.8rem;
+    }
+
+    .login {
+	padding-top: 8%;
+    }
+    
+    .submit-your-idea .process-mobile {
+	display: none;
+    }
+
+    .guarantee p {
+	margin-left: -80px;
+    }
+
+    .my-account .social {
+	padding: 0 50px;
+	text-align: right;
+    }
+}

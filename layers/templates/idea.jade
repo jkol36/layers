@@ -1,0 +1,63 @@
+extends ./partials/_base.jade
+
+block title
+  title 43Layers - Submit Your Idea
+
+block content
+  include  ./partials/_header.jade
+  .content
+    .submit-your-idea
+      h1.text-center Step 1: Submit Your Idea
+      .container
+        .row.text-center.process
+          .col-md-3
+            h3 1. Submit Your Idea
+              a.submit.center-block
+          .col-md-3
+            h3 2. Meet Your Designer
+              a.meet.center-block
+          .col-md-3
+            h3 3. View Digital Preview
+              a.view.center-block
+          .col-md-3
+            h3 4. Hold In Your Hands
+              a.hold.center-block
+        ul.nav.nav-pills.process-mobile
+          li.active
+          li
+          li
+          li
+        .row
+          .col-md-4
+            h2 Background Information
+          .col-md-8
+            p
+              | Fill out the forms below to describe your product idea. This brief will be reviewed and used by your designer to bring your idea your life.
+        .form
+          .row
+            .col-md-8.col-md-offset-4
+              form#background_info(role="form", action="#", method="POST")
+                - csrf_token
+                  {% for field in forms.userform %}
+                  .form-group
+                    {{field.label_tag}} {{field}}
+                  {%endfor%}
+                  {% for field in forms.newprojectform%}
+                  .form-group
+                    {{field.label_tag}} {{field}}
+                  {%endfor%}
+                  .form-group
+                    button.btn.btn-xlarge.btn-primary(type="submit", value="submit", form="background_info") Next
+
+          .row
+            .col-md-8.col-md-offset-4.guarantee
+              .row
+                .col-xs-2
+                  span(aria-hidden="true").glyphicon.glyphicon-ok
+                .col-xs-10
+                  p.heading
+                    | 100% money back guarantee
+                  p.subheading
+                    | A product you love or your money back
+
+  include ./partials/_footer.jade

@@ -1,0 +1,189 @@
+extends ./partials/_base.jade
+{% load thumbnail %}
+block title
+  title 43Layers - My Account
+
+block content
+  include  ./partials/_header.jade
+  .content
+    .container
+      .my-account
+        h1.text-center My Account
+        .profile#profile
+          .row
+            .col-md-3
+              if profile_pic == False
+                form(role="form", action="{% url 'my_account' %}", enctype="multipart/form-data", method="POST")
+                  .form-group
+                    - csrf_token
+                    input(type="file", name="profile_pic")
+                  button.btn.btn-primary(type="submit", value="submit") Add
+              else
+                {% thumbnail profile_pic "100x100" crop="center" as im %}
+                img(src="{{im.url}}")
+                {% endthumbnail %}
+
+            .col-md-7
+              .row
+                .col-md-12
+                  h3.name {{request.user.first_name}} {{request.user.last_name}}
+                .col-md-12
+                  if description == None
+                   form(role="form", action="{% url 'add_description' %}", method="POST")
+                    - csrf_token
+                    .form-group
+                      label(for="description").col-sm-3.control-label Add a description
+                      div.col-sm-6
+                        input.form-control(type="text", id="description", name="description")
+                      button.btn.btn-primary(type="submit", value="submit") Update
+                  else
+                    p.description {{description}}
+                .col-md-12
+                  .row
+                    .col-md-7
+                      
+                      if location == None 
+                        a(href="{% url 'edit_profile' %}") Add a Location
+                      
+                      else
+                        {{location}}
+                   
+                      
+                        
+                    .col-md-5.social
+                        a(href='https://www.facebook.com/pages/43Layers/273568439486440')
+                          img(src="{{STATIC_URL}}/icons/facebook_black.png")
+                        a(href='https://twitter.com/43Layers')
+                          img(src='{{STATIC_URL}}icons/twitter_black.jpeg')
+                        a(href='http://instagram.com/43layers')
+                          img(src='{{STATIC_URL}}icons/instagram_black.gif')
+                        a(href='http://www.pinterest.com/43layers')
+                          img(src='{{STATIC_URL}}icons/pinterest_black.png')
+            .col-md-2
+              
+                a(href="{% url 'edit_profile' %}").btn.btn-default.btn-block  Edit Profile
+        .row
+          .col-md-3
+            h2 Menu
+            .menu
+              ul.menu-links
+                li
+                  a(href="#profile") My Profile
+                li
+                  a(href="#notifications") Notifications
+                li
+                  a(href="{% url 'messages' %}") My Messages
+                li
+                  a(href="#current-projects") Current Projects
+                li
+                  a(href="#order-history") Order History
+                li
+                  a(href="#settings") Settings
+                li
+                  form(role="form", action="{% url 'logout'%}", method="POST")
+                    input(type="hidden", name="user_instance", value="request.user.id")
+                    a(href="logout", action="submit", value="submit") Logout
+
+          .col-md-9
+            h2 Notifications
+            .notifications#notifications
+              ul
+                li Your designer has submitted a rendering.
+                li You have submitted your deposit and started your project.
+                li You have been assigned a designer.
+                li You submitted project: "Keys to Love". We are in the process of finding  you an expert designer to bring your project to life.
+                li Welcome to 43Layers! Thanks for signing up!
+                li
+                  a(href="#") More
+            .current-projects#current-projects
+              h2 Current Projects
+              .table-responsive
+                table.table
+                  for i in projects
+                    tr
+                      th Name
+                      th ID
+                      th Designer
+                      th Due Date
+                      th Ship Status
+                      th
+                    tr
+                      td {{i.title}}
+                      td {{i.id}}
+                      td {{i.designer}}
+                      td {{i.deadline}}
+                      td {{i.shipping}}
+                      td
+                        a(href="#") View
+                  
+            .order-history#order-history
+              h2 Order History
+              .table-responsive
+                table.table
+                  tr
+                    th Project Name
+                    th Order #
+                    th Designer
+                    th Arrival Date
+                    th Status
+                    th Rating
+                  tr
+                    td Monograph Napkin Holder
+                    td 12345678
+                    td Diego Taccioli
+                    td 8/12/2014
+                    td On Time
+                    td
+                      span(aria-hidden="true").glyphicon.glyphicon-star
+                      span(aria-hidden="true").glyphicon.glyphicon-star
+                      span(aria-hidden="true").glyphicon.glyphicon-star
+                      span(aria-hidden="true").glyphicon.glyphicon-star
+                      span(aria-hidden="true").glyphicon.glyphicon-star-empty
+                  tr
+                    td Wedding This Way Sign
+                    td 12345678
+                    td Diego Taccioli
+                    td 8/5/2014
+                    td On Time
+                    // TODO: Add actual star rating
+                    td
+                      span(aria-hidden="true").glyphicon.glyphicon-star
+                      span(aria-hidden="true").glyphicon.glyphicon-star
+                      span(aria-hidden="true").glyphicon.glyphicon-star
+                      span(aria-hidden="true").glyphicon.glyphicon-star
+                      span(aria-hidden="true").glyphicon.glyphicon-star
+            .settings#settings
+              h2 Settings
+              form.form-horizontal(role="form", action="{% url 'update_settings' %}", method="POST")
+                - csrf_token
+                .form-group
+                  label(for="email").col-sm-3.control-label Email
+                  div.col-sm-6
+                    input(type="email", name="email", placeholder="Email").form-control#email
+                .form-group
+                  label(for="email").col-sm-3.control-label Notification Emails
+                  div.col-sm-6
+                    label.radio-inline
+                      input(type="radio", name="notifications", value="yes")
+                      | Yes
+                    label.radio-inline
+                      input(type="radio", name="notifications", value="no")
+                      | No
+                .form-group
+                  label(for="email").col-sm-3.control-label Newsletter
+                  div.col-sm-6
+                    label.radio-inline
+                      input(type="radio", name="newsletter", value="yes")
+                      | Yes
+                    label.radio-inline
+                      input(type="radio", name="newsletter", value="no")
+                      | No
+                .form-group
+                  .col-sm-4.col-sm-offset-3
+                    button(type="submit").btn.btn-secondary Cancel
+                    button(type="submit", value="submit").btn.btn-primary Save
+                  .col-sm-2.col-sm-offset-1
+                    button(type="submit").btn.btn-default Deactivate Account
+                    
+
+  include ./partials/_footer.jade

@@ -1,0 +1,26 @@
+extends ./partials/_base.jade
+
+block title
+  title 43 Layers - Sign Up
+
+block content
+  include ./partials/_header.jade
+  .content
+    .login
+      .container
+        .row
+          .col-md-4.col-md-offset-4
+            h1.text-center Sign Up
+            form(role="form", id="signup_form", method="POST", action="{% url 'signup' %}")
+              - csrf_token
+              .form-group
+                input.form-control(type="text", name="email", placeholder="Email")
+              .form-group
+                input.form-control(type="password", name="password1", placeholder="Password")
+              .form-group
+                input.form-control(type="password", name="password2", placeholder="Confirm Password")
+            button.btn.btn-primary.btn-block(type="submit", value="submit", form="signup_form") Sign Up
+            p.signup
+              | Already have an account? 
+              a(href="login.html") Log in
+  include ./partials/_footer.jade
