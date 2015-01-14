@@ -20,6 +20,7 @@ class UserForm(forms.ModelForm):
 			Profile.objects.get(email=email)
 		except Exception, ProfileDoesNotExist:
 			return email
+		
 		raise forms.ValidationError('Email is already Taken')
 
 
@@ -32,17 +33,13 @@ class UserForm(forms.ModelForm):
 			return password1
 
 	def clean_name(self):
-		name = self.cleaned_data['name'].split()
-		try:
-			first_name = name[0]
-			print first_name
-		except Exception, NoFirstName:
-			raise forms.ValidationError('Please Enter your Name')
+		name = self.cleaned_data['name'].split()		
 		try:
 			last_name = name[1]
 			print last_name
 		except Exception, NoLastName:
 			raise forms.ValidationError('Please enter a last name')
+		
 		return name
 	
 	def save(self):
@@ -73,16 +70,20 @@ class PartialProfileForm(forms.ModelForm):
 		try:
 			last_name = name.split()[1]
 		except Exception, NoLastName:
-			raise forms.ValidationError('Please enter a last name')
+			raise forms.ValidationError('Please enter a last name')		
 		return name
+
 
 	def clean_email(self):
 		email = self.cleaned_data['email']
 		try:
-			Profile.objects.get(email=email)
-			raise forms.ValidationError('Email Already Exists')
+			p = Profile.objects.get(email=email)
 		except Exception, ProfileDoesNotExist:
+			print ProfileDoesNotExist
 			return email
+
+		raise forms.ValidationError('Email already taken')
+
 
 	def save(self):
 		name = self.cleaned_data['name'].split()
@@ -91,6 +92,9 @@ class PartialProfileForm(forms.ModelForm):
 		email = self.cleaned_data['email']
 		profile = Profile.objects.create(email=email, username=email, first_name=first_name, last_name=last_name)
 		profile.save()
+		layers_profile = Layers_Profile.objects.create(profile=profile)
+		layers_profile.save()
+		return profile
 
 #This form adds authentication capability to a Profile Instance that doesn't yet have a Password associated with it.
 class PasswordForm(forms.ModelForm):

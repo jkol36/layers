@@ -1,42 +1,40 @@
 from django import forms
 from layers.profiles.models import Profile, Layers_Profile
 from .models import Project
+from django.contrib import messages
+
 
 class NewProject(forms.ModelForm):
 	title = forms.CharField(label='Give your project a one sentence Title *', widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':"eg. Madison's Bridesmaids necklaces"}))
 	description = forms.CharField(label="Give your project a description *", widget=forms.Textarea(attrs={"class":'form-control', 'placeholder':"This brief will be used by your designer to bring your idea to life. So the more specific the better."}))
 	budget = forms.CharField(label="", widget=forms.HiddenInput())
-	profiles = forms.ModelMultipleChoiceField(queryset=Profile.objects.all(), widget=forms.HiddenInput(), label="")
 	due_date = forms.CharField(label="Due Date", widget=forms.DateInput(attrs={'class':'form-control', 'id':'duedate'}))
 
 	class Meta:
 		model = Project
-		fields = ['title', 'description', 'budget', 'profiles', 'due_date']
+		fields = ['title', 'description', 'budget', 'due_date']
+
 
 	def __init__(self, *args, **kwargs):
-		super(NewProject, self).__init__(*args, **kwargs)
-		if self.is_bound != False:
-			print 'ok'
-		else:
+		try:
+			self.profile_id = kwargs.pop('profile')
+		except Exception, e:
 			pass
-	def clean_budget(self):
-		budget = self.cleaned_data['budget']
-		if budget == '':
-			raise forms.ValidationError('You did not specify a budget for your project')
-		elif budget < 100:
-			raise forms.ValidationError('Your budget is to small. You need to at least be willing to pay more than $100')
-		else:
-			return budget
-
-	def clean_profiles(self, *args, **kwargs):
-		print kwargs
-
-
-
+		return super(NewProject, self).__init__(*args, **kwargs)
+	
 	def save(self):
-		print self.cleaned_data
-
-
+		profile = Profile.objects.get(pk=self.profile_id)
+		layers_profile = Layers_Profile.objects.get(pk=profile.accounts.id)
+		layers_profile.has_projects = True
+		title = self.cleaned_data['title']
+		description = self.cleaned_data['description']
+		budget = self.cleaned_data['budget']
+		due_date = self.cleaned_data['due_date']
+		new_project = Project.objects.create(title=title, description=description, budget=budget, due_date=due_date, client=layers_profile)
+		new_project.save()
+		layers_profile.save()
+		return new_project
+		
 		
 		
 

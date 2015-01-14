@@ -20,6 +20,7 @@ class Layers_Profile(models.Model):
 	profile = models.OneToOneField(Profile, related_name='accounts')
 	Profile_Pic = ImageField(upload_to='/profile_pics/')
 	has_profile_pic = models.BooleanField(default=False)
+	session_key = models.CharField(max_length=250, null=True, blank=True)
 
 
 	def __unicode__(self):

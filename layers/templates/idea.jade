@@ -45,14 +45,28 @@ block content
               {%endif%}
               form#background_info(role="form", action="{% url 'get_started' %}", method="POST")
                 - csrf_token
+                  {% if forms.userform %}
                   {% for field in forms.userform %}
                   .form-group
                     {{field.label_tag}} {{field}}
                   {%endfor%}
+                  {%endif%}
+                  {% if forms.newprojectform %}
                   {% for field in forms.newprojectform%}
                   .form-group
                     {{field.label_tag}} {{field}}
                   {%endfor%}
+                  {%endif %}
+                  {%if email %}
+                  .form-group
+                    input.form-control(type="text", name="email", value="{{email}}", disabled)
+                  {%endif%}
+                  {% if projectform %}
+                  {% for field in projectform %}
+                  .form-group
+                    {{field.label_tag}} {{field}}
+                  {%endfor%}
+                  {%endif%}
                   .form-group
                     label(for='budget') Budget: 
                     input.form-control#budget(name='budget', placeholder='eg. Min $100')
