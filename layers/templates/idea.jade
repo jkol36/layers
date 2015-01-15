@@ -58,7 +58,7 @@ block content
 
               else
                 form#background_info(role="form", action="{% url 'get_started' %}", method="POST")
-                - csrf_token
+                  - csrf_token
                   {% if forms.userform %}
                   {% for field in forms.userform %}
                   .form-group
