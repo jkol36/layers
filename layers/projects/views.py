@@ -26,10 +26,10 @@ def add_project(request):
 			forms = {'newprojectform':NewProject}
 			return render(request, 'idea.jade', {'forms':forms})
 	
-	if request.session['project_id']:
-		project_id = request.session['project_id']
+	try:
+		project_id =  request.session['project_id']
 		return render(request, 'inspiration.jade', {'forms':forms, 'project':project_id})
-	else:
+	except Exception, NoId:
 		return render(request, 'idea.jade', {'forms':forms, 'add_project':True})
 
 @login_required

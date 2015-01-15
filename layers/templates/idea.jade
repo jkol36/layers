@@ -43,7 +43,7 @@ block content
               {%endif%}
               {%endfor%}
               {%endif%}
-              if add_project = true
+              if add_project
                 form#background_info(role='form', action="{% url 'add_project' %}", method="POST")
                   - csrf_token
                   if forms.newprojectform

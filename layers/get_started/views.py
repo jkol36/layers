@@ -26,6 +26,8 @@ def get_started(request):
 	except Exception, ProjectDoesNothaveImages:
 		project_has_images = False
 
+	print profile
+
 	#if the user is posting but has a profile.
 	if request.POST and profile != '':
 		#We pass the submitted form along with the profile instance
