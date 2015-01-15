@@ -14,6 +14,8 @@ urlpatterns = patterns('',
      url(r'^logout/$', 'layers.profiles.views.logout_view', name='logout'),
      url(r'^login$', 'layers.landing.views.login_view', name='login'),
      url(r'^update_settings$', 'layers.profiles.views.update_settings', name='update_settings'),
+     url(r'^add_project$', 'layers.projects.views.add_project', name='add_project'),
+     url(r'^add_photo$', 'layers.projects.views.add_photo_to_project', name='add_photo'),
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),

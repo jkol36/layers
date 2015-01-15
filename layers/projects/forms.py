@@ -42,6 +42,13 @@ class add_photo_form(forms.ModelForm):
 		model = Photo
 		exclude = ['caption', 'project']
 
+
+	def __init__(self, *args, **kwargs):
+		try:
+			self.project_id = kwargs.pop('project_id')
+		except Exception, e:
+			pass
+		super(add_photo_form, self).__init__(*args, **kwargs)
 	
 	def is_valid(self):
 		valid = super(add_photo_form, self).is_valid()
@@ -77,6 +84,9 @@ class add_photo_form(forms.ModelForm):
 		except Exception, e:
 			print 'fuck me'
 			print e
+
+
+
 
 		
 

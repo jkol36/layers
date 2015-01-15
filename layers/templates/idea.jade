@@ -43,7 +43,21 @@ block content
               {%endif%}
               {%endfor%}
               {%endif%}
-              form#background_info(role="form", action="{% url 'get_started' %}", method="POST")
+              if add_project = true
+                form#background_info(role='form', action="{% url 'add_project' %}", method="POST")
+                  - csrf_token
+                  if forms.newprojectform
+                    for field in forms.newprojectform
+                      .form-group
+                        {{field.label_tag}} {{field}}
+                    .form-group
+                      label(for='budget') Budget: 
+                      input.form-control#budget(name='budget', placeholder='eg. Min $100')
+                  .form-group
+                    button.btn.btn-xlarge.btn-primary(type="submit", value="submit", form="background_info") Next
+
+              else
+                form#background_info(role="form", action="{% url 'get_started' %}", method="POST")
                 - csrf_token
                   {% if forms.userform %}
                   {% for field in forms.userform %}

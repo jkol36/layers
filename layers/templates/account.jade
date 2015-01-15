@@ -135,7 +135,9 @@ block content
                           a(href="#") View
                   else
                     p No Projects
-                button.btn.btn-success(type="button") Add a Project
+
+                button.btn.btn-success(type="button")
+                  a(href="{% url 'add_project' %}") Add a Project
             - comment     
             .order-history#order-history
               h2 Order History
