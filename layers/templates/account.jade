@@ -10,9 +10,12 @@ block content
       .my-account
         h1.text-center My Account
         .profile#profile
+         
           .row
             .col-md-3
+              - comment
               if profile_pic == False
+                p add a profile picture.
                 form(role="form", action="{% url 'my_account' %}", enctype="multipart/form-data", method="POST")
                   .form-group
                     - csrf_token
@@ -22,14 +25,19 @@ block content
                 {% thumbnail profile_pic "100x100" crop="center" as im %}
                 img(src="{{im.url}}")
                 {% endthumbnail %}
-
+              - endcomment
+            -comment
             .col-md-7
               .row
                 .col-md-12
-                  h3.name {{request.user.first_name}} {{request.user.last_name}}
+                  .col-md-4
+                  .col-md-4
+                    h3.name Welcome, {{request.user.first_name}} {{request.user.last_name}}
+            -endcomment    
+                -comment
                 .col-md-12
                   if description == None
-                   form(role="form", action="{% url 'add_description' %}", method="POST")
+                   form(role="form", action="#", method="POST")
                     - csrf_token
                     .form-group
                       label(for="description").col-sm-3.control-label Add a description
@@ -38,18 +46,20 @@ block content
                       button.btn.btn-primary(type="submit", value="submit") Update
                   else
                     p.description {{description}}
+                -endcomment
                 .col-md-12
                   .row
                     .col-md-7
-                      
+                      -comment
                       if location == None 
-                        a(href="{% url 'edit_profile' %}") Add a Location
+                        a(href="#") Add a Location
                       
                       else
                         {{location}}
+                      -endcomment
                    
                       
-                        
+                     
                     .col-md-5.social
                         a(href='https://www.facebook.com/pages/43Layers/273568439486440')
                           img(src="{{STATIC_URL}}/icons/facebook_black.png")
@@ -59,9 +69,11 @@ block content
                           img(src='{{STATIC_URL}}icons/instagram_black.gif')
                         a(href='http://www.pinterest.com/43layers')
                           img(src='{{STATIC_URL}}icons/pinterest_black.png')
-            .col-md-2
-              
-                a(href="{% url 'edit_profile' %}").btn.btn-default.btn-block  Edit Profile
+                -comment
+                .col-md-2
+                  
+                    a(href="#").btn.btn-default.btn-block  Edit Profile
+                -endcomment
         .row
           .col-md-3
             h2 Menu
@@ -72,7 +84,7 @@ block content
                 li
                   a(href="#notifications") Notifications
                 li
-                  a(href="{% url 'messages' %}") My Messages
+                  a(href="#") My Messages
                 li
                   a(href="#current-projects") Current Projects
                 li
@@ -80,10 +92,11 @@ block content
                 li
                   a(href="#settings") Settings
                 li
-                  form(role="form", action="{% url 'logout'%}", method="POST")
+                  form(role="form", action="{% url 'logout' %}", method="POST")
+                    - csrf_token
                     input(type="hidden", name="user_instance", value="request.user.id")
-                    a(href="logout", action="submit", value="submit") Logout
-
+                    button(type='submit', value='submit') logout
+          -comment
           .col-md-9
             h2 Notifications
             .notifications#notifications
@@ -95,27 +108,35 @@ block content
                 li Welcome to 43Layers! Thanks for signing up!
                 li
                   a(href="#") More
+           -endcomment
+
+
+          .col-md-9
             .current-projects#current-projects
               h2 Current Projects
               .table-responsive
                 table.table
-                  for i in projects
-                    tr
-                      th Name
-                      th ID
-                      th Designer
-                      th Due Date
-                      th Ship Status
-                      th
-                    tr
-                      td {{i.title}}
-                      td {{i.id}}
-                      td {{i.designer}}
-                      td {{i.deadline}}
-                      td {{i.shipping}}
-                      td
-                        a(href="#") View
-                  
+                  if projects
+                    for i in projects
+                      tr
+                        th Name
+                        th ID
+                        th Designer
+                        th Due Date
+                        th Ship Status
+                        th
+                      tr
+                        td {{i.title}}
+                        td {{i.id}}
+                        td {{i.designer}}
+                        td {{i.due_date}}
+                        td {{i.shipping}}
+                        td
+                          a(href="#") View
+                  else
+                    p No Projects
+                button.btn.btn-success(type="button") Add a Project
+            - comment     
             .order-history#order-history
               h2 Order History
               .table-responsive
@@ -152,32 +173,23 @@ block content
                       span(aria-hidden="true").glyphicon.glyphicon-star
                       span(aria-hidden="true").glyphicon.glyphicon-star
                       span(aria-hidden="true").glyphicon.glyphicon-star
+            - endcomment
             .settings#settings
               h2 Settings
-              form.form-horizontal(role="form", action="{% url 'update_settings' %}", method="POST")
+              if messages
+                for message in messages
+                  if message.tags = 'success'
+                    div.alert.alert-success {{message}}
+                  if message.tags = 'error'
+                    div.alert.alert-danger {{message}}
+              form.form-horizontal(role="form", action="{% url 'update_settings'%}", method="POST")
                 - csrf_token
-                .form-group
-                  label(for="email").col-sm-3.control-label Email
-                  div.col-sm-6
-                    input(type="email", name="email", placeholder="Email").form-control#email
-                .form-group
-                  label(for="email").col-sm-3.control-label Notification Emails
-                  div.col-sm-6
-                    label.radio-inline
-                      input(type="radio", name="notifications", value="yes")
-                      | Yes
-                    label.radio-inline
-                      input(type="radio", name="notifications", value="no")
-                      | No
-                .form-group
-                  label(for="email").col-sm-3.control-label Newsletter
-                  div.col-sm-6
-                    label.radio-inline
-                      input(type="radio", name="newsletter", value="yes")
-                      | Yes
-                    label.radio-inline
-                      input(type="radio", name="newsletter", value="no")
-                      | No
+                if forms.UpdateSettings
+                  for field in forms.UpdateSettings
+                    .form-group
+                      label.col-sm-3.control-label {{field.label_tag}}
+                      div.col-sm-6
+                        {{field}}
                 .form-group
                   .col-sm-4.col-sm-offset-3
                     button(type="submit").btn.btn-secondary Cancel

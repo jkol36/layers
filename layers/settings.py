@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'layers.profiles',
     'layers.projects',
+    'layers.landing',
     'layers.get_started',
     'sorl.thumbnail',
 )
@@ -98,8 +99,8 @@ STATICFILES_DIRS = (
 )
 STATIC_URL = '/static/'
 STATIC_ROOT = '/static/'
-MEDIA_URL = '/media/'
-MEDIA_ROOT = '/media/'
+MEDIA_URL = 'media/'
+MEDIA_ROOT = 'media/'
 AUTH_USER_MODEL = 'profiles.Profile'
 
 TEMPLATE_LOADERS = (

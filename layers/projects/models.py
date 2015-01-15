@@ -31,11 +31,10 @@ class Project(models.Model):
 
 class Photo(models.Model):
 	caption = models.CharField(max_length=250, blank=True, null=True)
-	image = ImageField(upload_to='/project_pics/')
+	image = ImageField(upload_to='project_pics/', blank=True, null=True)
 	project = models.ForeignKey(Project)
 
-	def __unicode__(self):
-		return self.caption
+	
 
 
 

@@ -1,7 +1,8 @@
 from django import forms
 from layers.profiles.models import Profile, Layers_Profile
-from .models import Project
+from .models import Project, Photo
 from django.contrib import messages
+from sorl.thumbnail import ImageField
 
 
 class NewProject(forms.ModelForm):
@@ -23,6 +24,7 @@ class NewProject(forms.ModelForm):
 		return super(NewProject, self).__init__(*args, **kwargs)
 	
 	def save(self):
+		print self.profile_id
 		profile = Profile.objects.get(pk=self.profile_id)
 		layers_profile = Layers_Profile.objects.get(pk=profile.accounts.id)
 		layers_profile.has_projects = True
@@ -34,6 +36,52 @@ class NewProject(forms.ModelForm):
 		new_project.save()
 		layers_profile.save()
 		return new_project
+
+class add_photo_form(forms.ModelForm):
+	class Meta:
+		model = Photo
+		exclude = ['caption', 'project']
+
+	
+	def is_valid(self):
+		valid = super(add_photo_form, self).is_valid()
+		if valid == False:
+			print 'not valid'
+			return valid
+		try:
+			project_id = int(self.data['project'])
+		except Exception, DoesNotExist:
+			print 'fuck asdasd'
+			print DoesNotExist
+			raise forms.ValidationError('Something went wrong.')
+		self.cleaned_data['project'] = int(self.data['project'])
+		try:
+			for f in self.files.getlist('file'):
+				self.cleaned_data['image'] = f
+		except Exception, NoPhotos:
+			print 'exception with iterating over photos'
+			print NoPhotos
+			raise forms.ValidationError('You did not add any photos')
+		return True
+
+	def save(self):
+		try:
+			project_id = self.cleaned_data['project']
+			print type(project_id)
+			photo = self.cleaned_data['image']
+			print photo
+			project = Project.objects.get(pk=project_id)
+			print project
+			f = Photo.objects.create(image=photo, project=project)
+			f.save()
+		except Exception, e:
+			print 'fuck me'
+			print e
+
+		
+
+
+
 		
 		
 		

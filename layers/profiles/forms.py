@@ -65,6 +65,7 @@ class PartialProfileForm(forms.ModelForm):
 		model = Profile
 		fields = ['name', 'email']
 
+
 	def clean_name(self):
 		name = self.cleaned_data['name']
 		try:
@@ -104,6 +105,78 @@ class PasswordForm(forms.ModelForm):
 	class Meta:
 		model = Profile
 		fields = ['password1', 'password2']
+
+	def is_valid(self):
+		valid = super(PasswordForm, self).is_valid()
+		if valid == False:
+			return valid
+		else:
+			if self.cleaned_data['password1'] and self.cleaned_data['password2']:
+				password1 = self.cleaned_data['password1']
+				password2 = self.cleaned_data['password2']
+				if password1 != password2:
+					raise forms.ValidationError("password's don't match")
+				return True
+			else:
+				raise forms.ValidationError("You did not fill out both password forms.")
+
+	def save(self):
+		password = self.cleaned_data['password1']
+		profile_id = self.data['profile']
+		profile = Profile.objects.get(pk=profile_id)
+		profile.set_password(password)
+		profile.save()
+		return password
+
+class UpdateSettings(forms.ModelForm):
+	email = forms.CharField(widget=forms.EmailInput(attrs={'class':'form-control', 'placeholder':'your Email'}))
+	notification_emails = forms.BooleanField(required=False)
+	news_letter = forms.BooleanField(required=False)
+
+	class Meta:
+		model = Layers_Profile
+		fields = ['email', 'notification_emails', 'news_letter']
+
+	
+	def __init__(self, *args, **kwargs):
+		try:
+			self.profile = kwargs.pop('profile')
+		except Exception, e:
+			pass
+
+		return super(UpdateSettings, self).__init__(*args, **kwargs)
+	def clean_email(self):
+		email = self.cleaned_data['email']
+		try:
+			profiles = Profile.objects.get(username=email)
+			print profiles
+		except Exception, EmailDoesNotExist:
+			print EmailDoesNotExist
+			return email
+		raise forms.ValidationError('Somehow that email is already taken...')
+
+	def save(self):
+		profile_id = self.profile
+		profile = Profile.objects.get(pk=profile_id)
+		email = self.cleaned_data['email']
+		email_notifications = self.cleaned_data['notification_emails']
+		news_letter = self.cleaned_data['news_letter']
+		profile.username = email
+		profile.email = email
+		profile.save()
+		layers_profile = Layers_Profile.objects.get(profile=profile)
+		layers_profile.notification_emails = email_notifications
+		layers_profile.newsletter = news_letter
+		layers_profile.save()
+		return profile
+
+
+
+
+
+
+
+
 
 
 
