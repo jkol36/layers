@@ -31,5 +31,16 @@ def signup_view(request):
 				messages.error(request, t + z.as_text())
 			return render(request, 'signup.jade', {'forms':UserForm})
 	return render(request, 'signup.jade', {'forms':UserForm})
-	
+
+def blog(request):
+	if request.POST:
+		pass
+	else:
+		return render(request, 'blog.jade')
+
+def faq(request):
+	if request.POST:
+		pass
+	else:
+		return render(request, 'faq.jade')
 
