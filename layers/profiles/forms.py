@@ -50,6 +50,7 @@ class UserForm(forms.ModelForm):
 		last_name = name[1]
 		profile = Profile.objects.create(first_name=first_name, last_name=last_name, email=email, username=email)
 		profile.set_password(password)
+		layers_profile = Layers_Profile.objects.create(profile=profile)
 		profile.save()
 		return profile
 

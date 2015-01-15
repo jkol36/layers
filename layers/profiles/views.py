@@ -43,8 +43,15 @@ def complete_signup(request):
 
 @login_required
 def my_account(request):
-	has_profile_pic = request.user.accounts.has_profile_pic
-	projects = Project.objects.filter(client=request.user.accounts)
+	try:
+		has_profile_pic = request.user.accounts.has_profile_pic
+	except Exception, NoAccounts:
+		has_profile_pic = False
+		print NoAccounts
+	try:
+		projects = Project.objects.filter(client=request.user.accounts)
+	except Exception, NoProjects:
+		projects = False
 	print request.user
 	if projects:
 		request.user.accounts.has_projects = True
