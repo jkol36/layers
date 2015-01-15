@@ -14,6 +14,8 @@ block content
               for message in messages
                 if message.tags == 'error'
                   div.alert.alert-danger {{message}}
+                if message.tags == 'success'
+                  div.alert.alert-success {{message}}
             form(role="form", method="POST", id="login_form", action="{% url 'login' %}")
               -csrf_token
               h1.text-center Log In
@@ -24,5 +26,5 @@ block content
             button.btn.btn-primary.btn-block(type="submit", value="submit", form="login_form") Log in
             p.signup
               | Don't have an account? 
-              a(href="signup.html") Sign up
+              a(href="{% url 'signup' %}") Sign up
   include ./partials/_footer.jade

@@ -21,20 +21,27 @@ block content
             {%endif%}
             {%endfor%}
             {%endif%}
-            form(role="form", id="signup_form", method="POST", action="{% url 'complete_signup' %}")
-              - csrf_token
-              .form-group
-                {% if email %} 
-                input.form-control(type="text", name="email", value='{{email}}', disabled)
-                {%endif%}
-                {% if profile %}
-                input.form-control(type="hidden", name='profile', value='{{profile}}')
-                {%endif%}
-              .form-group
-                input.form-control(type="password", name="password1", placeholder="Password")
-              .form-group
-                input.form-control(type="password", name="password2", placeholder="Confirm Password")
-            button.btn.btn-primary.btn-block(type="submit", value="submit", form="signup_form") Sign Up
+            if email
+              form(role="form", id="signup_form", method="POST", action="{% url 'complete_signup' %}")
+                - csrf_token
+                .form-group
+                  input.form-control(type="text", name="email", value='{{email}}', disabled)
+                  input.form-control(type="hidden", name='profile', value='{{profile}}')
+                .form-group
+                  input.form-control(type="password", name="password1", placeholder="Password")
+                .form-group
+                  input.form-control(type="password", name="password2", placeholder="Confirm Password")
+              button.btn.btn-primary.btn-block(type="submit", value="submit", form="signup_form") Sign Up
+            else
+              form(role="form", id='signup_form', method="POST", action="{% url 'signup'%}")
+                - csrf_token
+                if forms
+                  for field in forms
+                    .form-group
+                      {{field}}
+                  button.btn.btn-primary.btn-block(type="submit", value="submit") Signup
+
+
             p.signup
               | Already have an account? 
               a(href="login.html") Log in

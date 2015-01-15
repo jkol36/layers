@@ -16,6 +16,7 @@ urlpatterns = patterns('',
      url(r'^update_settings$', 'layers.profiles.views.update_settings', name='update_settings'),
      url(r'^add_project$', 'layers.projects.views.add_project', name='add_project'),
      url(r'^add_photo$', 'layers.projects.views.add_photo_to_project', name='add_photo'),
+     url(r'^signup$', 'layers.landing.views.signup_view', name='signup'),
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
