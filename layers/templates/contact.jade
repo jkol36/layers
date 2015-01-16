@@ -21,20 +21,24 @@ block content
               li.text-center
                 i.fa.fa-phone-square(style="color:white; padding-right:5px;")
                 | 260-639-4343
-      
-            form.form-contact(accept-charset='UTF-8', action='/ajax/inquiry', method='post')
+            if messages
+              for message in messages
+                if message.tags == 'success'
+                  div.alert.alert-success {{message}}
+                if message.tags == 'error'
+                  div.alert.alert-danger {{message}}
+            form.form-contact(accept-charset='UTF-8', action="{% url 'contact' %}", method='POST')
+              - csrf_token
               input(name='utf8', type='hidden', value='✓')
-              input(name='authenticity_token', type='hidden', value='INSwWYJn0d5ZZjpHJrY4srgu/SzsZC37GUdPZ5HYUZM=')
-              input#customer_source(type='hidden', name='inquiry[source]', value='CONTACT FORM')
               .form-group.name
                 label.sr-only(for='name') Name
-                input#name.form-control(type='text', placeholder='Name', name='inquiry[name]')
+                input#name.form-control(type='text', placeholder='Name', name='name')
               .form-group.email
                 label.sr-only(for='email') Email
-                input#email.form-control(type='email', placeholder='Email', name='inquiry[email]')
+                input#email.form-control(type='email', placeholder='Email', name='email')
               .form-group.message
                 label.sr-only(for='message') Message
-                textarea#message.form-control(rows='6', placeholder='Message', name='inquiry[message]')
+                textarea#message.form-control(rows='6', placeholder='Message', name='text')
               button.btn.btn-primary.btn-center(type='submit') Send Message
         .row.text-center
           a(href='https://www.facebook.com/pages/43Layers/273568439486440')

@@ -95,7 +95,7 @@ block content
                   form(role="form", action="{% url 'logout' %}", method="POST")
                     - csrf_token
                     input(type="hidden", name="user_instance", value="request.user.id")
-                    button(type='submit', value='submit') logout
+                    a(href="{% url 'logout' %}", value='submit') logout
           -comment
           .col-md-9
             h2 Notifications
@@ -136,8 +136,8 @@ block content
                   else
                     p No Projects
 
-                button.btn.btn-success(type="button")
-                  a(href="{% url 'add_project' %}") Add a Project
+                
+                a.btn.btn-default(href="{% url 'add_project' %}") Add a Project
             - comment     
             .order-history#order-history
               h2 Order History

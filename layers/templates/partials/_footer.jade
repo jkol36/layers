@@ -4,13 +4,13 @@
       .col-md-4
         ul.footer-links
           li
-            a(href='privacy.html') Privacy
+            a(href="{% url 'privacy' %}") Privacy
           li
-            a(href='terms.html') Terms
+            a(href="{% url 'terms' %}") Terms
           li
-            a(href='faq.html') FAQ
+            a(href="{% url 'faq' %}") FAQ
           li
-            a(href='contact.html') Contact
+            a(href="{% url 'contact' %}") Contact
       .col-md-4
       .col-md-4
         .input-group.form-newsletter

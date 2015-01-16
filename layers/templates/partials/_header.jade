@@ -11,7 +11,10 @@ nav.navbar.navbar-default.navbar-fixed-top(role='navigation')
     .collapse.navbar-collapse#collapsed-nav
       ul.nav.navbar-nav.navbar-right
         li
-          a(href="{% url 'submit_design' %}") Design
+          if request.user.is_authenticated
+            a(href="{% url 'add_project' %}") Design
+          else
+            a(href="{% url 'get_started' %}") Design
         li
           a(href="{% url 'about' %}") About
         li

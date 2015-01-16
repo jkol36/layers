@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'layers.projects',
     'layers.landing',
     'layers.get_started',
+    'layers.contact',
     'sorl.thumbnail',
 )
 
