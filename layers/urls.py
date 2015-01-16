@@ -19,6 +19,8 @@ urlpatterns = patterns('',
      url(r'^signup$', 'layers.landing.views.signup_view', name='signup'),
      url(r'^faq$', 'layers.landing.views.faq', name='faq'),
      url(r'^blog$', 'layers.landing.views.blog', name='blog'),
+     url(r'^about$', 'layers.landing.views.about', name='about'),
+
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),

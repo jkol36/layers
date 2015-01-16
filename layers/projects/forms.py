@@ -3,6 +3,9 @@ from layers.profiles.models import Profile, Layers_Profile
 from .models import Project, Photo
 from django.contrib import messages
 from sorl.thumbnail import ImageField
+from datetime import date
+import time
+from datetime import datetime
 
 
 class NewProject(forms.ModelForm):
@@ -20,9 +23,28 @@ class NewProject(forms.ModelForm):
 		try:
 			self.profile_id = kwargs.pop('profile')
 		except Exception, e:
-			pass
+			if e.args[0] == 'profile':
+				pass
+			else:
+				raise forms.ValidationError('Something went wrong.')
+
 		return super(NewProject, self).__init__(*args, **kwargs)
 	
+	
+	def clean_due_date(self):
+		due_date = self.cleaned_data['due_date']
+		year = int(due_date[0:4])
+		month = int(due_date[5:7])
+		day = int(due_date[8:])
+		due_date_object = date(year, month, day)
+		print due_date_object
+		today = date.fromtimestamp(time.time())
+		print today
+		ship_date = abs(due_date_object - today).days
+		if ship_date < 14:
+			raise forms.ValidationError('Your order will take at least 2 weeks to design and develop. Please select a later date.')
+		else:
+			return due_date
 	def save(self):
 		print self.profile_id
 		profile = Profile.objects.get(pk=self.profile_id)
@@ -47,27 +69,26 @@ class add_photo_form(forms.ModelForm):
 		try:
 			self.project_id = kwargs.pop('project_id')
 		except Exception, e:
-			pass
+			if e == 'profile':
+				pass
+			else:
+				raise forms.ValidationError('error %s') %(e)
 		super(add_photo_form, self).__init__(*args, **kwargs)
 	
 	def is_valid(self):
 		valid = super(add_photo_form, self).is_valid()
 		if valid == False:
-			print 'not valid'
 			return valid
 		try:
 			project_id = int(self.data['project'])
 		except Exception, DoesNotExist:
-			print 'fuck asdasd'
 			print DoesNotExist
-			raise forms.ValidationError('Something went wrong.')
+			raise forms.ValidationError('Something went wrong. %s') %(DoesNotExist)
 		self.cleaned_data['project'] = int(self.data['project'])
 		try:
 			for f in self.files.getlist('file'):
 				self.cleaned_data['image'] = f
 		except Exception, NoPhotos:
-			print 'exception with iterating over photos'
-			print NoPhotos
 			raise forms.ValidationError('You did not add any photos')
 		return True
 
@@ -82,8 +103,7 @@ class add_photo_form(forms.ModelForm):
 			f = Photo.objects.create(image=photo, project=project)
 			f.save()
 		except Exception, e:
-			print 'fuck me'
-			print e
+			raise forms.ValidationError(e)
 
 
 

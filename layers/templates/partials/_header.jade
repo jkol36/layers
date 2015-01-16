@@ -11,11 +11,11 @@ nav.navbar.navbar-default.navbar-fixed-top(role='navigation')
     .collapse.navbar-collapse#collapsed-nav
       ul.nav.navbar-nav.navbar-right
         li
-          a(href='design.html') Design
+          a(href="{% url 'submit_design' %}") Design
         li
-          a(href='about.html') About
+          a(href="{% url 'about' %}") About
         li
-          a(href='faq.html') FAQ
+          a(href="{% url 'faq' %}") FAQ
         - comment
         li
           a(href='blog.html') Blog

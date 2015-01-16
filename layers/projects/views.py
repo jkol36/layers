@@ -23,24 +23,32 @@ def add_project(request):
 		else:
 			for t, z in form.errors.items():
 				messages.error(request, t + z.as_text())
+
 			forms = {'newprojectform':NewProject}
-			return render(request, 'idea.jade', {'forms':forms})
+			return render(request, 'idea.jade', {'forms':forms, 'add_project':True})
 	
 	try:
 		project_id =  request.session['project_id']
-		return render(request, 'inspiration.jade', {'forms':forms, 'project':project_id})
+		return render(request, 'inspiration.jade', {'forms':forms, 'project':project_id, 'add_project':True})
 	except Exception, NoId:
+		forms = {'newprojectform':NewProject}
 		return render(request, 'idea.jade', {'forms':forms, 'add_project':True})
 
 @login_required
 def add_photo_to_project(request):
-	project_id = request.session['project_id']
+	try:
+		project_id = request.session['project_id']
+	except Exception, NoProjectID:
+		project_id = False
 	if request.FILES:
 		added_photos = request.session['added_photos'] = True 
 		form = add_photo_form(request.POST, request.FILES, project_id=project_id)
 		if form.is_valid():
-			print 'valid'
+			#if the form is valid clear the session
+			#now when the user adds another project, he'll start from the add_project view.
 			form.save()
+			request.session.__delitem__('project_id')
+			return redirect('my_account')
 		else:
 			print form.errors
 			for t, z in form.errors.items():

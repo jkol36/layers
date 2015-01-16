@@ -44,3 +44,6 @@ def faq(request):
 	else:
 		return render(request, 'faq.jade')
 
+def about(request):
+	return render(request, 'about.jade')
+
