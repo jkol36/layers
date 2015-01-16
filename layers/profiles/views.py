@@ -35,6 +35,9 @@ def complete_signup(request):
 				login(request, user)
 				messages.success(request, 'You are now logged in!')
 				return redirect('my_account')
+			else:
+				messages.error(request, 'something went wrong')
+				return render(request, 'signup.jade')
 
 
 		else:
@@ -43,6 +46,10 @@ def complete_signup(request):
 
 @login_required
 def my_account(request):
+	try:
+		email = request.user.username
+	except Exception, e:
+		email = False
 	try:
 		has_profile_pic = request.user.accounts.has_profile_pic
 	except Exception, NoAccounts:
@@ -58,7 +65,7 @@ def my_account(request):
 	else:
 		pass
 	forms = {'UpdateSettings':UpdateSettings}
-	return render(request, 'account.jade', {'profile_pic':has_profile_pic, 'forms':forms, 'projects':projects})
+	return render(request, 'account.jade', {'profile_pic':has_profile_pic, 'forms':forms, 'email':email, 'projects':projects})
 
 def logout_view(request):
 	logout(request)

@@ -186,12 +186,19 @@ block content
                     div.alert.alert-danger {{message}}
               form.form-horizontal(role="form", action="{% url 'update_settings'%}", method="POST")
                 - csrf_token
+                .form-group
+                    if email != false
+                      label.col-sm-3.control-label Your current email is:
+                      div.col-sm-6
+                        input.form-control(type='text', value='{{email}}', disabled)
                 if forms.UpdateSettings
                   for field in forms.UpdateSettings
+                   
                     .form-group
                       label.col-sm-3.control-label {{field.label_tag}}
                       div.col-sm-6
                         {{field}}
+
                 .form-group
                   .col-sm-4.col-sm-offset-3
                     button(type="submit").btn.btn-secondary Cancel
