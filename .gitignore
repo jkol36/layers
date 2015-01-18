@@ -53,3 +53,7 @@ docs/_build/
 # PyBuilder
 target/
 db.sqlite3
+venv/
+media/
+django-project/
+
