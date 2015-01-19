@@ -69,10 +69,7 @@ class add_photo_form(forms.ModelForm):
 		try:
 			self.project_id = kwargs.pop('project_id')
 		except Exception, e:
-			if e == 'profile':
-				pass
-			else:
-				raise forms.ValidationError('error %s') %(e)
+			pass
 		super(add_photo_form, self).__init__(*args, **kwargs)
 	
 	def is_valid(self):
@@ -82,8 +79,7 @@ class add_photo_form(forms.ModelForm):
 		try:
 			project_id = int(self.data['project'])
 		except Exception, DoesNotExist:
-			print DoesNotExist
-			raise forms.ValidationError('Something went wrong. %s') %(DoesNotExist)
+			pass
 		self.cleaned_data['project'] = int(self.data['project'])
 		try:
 			for f in self.files.getlist('file'):

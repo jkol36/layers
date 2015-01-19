@@ -97,7 +97,10 @@ def get_started(request):
 	return render(request, 'idea.jade', {'forms':forms})
 
 def submit_design(request):
-	profile = request.session['profile']
+	try:
+		profile = request.session['profile']
+	except Exception, NoProfile:
+		return HttpResponse('No Profile')
 	if request.FILES:
 		form = add_photo_form(request.POST, request.FILES)
 		if form.is_valid():
