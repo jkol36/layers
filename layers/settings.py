@@ -42,7 +42,10 @@ INSTALLED_APPS = (
     'layers.get_started',
     'layers.contact',
     'sorl.thumbnail',
+
 )
+
+
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',

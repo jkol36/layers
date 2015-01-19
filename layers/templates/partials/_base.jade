@@ -45,9 +45,13 @@ html(lang='en')
     script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')
     
 
+
+
+    
+
            
 
-  body(onload='ChangeClass()')
+  body
     .wrapper
       block content
       include display_messages.jade
@@ -58,7 +62,57 @@ html(lang='en')
     script(src='{{STATIC_URL}}js/dropzone.min.js')
     script(src='{{STATIC_URL}}js/selectize.js')
     script(src='{{STATIC_URL}}js/typed.js')
-    script(src='{{STATIC_URL}}js/rome.min.js')
-    script(src='{{STATIC_URL}}js/43layers.js')
+    script(type="text/javascript").
+      $('#select').selectize({
+          create: true,
+          optgroupOrder: ["Weddings", "Other Events"]
+      });
 
+      $('#product').typed({
+          strings: ['\n', '\nCake Topper ', '\nTable Centerpieces ', '\nCufflinks '],
+          contentType: 'text',
+          typeSpeed: 120,
+          backSpeed: 120,
+          backDelay: 7000,
+          showCursor: false,
+          loop: true,
+          preStringTyped: function(arrayPos) {
+        var images = [
+            'url({{STATIC_URL}}images/Hero_highres_full_width.jpg)',
+            'url({{STATIC_URL}}images/Hero_Cake_Topper.png)',
+            'url({{STATIC_URL}}images/Hero_Centerpiece.jpg)',
+            'url({{STATIC_URL}}images/Hero_Cufflinks.jpg)',
+        ];
+        $('.hero').css('background-image', images[arrayPos]);
+        if (arrayPos > 0) {
+            $('.hero p').css('color', '#fff');
+            $('.hero h2').css('color', '#fff');
+        } else {
+            $('.hero p').css('color', '#000');
+            $('.hero h2').css('color', '#000');
+        }
+          }
+      });
+
+      $('#occasion').typed({
+          strings: ['\n', '\nYour Wedding', '\na Baby Shower', '\nYour Groomsmen'],
+          contentType: 'text',
+          typeSpeed: 120,
+          backSpeed: 120,
+          backDelay: 7000,
+          showCursor: false,
+          loop: true,
+      });
+
+      // Width of inspiration pictures should be relative to height for responsiveness
+      var currentWidth = $('.inspiration').width();
+      $('.inspiration').css({'height': currentWidth+'px'});
+
+      // Datepicker
+      rome(duedate, {time: false});
+
+
+      
+    script(src='{{STATIC_URL}}js/rome.min.js')
+    
        
