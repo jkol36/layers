@@ -112,13 +112,11 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'layers/static/'),
 )
 
-MEDIAFILES_DIRS = (
-    os.path.join(BASE_DIR, 'layers/media'),
-    )
+
 STATIC_URL = '/static/'
 STATIC_ROOT = '/webapps/layers_django/static'
 MEDIA_URL = '/media/'
-MEDIA_ROOT = '/webapps/layers_django/media'
+MEDIA_ROOT = '/webapps/layers_django/media/'
 AUTH_USER_MODEL = 'profiles.Profile'
 
 TEMPLATE_LOADERS = (
