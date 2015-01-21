@@ -5,6 +5,11 @@ from sorl.thumbnail import ImageField
 # Create your models here.
 
 class Project(models.Model):
+	STATUS_CHOICES = (
+		('submit_idea', 'submit_idea'),
+		('Design Center', 'Design Center'),
+		('Shipping', 'Shipping'),
+		)
 	title = models.CharField(max_length=250, blank=False)
 	description = models.CharField(max_length=400, blank=False)
 	client = models.ForeignKey(Layers_Profile, default=False, blank=True, null=True, related_name="client")
@@ -12,11 +17,12 @@ class Project(models.Model):
 	budget = models.IntegerField(null=True, blank=True)
 	due_date = models.DateField(null=False, blank=False)
 	designer_assigned = models.BooleanField(default=False, blank=True)
-
+	project_status = models.CharField(choices=STATUS_CHOICES, max_length=250, null=True, blank=True)
 
 	def __unicode__(self):
 		return self.title
-
+	def get_project_status(self):
+		return self.project_status
 	def get_project_description(self):
 		return self.description
 
