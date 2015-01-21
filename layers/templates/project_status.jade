@@ -8,32 +8,32 @@ block content
 	include ./partials/_header.jade
 	.content
 		.container
-			.row(style="margin-top:5%;")
+			//.row(style="margin-top:5%;")
 				.col-md-3
 				.col-md-3
 					h1 project title:
 				.col-md-3
 					h1 {{project.title}}
-			.row(style="margin-top:5%;")
+			//.row(style="margin-top:5%;")
 				.col-md-3
 				.col-md-3
 					h1 project status:
 				.col-md-3
 					h1 {{project.project_status}}
-			.row(style="margin-top:5%;")
+			//.row(style="margin-top:5%;")
 				.col-md-3
 				.col-md-3
 					h1 Designer Assigned:
 				.col-md-3
 					h1 {{project.designer_assigned}}
-			if photos == 'None'
+			//if photos == 'None'
 				.row(style="margin-top:5%;")
 					.col-md-3
 					.col-md-3
 						h1 Photos
 					.col-md-3
 						h1 You did not submit photos
-			else
+			//else
 				.row(style="margin-top:5%;")
 					.col-md-3
 					.col-md-3
