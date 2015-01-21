@@ -17,7 +17,7 @@ class Project(models.Model):
 	budget = models.IntegerField(null=True, blank=True)
 	due_date = models.DateField(null=False, blank=False)
 	designer_assigned = models.BooleanField(default=False, blank=True)
-	project_status = models.CharField(choices=STATUS_CHOICES, max_length=250, null=True, blank=True)
+	project_status = models.CharField(choices=STATUS_CHOICES, max_length=250, default='submit_idea', null=True, blank=True)
 
 	def __unicode__(self):
 		return self.title
