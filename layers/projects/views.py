@@ -73,10 +73,9 @@ def project_status(request):
 	except Exception, NoProject:
 		messages.error('That Project does not exist')
 		return redirect('my_account')
-	photos = Photo.objects.filter(project=project)
+	photos = project.photo_set.all()
 	if not photos:
 		photos = None
-	print photos
 	return render(request, 'project_status.jade', {'project':project, 'photos':photos},)
 	
 
