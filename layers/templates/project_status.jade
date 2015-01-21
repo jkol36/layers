@@ -40,8 +40,8 @@ block content
 						h1 Photos:
 					.col-md-5
 						for photo in photos
-							{% thumbnail "{{photo.image}}"" "100x100" as im %}
-							img(src="{{im.url}}", width='{{im.width}}', height="{{im.height}}")
+							{% thumbnail photo "100x100" as im %}
+							img(src="{{im.image.url}}", width='{{im.width}}', height="{{im.height}}")
 							{% endthumbnail %}
 				
 
