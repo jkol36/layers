@@ -54,8 +54,11 @@ def add_photo_to_project(request):
 			for t, z in form.errors.items():
 				messages.error(request, t + z.as_text())
 			return render(request, 'inspiration.jade')
+	elif request.POST and not request.FILES:
+		return redirect('my_account')
 	elif request.POST and request.session['added_photos'] == True:
 		return redirect('my_account')
+	
 	return render(request, 'inspiration.jade', {'project':project_id})
 
 

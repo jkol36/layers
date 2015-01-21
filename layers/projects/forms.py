@@ -45,6 +45,23 @@ class NewProject(forms.ModelForm):
 			raise forms.ValidationError('Your order will take at least 2 weeks to design and develop. Please select a later date.')
 		else:
 			return due_date
+	def clean_budget(self):
+		budget = self.cleaned_data['budget']
+		if '$' in budget:
+			cleaned_budget = budget.split('$')[1]
+			if int(cleaned_budget) >= 100:
+				return cleaned_budget
+			else:
+				raise forms.ValidationError('You should have a budget of at least $100.')
+		else:
+			cleaned_budget = budget
+			if int(cleaned_budget) >= 100:
+				return cleaned_budget
+			else:
+				raise forms.ValidationError('You should have a budget of at least $100.')
+		
+
+
 	def save(self):
 		print self.profile_id
 		profile = Profile.objects.get(pk=self.profile_id)
