@@ -111,6 +111,10 @@ TEMPLATE_DIRS = (
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'layers/static/'),
 )
+
+MEDIAFILES_DIRS = (
+    os.path.join(BASE_DIR, 'layers/media')
+    )
 STATIC_URL = '/static/'
 STATIC_ROOT = '/webapps/layers_django/static'
 MEDIA_URL = '/media/'
