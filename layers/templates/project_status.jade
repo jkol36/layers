@@ -39,11 +39,8 @@ block content
 					.col-md-3
 						h1 Photos:
 					.col-md-5
-						{% for photo in photos %}
-						{% thumbnail photo.image "100x100" as image %}
-						img(src="{{image.url}}", width='{{image.width}}', height="{{image.height}}")
-						{% endthumbnail %}
-						{%endfor%}
+						for photo in photos
+							img(src="{{photo.image.url}}", width="100", height="100")
 
 
 
