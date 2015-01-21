@@ -23,7 +23,7 @@ urlpatterns = patterns('',
      url(r'^contact$', 'layers.landing.views.contact', name='contact'),
      url(r'^privacy$', 'layers.landing.views.privacy', name='privacy'),
      url(r'^terms$', 'layers.landing.views.terms', name='terms'),
-
+     url(r'^project_status$', 'layers.projects.views.project_status', name='project_status'),
     # url(r'^blog/', include('blog.urls')),
 
      url(r'^admin/', include(admin.site.urls)),

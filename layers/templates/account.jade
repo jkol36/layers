@@ -151,7 +151,11 @@ block content
                         td {{i.due_date}}
                         td {{i.project_status}}
                         td
-                          a(href="{% url 'add_project' %}") View
+                          form(role='form', method="GET", action="{% url 'project_status' %}")
+                            input(type='hidden', name='project_id', value='{{i.id}}')
+                          
+                            button(type="submit", style="color:#20CB92; background:transparent; border:none;",  value="submit") View
+                             
                   else
                     p No Projects
 

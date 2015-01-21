@@ -61,4 +61,22 @@ def add_photo_to_project(request):
 	
 	return render(request, 'inspiration.jade', {'project':project_id})
 
+@login_required
+def project_status(request):
+	try:
+		project_id = request.GET['project_id']
+	except Exception, NoID:
+		messages.error('No Project Id')
+		return redirect('my_account')
+	try:
+		project = Project.objects.get(pk=project_id)
+	except Exception, NoProject:
+		messages.error('That Project does not exist')
+		return redirect('my_account')
+	photos = Photo.objects.filter(project=project)
+	if not photos:
+		photos = None
+	print photos
+	return render(request, 'project_status.jade', {'project':project, 'photos':photos},)
+	
 
