@@ -41,7 +41,7 @@ block content
 					.col-md-5
 						for photo in photos
 							{%thumbnail photo.image '35x35' crop=center as im %}
-							img(src='{{im.url}}', height="{{im.height}}", width="{{'im.width'}}")
+							img(src='{{im}}', height="{{im.height}}", width="{{'im.width'}}")
 							{%endthumbnail%}
 				
 
