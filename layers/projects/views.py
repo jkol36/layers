@@ -76,6 +76,8 @@ def project_status(request):
 	photos = project.photo_set.all()
 	if not photos:
 		photos = None
-	return render(request, 'project_status.jade', {'project':project, 'photos':photos},)
+	else:
+		photos = photos	
+	return render(request, 'project_status.jade', {'project':project, 'photos':photos})
 	
 
