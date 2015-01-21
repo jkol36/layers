@@ -114,7 +114,7 @@ STATICFILES_DIRS = (
 
 
 STATIC_URL = '/static/'
-STATIC_ROOT = '/webapps/layers_django/static'
+STATIC_ROOT = '/webapps/layers_django/static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = '/webapps/layers_django/media/'
 AUTH_USER_MODEL = 'profiles.Profile'
