@@ -42,7 +42,7 @@ block content
 						for photo in photos
 							{% thumbnail photo.image "100x100" crop="center" as im %}
 								img(src="{{im.url}}", width='{{im.width}}', height="{{im.height}}")
-							{% endthumbnail %}
+								{% endthumbnail %}
 				
 
 
