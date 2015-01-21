@@ -18,9 +18,13 @@ class Project(models.Model):
 	due_date = models.DateField(null=False, blank=False)
 	designer_assigned = models.BooleanField(default=False, blank=True)
 	project_status = models.CharField(choices=STATUS_CHOICES, max_length=250, default='submit_idea', null=True, blank=True)
-
+	is_completed = models.BooleanField(default=False)
+	
 	def __unicode__(self):
 		return self.title
+	
+	def get_is_completed(self):
+		return self.is_completed
 	def get_project_status(self):
 		return self.project_status
 	def get_project_description(self):
