@@ -71,7 +71,7 @@ class NewProject(forms.ModelForm):
 		description = self.cleaned_data['description']
 		budget = self.cleaned_data['budget']
 		due_date = self.cleaned_data['due_date']
-		new_project = Project.objects.create(title=title, description=description, budget=budget, due_date=due_date, client=layers_profile)
+		new_project = Project.objects.create(title=title, description=description, project_status='submit_idea', budget=budget, due_date=due_date, client=layers_profile)
 		new_project.save()
 		layers_profile.save()
 		return new_project
@@ -96,7 +96,7 @@ class add_photo_form(forms.ModelForm):
 		try:
 			project_id = int(self.data['project'])
 		except Exception, DoesNotExist:
-			pass
+			print DoesNotExist
 		self.cleaned_data['project'] = int(self.data['project'])
 		try:
 			for f in self.files.getlist('file'):
