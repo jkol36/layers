@@ -113,7 +113,7 @@ STATICFILES_DIRS = (
 )
 
 MEDIAFILES_DIRS = (
-    os.path.join(BASE_DIR, 'layers/media')
+    os.path.join(BASE_DIR, 'layers/media'),
     )
 STATIC_URL = '/static/'
 STATIC_ROOT = '/webapps/layers_django/static'
