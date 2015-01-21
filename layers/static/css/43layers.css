@@ -22,7 +22,7 @@ body {
 
 
 /* TRANSITIONS */
-/* Apply transition-duration to smooth :hover transitions */
+
 *:hover{
     transition-duration: 0.5s;
 }
@@ -34,8 +34,6 @@ html {
     color: #4e4d4d;
     font-size: 100%;
 }
-
-
 
 body {
     font-family: 'Lato', sans-serif;
@@ -118,7 +116,21 @@ p {
 }
 
 .btn-default, .btn-default:hover, .btn-default:active, .btn-primary:focus {
-    color: #ccc;
+   color: #ccc;
+}
+
+.notifications-badge {
+    background: #20cb92;
+    position: relative;
+    top: -60px;
+    left: 70px;
+}
+
+.notifications-badge-mobile {
+    background: #20cb92;
+    position: relative;
+    top: -55px;
+    left: 94%;
 }
 
 .btn-contact {
@@ -135,9 +147,9 @@ p {
 .btn-xlarge {
     margin-top: 20px;
     margin-bottom: 20px;
-    width: 140px;
-    padding: 18px 24px;
-    font-size: 1.2rem;
+    width: 130px;
+    padding: 14px 26px;
+    font-size: 1rem;
 }
 
 
@@ -184,35 +196,70 @@ p {
 /* HERO */
 
 .hero {
-    background-image: url('../images/Hero_highres_full_width.jpg') no-repeat;
+    min-height: 500px;
     background-repeat: no-repeat;
-    background-position: center center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    transition: background-image 3s ease-in-out;
+}
+
+.hero::before {
+    display: none;
+    content: url('../images/Hero_Centerpiece.jpg')
+		url('../images/Hero_Cufflinks.jpg')
+		url('../images/Hero_Tiebar.png');
+}
+
+.hero-caketopper {
+    background-image: url('../images/Hero_Cake_Topper.png');
+    background-position: 80% 0;
+}
+
+.hero-centerpiece {
+    background-image: url('../images/Hero_Centerpiece.jpg');
+    background-position: center center;
+}
+
+.hero-cufflinks {
+    background-image: url('../images/Hero_Cufflinks.jpg');
+    background-position: center center;
+}
+
+.hero-tiebar {
+    background-image: url('../images/Hero_Tiebar.png');
+    background-position: 95% 0;
+}
+
+.hero .animate {
+    display: inline;
+    margin: 0;
+    padding: 2px;
+    text-transform: uppercase;
+    color: #fff;
+    text-shadow: none;
 }
 
 .hero #product {
-    text-transform: uppercase;
-    color: #fff;
     background-color: #20cb92;
 }
 
 .hero #occasion {
-    text-transform: uppercase;
-    color: #fff;
     background-color: #d0b0d9;
 }
 
-.hero p {
-    font-size: 2.3rem;
+.hero h1, .hero h2 {
+    text-align: center;
+    color: #fff;
+    text-shadow: 2px 2px #000;
 }
 
-.hero h1, .hero h2, .hero h3, .hero p {
+.hero h1 {
     font-family: 'Bentham', serif;
-    text-align: center;
+}
+
+.hero h2 {
+    font-family: 'Lato', sans-serif;
 }
 
 .hero .selectize-input {
@@ -221,11 +268,15 @@ p {
     padding: 10px 16px;
 }
 
-
 /* RECENT CUSTOMER CREATIONS */
 
-.creations, .creation {
-    margin: 50px 0;
+.creations, .creations-mobile {
+    padding-top: 30px;
+    padding-bottom: 80px;
+}
+
+.creation {
+    margin-top: 30px;
 }
 
 .creation-picture {
@@ -245,12 +296,28 @@ p {
     text-align: center;
 }
 
+.creations-mobile .creation p {
+    min-height: 170px;
+}
+
+.creations-mobile .creation-picture img {
+    max-height: 220px;
+}
+
+.creations-mobile .carousel-indicators {
+    bottom: -50px;
+}
+
+.creations-mobile .carousel-indicators li {
+    border-color: #20cb92;
+}
+
 
 /* TESTIMONIAL */
 
 .testimonial {
-    height: 100%;
-    padding: 30px 0;
+    min-height: 270px;
+    padding: 20px 100px;
     background: url('../images/Quote_highres_full_width.jpg') no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -598,7 +665,7 @@ p {
 /* SUBMIT YOUR IDEA FORM */
 
 .submit-your-idea {
-    margin: 80px 0;
+    margin: 80px 0 20px;
 }
 
 .submit-your-idea h2 {
@@ -677,6 +744,7 @@ p {
     font-size: 0.75rem;
 }
 
+
 /* INSPIRATION BOARD */
 
 .inspiration {
@@ -698,6 +766,22 @@ p {
     font-family: 'Bentham', sans-serif;
     font-size: 1.5rem;
     text-align: center;
+    margin-top: 25%;
+}
+
+
+/* MEET YOUR DESIGNER */
+
+.meet-your-designer .submit {
+    background: transparent url('../icons/Lightbulb_icon_75px.png');
+}
+
+.meet-your-designer .meet {
+    background: transparent url('../icons/Chat_icon_hover.png');
+}
+
+.meet-your-designer p {
+    margin-bottom: 80px;
 }
 
 
@@ -715,10 +799,18 @@ p {
     text-align: left;
 }
 
-.my-account .social img {
-    width: 30px;
-    height: 30px;
-    margin-left: 4px;
+.my-account .fa {
+    border-radius: 4px;
+    color: #fff;
+    background-color: #ccc;
+}
+
+.my-account .fa-stack {
+    margin-right: 5px;
+}
+
+.my-account .glyphicon-star {
+    color: #e3cf7a;
 }
 
 .my-account .description {
@@ -765,7 +857,6 @@ p {
 }
 
 
-
 /* MEDIA QUERIES */
 
 @media(max-width:767px) {
@@ -785,24 +876,27 @@ p {
 	padding: 50px 10px 100px;
     }
 
-    .hero p {
-	min-height: 114px;
-	font-size: 1.7rem;
-	white-space: pre;
+    .hero h1 {
+	font-size: 2rem;
     }
 
     .hero h2 {
-	font-size: 1.2rem;
-	margin-top: 20px 0;
-    }
-
-    .hero h3 {	
-	margin: 60px 0;
-	font-size: 0.6rem;
+	min-height: 4rem;
+	font-size: 0.7rem;
+	padding: 20px 0;
     }
 
     .hero select {
 	font-size: 0.6rem;
+    }
+
+    .creations {
+	display: none;
+    }
+
+    .testimonial {
+	min-height: 600px;
+	padding: 20px 0;
     }
 
     .step-number {
@@ -870,6 +964,11 @@ p {
 
     .my-account .btn-default {
 	margin-top: 10px;
+	width: 190px;
+    }
+
+    .notifications-badge {
+	display: none;
     }
 }
 
@@ -880,10 +979,27 @@ p {
 }
 
 @media(min-width:992px) {
-    .hero p {
-	font-size: 3rem;
+    .hero {
+	height: 100vh;
+	background-attachment: fixed;
     }
     
+    .hero-caketopper {
+	background-position: center center;
+    }
+    
+    .hero-tiebar {
+	background-position: center center;
+    }
+    
+    .hero h1 {
+	font-size: 2.5em;
+    }
+
+    .creations-mobile {
+	display: none;
+    }
+
     .submit-your-idea .process-mobile {
 	display: none;
     }
@@ -895,6 +1011,10 @@ p {
     .my-account .social {
 	padding: 0 50px;
 	text-align: right;
+    }
+
+    .notifications-badge-mobile {
+	display: none;
     }
 }
 
@@ -909,24 +1029,23 @@ p {
 
     .hero {
 	padding: 150px 0;
+	background-attachment: fixed;
     }
 
-    .hero p {
-	font-size: 3rem;
+    .hero h1 {
+	font-size: 2.5em;
     }
 
     .hero h2 {
-	margin: 60px 0;
-	font-size: 2.5rem;
-    }
-
-    .hero h3 {	
-	margin: 60px 0;
-	font-size: 1rem;
+	margin: 140px 0 60px;
     }
 
     .hero button {
 	height: 42px;
+    }
+
+    .creations-mobile {
+	display: none;
     }
 
     .step-number {
@@ -967,6 +1086,10 @@ p {
     .login {
 	padding-top: 8%;
     }
+
+    .notifications-badge-mobile {
+	display: none;
+    }
     
     .submit-your-idea .process-mobile {
 	display: none;
@@ -979,5 +1102,9 @@ p {
     .my-account .social {
 	padding: 0 50px;
 	text-align: right;
+    }
+
+    .dz-message {
+	margin-top: 11%;
     }
 }

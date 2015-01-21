@@ -6,21 +6,30 @@ block title
 block content
   include  ./partials/_header.jade
   .content
-    .hero
-      p
-        | Design You Own
-        span#product
-        | For
-        span#occasion
-      h2 Your Ideas Brought to Life by World Class Designers and Makers
+    .hero.hero-caketopper
+      h1 Your Ideas Brought to Life by World Class Designers and Makers
+      h2
+        | Design Your Own 
+        .animate#product
+          ul.texts
+            li Cake Topper
+            li Table Decor
+            li Cufflinks
+            li Tie Bar
+        |  For 
+        .animate#occasion
+          ul.texts
+            li Your Wedding
+            li a Baby Shower
+            li Your Groomsmen
+            li Your Best Man
       .container
         .row
-          form(action="{% url 'get_started' %}", method="get")
-            - csrf_token
+          form(action="{% url 'get_started' %}", method="GET")
             .col-md-3.col-md-offset-3
               include ./partials/_select.jade
             .col-md-3
-              button(type='submit').btn.btn-primary.btn-block Get Started
+              button(href="idea.html").btn.btn-primary.btn-block Get Started
     // end of .hero
     
     .creations
@@ -46,14 +55,65 @@ block content
                 p
                   | Kelly had the idea to design a set of decorative skeleton keys to give to her fianc&eacute;. Each one had a different phrase, a different &quot;key to love.&quot; This is how they turned out.
     // end of .creations
+
+    .creations-mobile
+      h2 Recent Customer Creations
+      .container.carousel.slide#creations-carousel(data-ride="carousel",data-interval="15000")
+        ol.carousel-indicators
+          li.active(data-target="#creations-carousel", data-slide-to="0")
+          li(data-target="#creations-carousel", data-slide-to="1")
+          li(data-target="#creations-carousel" ,data-slide-to="2")
+        .creation.carousel-inner(role="listbox")
+          .item.active.creation
+            .creation-picture
+              img(src='{{STATIC_URL}}images/Deer_stir_products_page.jpg')
+            h3 Animal Stir Sticks &amp; Centerpieces
+            p
+              | Kaella wanted to create wooden animal themed stir sticks and table centerpieces for her friend&apos;s baby shower. This is what she came up with.
+          .item.creation
+            .creation-picture
+              img(src='{{STATIC_URL}}images/Cufflinks_products.jpg', data-toggle="modal", data-target="#recent-creation")
+            h3 Monogram Fighting Irish Cufflinks
+            p
+              | Josh, a Notre Dame grad, was having his wedding at his alma mater in South Bend, he wanted to create some special gifts for his groomsmen. This is what they wore.
+          .item.creation
+            .creation-picture
+              img(src='{{STATIC_URL}}images/Key_horizontal.jpg')
+            h3 Keys to Love
+            p
+              | Kelly had the idea to design a set of decorative skeleton keys to give to her fianc&eacute;. Each one had a different phrase, a different &quot;key to love.&quot; This is how they turned out.
+    // end of .creations-mobile
       
     .testimonial
       h2 What Our Customers Are Saying
-      .container
-        p
-          | &ldquo; Thank you SO much for the picture!!! I can't wait to see it in person! I can't believe the detail of the work you can do! Love! So excited! Thank you so much! Also, excited to work with you on the other projects! &rdquo;
-        p
-          | &mdash; Meghan M
+      .container.carousel.slide#testimonials-carousel(data-ride="carousel", data-interval="20000", data-wrap="true")
+        .carousel-inner(role="listbox")
+          .item.active
+            p
+              | What an incredible experience! I worked with 43Layers to make a custom cake topper for our wedding. First, we brainstormed different ideas with our designer (the possibilities are endless). Once I decided on my vision, 43Layers went to work and were there each step of the way to share progress updates, answer any questions, ask for feedback, etc. The whole process was seamless, and a lot of fun. Also, the cake topper turned out perfect! It was quite the hit at the reception. Thank you 43Layers!!! 
+            p
+              | &mdash; Lindsay S.
+          .item
+            p
+              | I wanted to design custom cuff links for my groomsmen and ushers. 43Layers was very easy to work with, and it was so cool to see my idea come to life! The attention to detail and quality of the finished product was awesome. I loved giving such a memorable gift to my close friends and family. 43Layers- thank you for all of your help!
+            p
+              | &mdash; John S.
+
+          .item
+            p
+              | I stumbled upon this company while looking for wedding favors. However, after viewing some of the products on Pinterest, I had an idea - a set of photo frames for my grandmother, an avid stamp collector going through cancer treatment, that looked like a special edition stamp, each with a photo of her family inside. I had a rough idea of what I wanted, and 43Layers helped tweak it until the gift was perfect. They were crafted out of quality materials, and 43Layers made sure to make them lightweight so she could transport them to treatment and back. She absolutely loved the frames, and they helped bring her joy during her last days while battling cancer.
+            p
+              | &mdash; Ashleigh B.
+          .item
+            p
+              | Thank you SO much for sending across the digital preview! I can't believe the detail of the work you can do! I love it and am so excited to see it in person! Also, excited to work with you on the other projects!
+            p 
+              | &mdash; Meghan M.
+          .item
+            p
+              | My experience with 43Layers was smooth, fun and overall great! I had an idea of what I wanted, but not a clear sense of how to execute it. 43Layers helped me brainstorm different ideas and we ultimately came up with the perfect decor accents for the baby shower I was planning. Everything was custom made just the way I wanted it, and I couldn't have been more pleased. The guests of honor even got to take the laser cut statues home to decorate the nursery, so it's a gift that keeps on giving!
+            p 
+              | &mdash; Kaella Wilson of Kaella Lynn Events
     // end of .testimonial
     
     .process
@@ -147,8 +207,8 @@ block content
               .col-md-2.col-xs-2
                 h1.step-number 4
           .col-md-6.col-md-pull-6.step-picture
-            img(src='{{STATIC_URL}}icons/holdinyourhandimac.png')
-        form(action="idea.html", method="get")
+            img(src='{{STATIC_URL}}icons/macbook.png')
+        form(action="{{STATIC_URL}}idea.html",method="get")
           button.btn.btn-primary.btn-block.get-started Get Started
     // end of .step4
     

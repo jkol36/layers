@@ -3,45 +3,57 @@ $('#select').selectize({
     optgroupOrder: ["Weddings", "Other Events"]
 });
 
-$('#product').typed({
-    strings: ['\n', '\nCake Topper ', '\nTable Centerpieces ', '\nCufflinks '],
-    contentType: 'text',
-    typeSpeed: 120,
-    backSpeed: 120,
-    backDelay: 7000,
-    showCursor: false,
-    loop: true,
-    preStringTyped: function(arrayPos) {
-	var images = [
-	    'url(../images/Hero_highres_full_width.jpg)',
-	    'url(../images/Hero_Cake_Topper.png)',
-	    'url(../images/Hero_Centerpiece.jpg)',
-	    'url(../images/Hero_Cufflinks.jpg)',
-	];
-	$('.hero').css('background-image', images[arrayPos]);
-	if (arrayPos > 0) {
-	    $('.hero p').css('color', '#fff');
-	    $('.hero h2').css('color', '#fff');
-	} else {
-	    $('.hero p').css('color', '#000');
-	    $('.hero h2').css('color', '#000');
+
+// Animation in hero image using textillate.js
+$(function() {
+    $('#product').textillate({
+	selector: '.texts',
+	loop: true,
+	minDisplayTime: 7000,
+	in: {
+	    effect: 'fadeInDown',
+	    sync: true
+	},
+	out: {
+	    effect: 'fadeOutDown',
+	    sync: true
 	}
-    }
+    });
 });
 
-$('#occasion').typed({
-    strings: ['\n', '\nYour Wedding', '\na Baby Shower', '\nYour Groomsmen'],
-    contentType: 'text',
-    typeSpeed: 120,
-    backSpeed: 120,
-    backDelay: 7000,
-    showCursor: false,
-    loop: true,
+$(function() {
+    $('#occasion').textillate({
+	selector: '.texts',
+	loop: true,
+	minDisplayTime: 7000,
+	in: {
+	    effect: 'fadeInDown',
+	    sync: true
+	},
+	out: {
+	    effect: 'fadeOutDown',
+	    sync: true
+	}
+    });
 });
+
+
+// Change the background image when the text animation out begins
+currentBg = 0;
+$('#occasion').on('outAnimationBegin.tlt', function() {
+    var classes = ['hero-caketopper', 'hero-centerpiece', 'hero-cufflinks',
+		   'hero-tiebar'];
+    
+    $('.hero').removeClass(classes[currentBg]);    
+    currentBg = currentBg === 3 ? 0 : currentBg + 1;
+    $('.hero').addClass(classes[currentBg]);
+});
+
 
 // Width of inspiration pictures should be relative to height for responsiveness
 var currentWidth = $('.inspiration').width();
 $('.inspiration').css({'height': currentWidth+'px'});
+
 
 // Datepicker
 rome(duedate, {time: false});
