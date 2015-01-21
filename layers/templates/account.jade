@@ -9,9 +9,9 @@ block content
     .container
       .my-account
         h1.text-center My Account
-        .profile#profile
+        //.profile#profile
          
-          .row
+          //.row
             .col-md-3
               - comment
               if profile_pic == False
@@ -151,7 +151,7 @@ block content
                         td {{i.due_date}}
                         td {{i.project_status}}
                         td
-                          a(href="{% url 'get_started' %}") View
+                          a(href="{% url 'add_project' %}") View
                   else
                     p No Projects
 
