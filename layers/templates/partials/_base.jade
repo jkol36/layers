@@ -31,7 +31,12 @@ html(lang='en')
   body
     .wrapper
       block content
-      include display_messages.jade
+        if messages
+          for message in messages
+            if message.tags == 'success'
+              div.alert.alert-success {{message}}
+            else
+              div.alert.alert-danger {[message]}
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
     script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js')
     script(src='{{STATIC_URL}}js/dropzone.min.js')

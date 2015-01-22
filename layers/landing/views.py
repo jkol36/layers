@@ -66,3 +66,7 @@ def contact(request):
 			return render(request, 'contact.jade')
 	return render(request, 'contact.jade')
 
+
+
+
+

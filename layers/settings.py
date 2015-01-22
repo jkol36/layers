@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'layers.landing',
     'layers.get_started',
     'layers.contact',
+    'layers.subscribe',
     'sorl.thumbnail',
 
 )

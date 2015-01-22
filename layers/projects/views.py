@@ -77,8 +77,7 @@ def project_status(request):
 		photos = project.photo_set.all()
 	except Exception, e:
 		photos = None
-	else:
-		photos = photos	
+		
 	return render(request, 'project_status.jade', {'project':project, 'photos':photos})
 	
 

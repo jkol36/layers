@@ -14,8 +14,10 @@
       .col-md-4
       .col-md-4
         .input-group.form-newsletter
-          input.form-control.input-newsletter(type="text", placeholder="Sign up for emails")
+          form(role="form", id="signup_for_emails", action="{% url 'signup_for_emails' %}", method="POST")
+            - csrf_token
+            input.form-control.input-newsletter(type="text", name='email', placeholder="Sign up for emails")
           span.input-group-btn
-            button.btn.btn-primary.btn-newsletter Submit
+            button.btn.btn-primary.btn-newsletter(type="submit", value="submit", form="signup_for_emails") Submit
   p.copy &copy; 2014 43Layers Photography provided by Sarah Kathleen
 
