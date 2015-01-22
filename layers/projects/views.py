@@ -73,8 +73,9 @@ def project_status(request):
 	except Exception, NoProject:
 		messages.error('That Project does not exist')
 		return redirect('my_account')
-	photos = project.photo_set.all()
-	if not photos:
+	try:
+		photos = project.photo_set.all()
+	except Exception, e:
 		photos = None
 	else:
 		photos = photos	
