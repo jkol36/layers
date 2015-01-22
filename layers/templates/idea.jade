@@ -82,8 +82,11 @@ block content
                   {%endfor%}
                   {%endif%}
                   .form-group
-                    label(for='budget') Budget: 
-                    input.form-control#budget(name='budget', placeholder='eg. Min $100')
+                    label(for='budget_min') budget_min: 
+                    input.form-control#budget_min(name='budget_min', placeholder='eg.$100')
+                  .form-group
+                    label(for='budget_max') budget_max:
+                    input.form-control#budget_max(name="budget_max", placeholder='eg. $500') 
                   .form-group
                     button.btn.btn-xlarge.btn-primary(type="submit", value="submit", form="background_info") Next
               

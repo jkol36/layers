@@ -11,12 +11,13 @@ from datetime import datetime
 class NewProject(forms.ModelForm):
 	title = forms.CharField(label='Give your project a one sentence Title *', widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':"eg. Madison's Bridesmaids necklaces"}))
 	description = forms.CharField(label="Give your project a description *", widget=forms.Textarea(attrs={"class":'form-control', 'placeholder':"This brief will be used by your designer to bring your idea to life. So the more specific the better."}))
-	budget = forms.CharField(label="", widget=forms.HiddenInput())
+	budget_min = forms.CharField(label="", widget=forms.HiddenInput())
+	budget_max = forms.CharField(label="", widget=forms.HiddenInput())
 	due_date = forms.CharField(label="Due Date", widget=forms.DateInput(attrs={'class':'form-control', 'id':'duedate'}))
 
 	class Meta:
 		model = Project
-		fields = ['title', 'description', 'budget', 'due_date']
+		fields = ['title', 'description', 'budget_min', 'budget_max', 'due_date']
 
 
 	def __init__(self, *args, **kwargs):
@@ -45,21 +46,35 @@ class NewProject(forms.ModelForm):
 			raise forms.ValidationError('Your order will take at least 2 weeks to design and develop. Please select a later date.')
 		else:
 			return due_date
-	def clean_budget(self):
-		budget = self.cleaned_data['budget']
-		if '$' in budget:
-			cleaned_budget = budget.split('$')[1]
+	def clean_budget_max(self):
+		budget_max = self.cleaned_data['budget_max']
+		if '$' in budget_max:
+			cleaned_budget = budget_max.split('$')[1]
 			if int(cleaned_budget) >= 100:
 				return cleaned_budget
 			else:
 				raise forms.ValidationError('You should have a budget of at least $100.')
 		else:
-			cleaned_budget = budget
+			cleaned_budget = budget_max
 			if int(cleaned_budget) >= 100:
-				return cleaned_budget
+				return cleaned_budget_max
 			else:
 				raise forms.ValidationError('You should have a budget of at least $100.')
 		
+	def clean_budget_min(self):
+		budget_min = self.cleaned_data['budget_min']
+		if '$' in budget_min:
+			cleaned_budget_min = budget_min.split('$')[1]
+			if int(cleaned_budget_min) >= 100:
+				return cleaned_budget_min
+			else:
+				raise forms.ValidationError('You must have a budget of at least $100')
+		else:
+			cleaned_budget_min = budget_min
+			if int(cleaned_budget) >= 100:
+				return cleaned_budget_min
+			else:
+				raise forms.ValidationError('You must have a budget of at least $100')
 
 
 	def save(self):
@@ -69,9 +84,10 @@ class NewProject(forms.ModelForm):
 		layers_profile.has_projects = True
 		title = self.cleaned_data['title']
 		description = self.cleaned_data['description']
-		budget = self.cleaned_data['budget']
+		budget_max = self.cleaned_data['budget_max']
+		budget_min = self.cleaned_data['budget_min']
 		due_date = self.cleaned_data['due_date']
-		new_project = Project.objects.create(title=title, description=description, project_status='submit_idea', budget=budget, due_date=due_date, client=layers_profile)
+		new_project = Project.objects.create(title=title, description=description, project_status='submit_idea', budget_min=budget_min, budget_max=budget_max, due_date=due_date, client=layers_profile)
 		new_project.save()
 		layers_profile.save()
 		return new_project
