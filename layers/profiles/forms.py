@@ -6,7 +6,7 @@ from django.core.validators import validate_email
 class UserForm(forms.ModelForm):
 	name = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Your Name'}))
 	email = forms.CharField(widget=forms.EmailInput(attrs={'class':'form-control', 'placeholder':'Your Email'}))
-	password1 = forms.CharField(widget=forms.PasswordInput(attrs={"class":'form-control', 'placeholder':'password'}))
+	password1 = forms.CharField(widget=forms.PasswordInput(attrs={"class":'form-control', 'placeholder':'Password'}))
 	password2 = forms.CharField(widget=forms.PasswordInput(attrs={'class':'form-control', 'placeholder':'Confirm Password'}))
 
 	class Meta:
@@ -60,7 +60,7 @@ class UserForm(forms.ModelForm):
 
 class PartialProfileForm(forms.ModelForm):
 	name = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Your Name'}))
-	email = forms.CharField(widget=forms.EmailInput(attrs={'class':'form-control', 'placeholder':'your Email'}))
+	email = forms.CharField(widget=forms.EmailInput(attrs={'class':'form-control', 'placeholder':'Your Email'}))
 
 	class Meta:
 		model = Profile
@@ -130,7 +130,7 @@ class PasswordForm(forms.ModelForm):
 		return password
 
 class UpdateSettings(forms.ModelForm):
-	email = forms.CharField(widget=forms.EmailInput(attrs={'class':'form-control', 'placeholder':'your Email'}))
+	email = forms.CharField(widget=forms.EmailInput(attrs={'class':'form-control', 'placeholder':'Your Email'}))
 	notification_emails = forms.BooleanField(required=False)
 	news_letter = forms.BooleanField(required=False)
 
