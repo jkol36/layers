@@ -9,6 +9,7 @@ class Project(models.Model):
 		('submit_idea', 'submit_idea'),
 		('Design Center', 'Design Center'),
 		('Shipping', 'Shipping'),
+		('Complete', 'Completed Order'),
 		)
 	title = models.CharField(max_length=250, blank=False)
 	description = models.CharField(max_length=400, blank=False)
