@@ -208,7 +208,7 @@ block content
                 h1.step-number 4
           .col-md-6.col-md-pull-6.step-picture
             img(src='{{STATIC_URL}}icons/macbook.png')
-        form(action="{{STATIC_URL}}idea.html",method="get")
+        form(action="{% url 'get_started' %}",method="get")
           button.btn.btn-primary.btn-block.get-started Get Started
     // end of .step4
     
