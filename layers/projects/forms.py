@@ -11,8 +11,8 @@ from datetime import datetime
 class NewProject(forms.ModelForm):
 	title = forms.CharField(label='Give your project a one sentence Title *', widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':"eg. Madison's Bridesmaids necklaces"}))
 	description = forms.CharField(label="Give your project a description *", widget=forms.Textarea(attrs={"class":'form-control', 'placeholder':"This brief will be used by your designer to bring your idea to life. So the more specific the better."}))
-	budget_min = forms.CharField(label="", widget=forms.HiddenInput())
-	budget_max = forms.CharField(label="", widget=forms.HiddenInput())
+	budget_min = forms.CharField(label="Budget Range", widget=forms.HiddenInput())
+	budget_max = forms.CharField(label="Budget Range", widget=forms.HiddenInput())
 	due_date = forms.CharField(label="Due Date", widget=forms.DateInput(attrs={'class':'form-control', 'id':'duedate'}))
 
 	class Meta:
