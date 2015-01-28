@@ -9,7 +9,7 @@ $(function() {
     $('#product').textillate({
 	selector: '.texts',
 	loop: true,
-	minDisplayTime: 7000,
+	minDisplayTime: 6000,
 	in: {
 	    effect: 'fadeInDown',
 	    sync: true
@@ -41,7 +41,7 @@ $(function() {
 // Change the background image when the text animation out begins
 currentBg = 1;
 $('#occasion').on('outAnimationBegin.tlt', function() {
-    var classes = ['hero-cufflinks', 'hero-centerpiece', 'hero-caketopper',
+    var classes = ['hero-cufflinks', 'hero-centerpiece', 'hero-caketopper',	
     'hero-tiebar'];
     
     $('.hero').removeClass(classes[currentBg]);    
