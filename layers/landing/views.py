@@ -7,42 +7,41 @@ from layers.contact.forms import contactus
 # Create your views here.
 
 def login_view(request):
-	if request.POST:
-		username = request.POST['email']
-		print username
-		password = request.POST['password']
-		user = authenticate(username=username, password=password)
-		if user is not None:
-			login(request, user)
-			return redirect('my_account')
-		else:
-			messages.error(request, 'Oops. It looks like you submitted the wrong username or password.')
+	if not request.POST:
+		return render(request, 'login.jade')
+	
+	username = request.POST['email']
+	password = request.POST['password']
+	user = authenticate(username=username, password=password)
+	if user is not None:
+		login(request, user)
+		return redirect('my_account')
+		
+	messages.error(request, 'Oops. It looks like you submitted the wrong username or password.')
 	return render(request, 'login.jade')
 
 
 def signup_view(request):
-	if request.POST:
-		form = UserForm(request.POST)
-		if form.is_valid():
-			form.save()
-			messages.success(request, 'Your account was successfully created! Now Login.')
-			return redirect('login')
-		else:
-			for t, z in form.errors.items():
-				messages.error(request, t + z.as_text())
-			return render(request, 'signup.jade', {'forms':UserForm})
-	return render(request, 'signup.jade', {'forms':UserForm})
+	if not request.POST:
+		return render(request, 'signup.jade', {'forms':UserForm})
+	
+	form = UserForm(request.POST)
+	if not form.is_valid():
+		for t,z in forms.errors():
+			messages.error(request, t + z.as_text())
+		return render(request, 'signup.jade', {'forms':UserForm})
+		
+	form.save()
+	messages.success(request, 'Your account was successfully created! Now Login.')
+	return redirect('login')
+		
 
 def blog(request):
-	if request.POST:
-		pass
-	else:
+	if not request.POST:
 		return render(request, 'blog.jade')
 
 def faq(request):
-	if request.POST:
-		pass
-	else:
+	if not request.POST:
 		return render(request, 'faq.jade')
 
 def about(request):
@@ -55,15 +54,18 @@ def privacy(request):
 	return render(request, 'privacy.jade')
 
 def contact(request):
-	if request.POST:
-		form = contactus(request.POST)
-		if form.is_valid():
-			form.save()
-			messages.success(request, "Your message has been sent! Thanks for contacting us.")
-		else:
-			for t, z in form.errors.items():
-				messages.error(request, t + z.as_text())
-			return render(request, 'contact.jade')
+	if not request.POST:
+		return render(request, 'contact.jade')
+
+	
+	form = contactus(request.POST)
+	if not form.is_valid():
+		for t,z in form.errors.items():
+			messages.error(request, t + z.as_text())
+		return render(request, 'contact.jade')
+		
+	form.save()
+	messages.success(request, "Your message has been sent! Thanks for contacting us.")
 	return render(request, 'contact.jade')
 
 

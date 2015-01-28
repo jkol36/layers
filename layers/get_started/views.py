@@ -10,24 +10,10 @@ from layers.projects.forms import NewProject, add_photo_form
 # Create your views here.
 
 def get_started(request):
-	session_key = request.session.session_key
-	try:
-		profile = request.session['profile']
-	except Exception, NoProfile:
-		profile = ''
-
-	try:
-		project = request.session['project']
-	except Exception, NoProject:
-		project = ''
-
-	try:
-		project_has_images = request.session['project_has_images']
-	except Exception, ProjectDoesNothaveImages:
-		project_has_images = False
-
-	print profile
-
+	profile = request.session.get('profile', default='')
+	project = request.session.get('project', default='')
+	project_has_images = request.session.get('project_has_images', default=False)
+	
 	#if the user is posting but has a profile.
 	if request.POST and profile != '':
 		#We pass the submitted form along with the profile instance
@@ -97,21 +83,18 @@ def get_started(request):
 	return render(request, 'idea.jade', {'forms':forms})
 
 def submit_design(request):
-	try:
-		profile = request.session['profile']
-	except Exception, NoProfile:
-		return HttpResponse('No Profile')
-	if request.FILES:
-		form = add_photo_form(request.POST, request.FILES)
-		if form.is_valid():
-			print 'form is valid'
-			form.save()
-			return HttpResponse('success')
-		else:
-			print 'error with photo upload'
-			print form.errors
-	return redirect(reverse('complete_signup'))
-
+	profile = request.session.get)'profile', default="")
+	
+	if not request.FILES:
+		return redirect(reverse('complete_signup'))
+	
+	form = add_photo_form(request.POST, request.FILES)
+	if not form.is_valid():
+		for t, z in form.errors:
+			messages.error(request, t + z.as_text())
+	form.save()
+	return HttpResponse('success')
+	
 		
 
 
