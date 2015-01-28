@@ -217,9 +217,9 @@ block content
       .container
           .row
             .col-xs-6.col-md-3.col-md-offset-3
-              a(href="faq.html").btn.btn-md.btn-contact.btn-block FAQ
+              a(href="{% url 'faq' %}").btn.btn-md.btn-contact.btn-block FAQ
             .col-xs-6.col-md-3
-              a(href="contact.html").btn.btn-md.btn-contact.btn-block Contact Us
+              a(href="{% url 'contact' %}").btn.btn-md.btn-contact.btn-block Contact Us
           .row.text-center
             a(href='https://www.facebook.com/pages/43Layers/273568439486440')
               img(src='{{STATIC_URL}}icons/Facebook_icon_50px.png')
