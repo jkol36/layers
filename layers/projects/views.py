@@ -17,7 +17,7 @@ def add_project(request):
 			instance = form.save()
 			project_id = instance.id
 			request.session['project_id'] = project_id
-			messages.success(request, 'Awesome! Now lets add some pics.')
+			messages.success(request, "Awesome! Now let's add some pics.")
 			forms = {'newprojectform':NewProject}
 			return render(request, 'inspiration.jade', {'forms':forms, 'add_project':True, 'project':project_id})
 		else:
