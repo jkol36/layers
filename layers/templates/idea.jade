@@ -52,14 +52,14 @@ block content
                         pass
                       .form-group
                         {{field.label_tag}} {{field}}
-                      .row
-                        .col-md-6
-                          .form-group
-                            label(for='budget') Budget Range: 
-                            input.form-control#budgetmin(name='budget_min', placeholder='eg. Min $100')
-                        .col-md-6
-                          .form-group
-                            input.form-control#budgetmax(name="budget_max", placeholder="eg. $1000")
+                    .row
+                      .col-md-6
+                        .form-group
+                          label(for='budget') Budget Range: 
+                          input.form-control#budgetmin(name='budget_min', placeholder='eg. Min $100')
+                      .col-md-6
+                        .form-group
+                          input.form-control#budgetmax(name="budget_max", placeholder="eg. $1000")
                   .form-group
                     button.btn.btn-xlarge.btn-primary(type="submit", value="submit", form="background_info") Next
 
