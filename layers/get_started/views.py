@@ -12,7 +12,7 @@ from layers.projects.forms import NewProject, add_photo_form
 def get_started(request):
 	profile = request.session.get('profile', default='')
 	project = request.session.get('project', default='')
-	project_has_images = request.session.get('project_has_images', default=False)
+	project_has_images = request.session.get('project_has_images', 'default=False')
 	
 	#if the user is posting but has a profile.
 	if request.POST and profile != '':
