@@ -8,6 +8,7 @@ class signup_for_emails_form(forms.ModelForm):
 
 	class Meta:
 		model = Subscriber
+		fields = ['email']
 
 
 
