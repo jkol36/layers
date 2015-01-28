@@ -111,15 +111,10 @@ class PasswordForm(forms.ModelForm):
 		valid = super(PasswordForm, self).is_valid()
 		if valid == False:
 			return valid
-		else:
-			if self.cleaned_data['password1'] and self.cleaned_data['password2']:
-				password1 = self.cleaned_data['password1']
-				password2 = self.cleaned_data['password2']
-				if password1 != password2:
-					raise forms.ValidationError("password's don't match")
-				return True
-			else:
-				raise forms.ValidationError("You did not fill out both password forms.")
+		if not self.cleaned_data['password1'] == self.cleaned_data['password2']:
+			raise forms.ValidationError("Passwords do not match.")
+		return True
+			
 
 	def save(self):
 		password = self.cleaned_data['password1']
