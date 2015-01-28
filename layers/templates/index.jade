@@ -6,28 +6,22 @@ block title
 block content
   include  ./partials/_header.jade
   .content
-    .hero.hero-caketopper
-      if messages
-        for message in messages
-          if message.tags == 'success'
-            div.alert.alert-success {{message}}
-          else
-            div.alert.alert-danger {[message]}
+    .hero.hero-cufflinks
       h1 Your Ideas Brought to Life by World Class Designers and Makers
       h2
         | Design Your Own 
         .animate#product
           ul.texts
-            li Cake Topper
-            li Table Decor
             li Cufflinks
+            li Table Decor
+            li Cake Topper
             li Tie Bar
         |  For 
         .animate#occasion
           ul.texts
-            li Your Wedding
-            li a Baby Shower
             li Your Groomsmen
+            li a Baby Shower
+            li Your Wedding
             li Your Best Man
       .container
         .row

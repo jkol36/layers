@@ -206,7 +206,7 @@ p {
 
 .hero::before {
     display: none;
-    content: url('../images/Hero_Centerpiece.jpg')
+    content: url('../images/H_Centerpiece.jpg')
         url('../images/Hero_Cufflinks.jpg')
         url('../images/Hero_Tiebar.png');
 }
@@ -218,7 +218,7 @@ p {
 }
 
 .hero-centerpiece {
-    background-image: url('../images/Hero_Centerpiece.jpg');
+    background-image: url('../images/H_Centerpiece.jpg');
     background-position: center center;
 }
 
