@@ -68,7 +68,10 @@ block content
                   {% if forms.newprojectform %}
                   {% for field in forms.newprojectform%}
                   .form-group
-                    {{field.label_tag}} {{field}}
+                    if field.is_hidden
+                        pass
+                    else
+                      {{field.label_tag}} {{field}}
                   {%endfor%}
                   {%endif %}
                   {%if email %}
@@ -78,18 +81,22 @@ block content
                   {% if projectform %}
                   {% for field in projectform %}
                   .form-group
+                  
                     {{field.label_tag}} {{field}}
                   {%endfor%}
                   {%endif%}
-                  .form-group
-                    label(for='budget_min') budget_min: 
-                    input.form-control#budget_min(name='budget_min', placeholder='eg.$100')
-                  .form-group
-                    label(for='budget_max') budget_max:
-                    input.form-control#budget_max(name="budget_max", placeholder='eg. $500') 
+                  .row
+                    .col-md-6
+                      .form-group(style="margin-top:-80px;")
+                        label(for='budget_min') budget Range: 
+                        input.form-control#budget_min(name='budget_min', placeholder='eg.$100')
+                    .col-md-6
+                      .form-group(style="margin-top:-74.9px;")
+                        label(for='budget_max')
+                        input.form-control#budget_max(name="budget_max", placeholder='eg. $500') 
                   .form-group
                     button.btn.btn-xlarge.btn-primary(type="submit", value="submit", form="background_info") Next
-              
+
 
           .row
             .col-md-8.col-md-offset-4.guarantee

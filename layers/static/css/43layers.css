@@ -11,6 +11,11 @@ body {
     height: 100%;
 }
 
+.display-none {
+    display: none;
+   
+}
+
 .wrapper {
     min-height: 100%;
     position: relative;
