@@ -58,7 +58,7 @@ class NewProject(forms.ModelForm):
 		else:
 			cleaned_budget = budget_max
 			if int(cleaned_budget) >= 100:
-				return cleaned_budget_max
+				return cleaned_budget
 			else:
 				raise forms.ValidationError('You should have a budget of at least $100.')
 		
