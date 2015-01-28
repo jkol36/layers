@@ -26,11 +26,12 @@ class UserForm(forms.ModelForm):
 
 	def clean_password1(self):
 		if not self.cleaned_data.get('password1') == self.cleaned_data.get('password2'):
-			return False
+			raise forms.ValidationError("Password's do not match.")
 		return self.cleaned_data['password1']
 		
 	def clean_password2(self):
 		return self.cleaned_data['password2']
+	
 	def clean_name(self):
 		name = self.cleaned_data['name'].split()		
 		try:

@@ -26,8 +26,9 @@ def signup_view(request):
 		return render(request, 'signup.jade', {'forms':UserForm})
 	
 	form = UserForm(request.POST)
+	print request.POST
 	if not form.is_valid():
-		for t,z in form.errors():
+		for t,z in form.errors.items():
 			messages.error(request, t + z.as_text())
 		return render(request, 'signup.jade', {'forms':UserForm})
 		
