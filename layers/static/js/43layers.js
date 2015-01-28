@@ -41,7 +41,7 @@ $(function() {
 // Change the background image when the text animation out begins
 currentBg = 0;
 $('#occasion').on('outAnimationBegin.tlt', function() {
-    var classes = ['hero-caketopper', 'hero-centerpiece', 'hero-cufflinks',
+    var classes = ['hero-cufflinks', 'hero-centerpiece', 'hero-caketopper',
 		   'hero-tiebar'];
     
     $('.hero').removeClass(classes[currentBg]);    
