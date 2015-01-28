@@ -24,7 +24,7 @@ class UserForm(forms.ModelForm):
 		raise forms.ValidationError('Email is already Taken')
 
 
-	def clean_password(self):
+	def clean_password1(self):
 		if not self.cleaned_data['password1'] == self.cleaned_data['password2']:
 			return False
 		return self.cleaned_data['password1']
