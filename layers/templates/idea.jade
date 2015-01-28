@@ -48,11 +48,18 @@ block content
                   - csrf_token
                   if forms.newprojectform
                     for field in forms.newprojectform
+                      if field.is_hidden
+                        pass
                       .form-group
                         {{field.label_tag}} {{field}}
-                    .form-group
-                      label(for='budget') Budget: 
-                      input.form-control#budget(name='budget', placeholder='eg. Min $100')
+                      .row
+                        .col-md-6
+                          .form-group
+                            label(for='budget') Budget Range: 
+                            input.form-control#budgetmin(name='budget_min', placeholder='eg. Min $100')
+                        .col-md-6
+                          .form-group
+                            input.form-control#budgetmax(name="budget_max", placeholder="eg. $1000")
                   .form-group
                     button.btn.btn-xlarge.btn-primary(type="submit", value="submit", form="background_info") Next
 
