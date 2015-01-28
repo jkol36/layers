@@ -221,6 +221,8 @@ block content
                     .form-group
                       label.col-sm-3.control-label {{field.label_tag}}
                       div.col-sm-6
+                        if form.booleanField
+                          p yes
                         {{field}}
 
                 .form-group
