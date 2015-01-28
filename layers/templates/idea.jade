@@ -50,8 +50,9 @@ block content
                     for field in forms.newprojectform
                       if field.is_hidden
                         pass
-                      .form-group
-                        {{field.label_tag}} {{field}}
+                      else
+                        .form-group
+                          {{field.label_tag}} {{field}}
                     .row
                       .col-md-6
                         .form-group
