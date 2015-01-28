@@ -83,7 +83,7 @@ def get_started(request):
 	return render(request, 'idea.jade', {'forms':forms})
 
 def submit_design(request):
-	profile = request.session.get)'profile', default="")
+	profile = request.session.get('profile', default="")
 	
 	if not request.FILES:
 		return redirect(reverse('complete_signup'))
