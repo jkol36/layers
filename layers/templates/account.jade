@@ -107,6 +107,9 @@ block content
                   a(href="#order-history") Order History
              
                 li
+                  a(href="#") Current Orders
+
+                li
                   a(href="#") Completed Orders
                 li
                   a(href="#settings") Settings
@@ -114,7 +117,7 @@ block content
                   form(role="form", action="{% url 'logout' %}", method="POST")
                     - csrf_token
                     input(type="hidden", name="user_instance", value="request.user.id")
-                    a(href="{% url 'logout' %}", value='submit') logout
+                    a(href="{% url 'logout' %}", value='submit') Logout
           -comment
           .col-md-9
             h2 Notifications
