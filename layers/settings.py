@@ -76,8 +76,8 @@ else:
     DATABASES = {
     'default': {
         'ENGINE':'django.db.backends.postgresql_psycopg2',
-        'NAME':'layers_db',
-        'USER': 'layers_43',
+        'NAME':'43_layers',
+        'USER': 'layers_django',
         'PASSWORD':'StoreTheLayers',
         'HOST':'localhost',
         'PORT':'',
@@ -90,6 +90,8 @@ CACHES = {
     }
 }
 
+#allowed hosts
+ALLOWED_HOSTS = ('www.layers.com')
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
