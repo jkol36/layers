@@ -19,7 +19,7 @@ class Layers_Profile(models.Model):
 	has_projects = models.BooleanField(default=False)
 	notification_emails = models.BooleanField(default=True)
 	newsletter = models.BooleanField(default=True)
-	profile = models.OneToOneField(Profile, related_name='accounts')
+	profile = models.OneToOneField(Profile, related_name='accounts', null = True)
 	Profile_Pic = ImageField(upload_to='/profile_pics/')
 	has_profile_pic = models.BooleanField(default=False)
 	session_key = models.CharField(max_length=250, null=True, blank=True)
