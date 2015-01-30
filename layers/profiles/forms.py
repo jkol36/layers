@@ -136,30 +136,30 @@ class UpdateSettings(forms.ModelForm):
 
 	
 	def __init__(self, *args, **kwargs):
-		try:
-			self.profile = kwargs.pop('profile')
-		except Exception, e:
-			pass
+		self.profile = kwargs.pop('profile')
+		self.current_email = kwargs.pop('current_email')
 
 		return super(UpdateSettings, self).__init__(*args, **kwargs)
 	def clean_email(self):
 		email = self.cleaned_data['email']
-		try:
-			profiles = Profile.objects.get(username=email)
-			print profiles
-		except Exception, EmailDoesNotExist:
-			print EmailDoesNotExist
-			return email
-		raise forms.ValidationError('Somehow that email is already taken...')
+		if not self.current_email == email:
+			try:
+				profiles = Profile.objects.get(username=email)
+				print profiles
+			except Exception, EmailDoesNotExist:
+				print EmailDoesNotExist
+				return email
+		return email
 
 	def save(self):
 		profile_id = self.profile
 		profile = Profile.objects.get(pk=profile_id)
-		email = self.cleaned_data['email']
+		if not self.current_email == self.cleaned_data['email']:
+			email = self.cleaned_data['email']
+			profile.username = email
+			profile.email = email
 		email_notifications = self.cleaned_data['notification_emails']
 		news_letter = self.cleaned_data['news_letter']
-		profile.username = email
-		profile.email = email
 		profile.save()
 		layers_profile = Layers_Profile.objects.get(profile=profile)
 		layers_profile.notification_emails = email_notifications

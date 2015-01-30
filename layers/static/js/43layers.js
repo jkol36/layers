@@ -50,6 +50,7 @@ $('#occasion').on('outAnimationBegin.tlt', function() {
 });
 
 
+
 // Width of inspiration pictures should be relative to height for responsiveness
 var currentWidth = $('.inspiration').width();
 $('.inspiration').css({'height': currentWidth+'px'});
@@ -57,4 +58,19 @@ $('.inspiration').css({'height': currentWidth+'px'});
 
 // Datepicker
 rome(duedate, {time: false});
+
+//CheckBox function
+function NewsLetter() {
+	var input = document.querySelector('input#Newsletter');
+	var a = input.checked;
+	input.value = a;
+	console.log(input.value);
+};
+
+function emailnoties() {
+	var input = document.querySelector('input#EmailNotifications');
+	var a = input.checked;
+	input.value= a;
+	console.log(input.value);
+};
 

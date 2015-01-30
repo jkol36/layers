@@ -208,29 +208,44 @@ block content
                     div.alert.alert-success {{message}}
                   if message.tags = 'error'
                     div.alert.alert-danger {{message}}
-              form.form-horizontal(role="form", action="{% url 'update_settings'%}", method="POST")
+              form.form-horizontal(role="form", id="update_settings", action="{% url 'update_settings'%}", method="POST")
                 - csrf_token
                 .form-group
                     if email != false
-                      label.col-sm-3.control-label Your current email is:
+                      label.col-sm-3.control-label(for="email_current") Your current email is:
                       div.col-sm-6
-                        input.form-control(type='text', value='{{email}}', disabled)
-                if forms.UpdateSettings
-                  for field in forms.UpdateSettings
-                   
-                    .form-group
-                      label.col-sm-3.control-label {{field.label_tag}}
-                      div.col-sm-6
-                        if form.booleanField
-                          p yes
-                        {{field}}
+                        input.form-control(type='text', value='{{email}}', id="email_current", name="email")
 
+
+                   
                 .form-group
-                  .col-sm-4.col-sm-offset-3
-                    button(type="submit").btn.btn-secondary Cancel
-                    button(type="submit", value="submit").btn.btn-primary Save
-                  .col-sm-2.col-sm-offset-1
-                    button(type="submit").btn.btn-default Deactivate Account
+                  label.col-sm-3.control-label(for="NewsLetter") Newsletter:
+                  div.col-sm-6
+                    {% if newsletter == True %}
+                    input.form-control(type="checkbox", onChange="NewsLetter()", value="{{newsletter}}", id="Newsletter", name="news_letter", checked)
+                    {% endif %}
+                    {% if newsletter == False %}
+                    input.form-control(type="checkbox", onChange="NewsLetter()", value="{{newsletter}}", id="Newsletter", name="news_letter")
+                    {%endif%}
+                    
+                 
+                .form-group
+                  label.col-sm-3.control-label(for="EmailNotifications") Email Notifications:
+                  div.col-sm-6
+                    {% if email_notification == True %}
+                    input.form-control(type="checkbox", onChange="emailnoties()", name="notification_emails", id="EmailNotifications", value="{{email_notification}}", checked) 
+                    {%endif %}
+                    {% if email_notification == False %}
+                    input.form-control(type="checkbox", onChange="emailnoties()", name="notification_emails", id="EmailNotifications", value="{{email_notification}}")
+                    {%endif%}
+          
+
+              .form-group
+                .col-sm-4.col-sm-offset-3
+                  button(type="submit").btn.btn-secondary Cancel
+                  button(type="submit", value="submit", form="update_settings").btn.btn-primary Save
+                .col-sm-2.col-sm-offset-1
+                  button(type="submit").btn.btn-default Deactivate Account
                     
 
   include ./partials/_footer.jade

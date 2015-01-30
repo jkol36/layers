@@ -65,7 +65,10 @@ def my_account(request):
 	else:
 		pass
 	forms = {'UpdateSettings':UpdateSettings}
-	return render(request, 'account.jade', {'profile_pic':has_profile_pic, 'forms':forms, 'email':email, 'projects':projects})
+	newsletter_status = request.user.accounts.newsletter
+	print newsletter_status
+	email_notification = request.user.accounts.notification_emails
+	return render(request, 'account.jade', {'profile_pic':has_profile_pic, 'newsletter':newsletter_status, 'email_notification':email_notification, 'forms':forms, 'email':email, 'projects':projects})
 
 def logout_view(request):
 	logout(request)
@@ -73,7 +76,8 @@ def logout_view(request):
 
 def update_settings(request):
 	if request.POST:
-		form = UpdateSettings(request.POST, profile=request.user.id)
+		print request.POST
+		form = UpdateSettings(request.POST, profile=request.user.id, current_email=request.user.email)
 		if form.is_valid():
 			form.save()
 			messages.success(request, 'Info Updated')
