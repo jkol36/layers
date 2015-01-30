@@ -60,8 +60,8 @@ class UserForm(forms.ModelForm):
 #This form can then be associated with a 43 Layers Profile so the user can start projects before signing up.
 
 class PartialProfileForm(forms.ModelForm):
-	name = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Your Name'}))
-	email = forms.CharField(widget=forms.EmailInput(attrs={'class':'form-control', 'placeholder':'Your Email'}))
+	name = forms.CharField(label="* Name", widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Your Name'}))
+	email = forms.CharField(label="* Email", widget=forms.EmailInput(attrs={'class':'form-control', 'placeholder':'Your Email'}))
 
 	class Meta:
 		model = Profile
