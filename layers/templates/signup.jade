@@ -49,5 +49,7 @@ block content
 
             p.signup
               | Already have an account? 
-              a(href="login.html") Log in
+              a(href="{% url 'login' %}") Log in
+              | By joining 43 Layers, I agree to 43 Layers 
+              a(href="{% url 'terms' %}")
   include ./partials/_footer.jade
