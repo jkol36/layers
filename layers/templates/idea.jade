@@ -71,7 +71,7 @@ block content
                   {% if forms.userform %}
                   {% for field in forms.userform %}
                   .form-group
-                    {{field.label_tag}} {{field}}
+                    {{field.label}} {{field}}
                   {%endfor%}
                   {%endif%}
                   {% if forms.newprojectform %}
