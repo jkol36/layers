@@ -161,45 +161,26 @@ block content
                     p No Projects
 
                 
-                a.btn.btn-default(href="{% url 'add_project' %}") Add a Project
-            - comment     
+                a.btn.btn-default(href="{% url 'add_project' %}") Add a Project     
             .order-history#order-history
               h2 Order History
+
               .table-responsive
                 table.table
-                  tr
-                    th Project Name
-                    th Order #
-                    th Designer
-                    th Arrival Date
-                    th Status
-                    th Rating
-                  tr
-                    td Monograph Napkin Holder
-                    td 12345678
-                    td Diego Taccioli
-                    td 8/12/2014
-                    td On Time
-                    td
-                      span(aria-hidden="true").glyphicon.glyphicon-star
-                      span(aria-hidden="true").glyphicon.glyphicon-star
-                      span(aria-hidden="true").glyphicon.glyphicon-star
-                      span(aria-hidden="true").glyphicon.glyphicon-star
-                      span(aria-hidden="true").glyphicon.glyphicon-star-empty
-                  tr
-                    td Wedding This Way Sign
-                    td 12345678
-                    td Diego Taccioli
-                    td 8/5/2014
-                    td On Time
-                    // TODO: Add actual star rating
-                    td
-                      span(aria-hidden="true").glyphicon.glyphicon-star
-                      span(aria-hidden="true").glyphicon.glyphicon-star
-                      span(aria-hidden="true").glyphicon.glyphicon-star
-                      span(aria-hidden="true").glyphicon.glyphicon-star
-                      span(aria-hidden="true").glyphicon.glyphicon-star
-            - endcomment
+                  if completed_projects
+                    for project in completed_projects
+                      tr
+                        th Project Name
+                        
+                      tr
+                        td {{project.title}}
+                          span(aria-hidden="true").glyphicon.glyphicon-star
+                          span(aria-hidden="true").glyphicon.glyphicon-star
+                          span(aria-hidden="true").glyphicon.glyphicon-star
+                          span(aria-hidden="true").glyphicon.glyphicon-star
+                          span(aria-hidden="true").glyphicon.glyphicon-star-empty
+                 p No Orders have been completed yet.
+           
             h2 Settings
             .settings#settings
               if messages
