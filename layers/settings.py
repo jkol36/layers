@@ -20,11 +20,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = 'xtr$+&)$@h28=qc%=z%wqhlf5%t=jinxl0zil%8qp3dvy3+#$n'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 TEMPLATE_DEBUG = True
-
-ALLOWED_HOSTS = []
 
 
 
@@ -91,7 +89,7 @@ CACHES = {
 }
 
 #allowed hosts
-ALLOWED_HOSTS = ('www.layers.com')
+ALLOWED_HOSTS = ['*']
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 

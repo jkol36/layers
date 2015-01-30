@@ -58,3 +58,4 @@ media/
 django-project/
 include/
 bin/
+.pyc
