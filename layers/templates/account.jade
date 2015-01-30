@@ -134,8 +134,8 @@ block content
 
 
           .col-md-9(style="margin-top:50px;")
+            h2 Current Projects
             .current-projects#current-projects
-              h2 Current Projects
               .table-responsive
                 table.table
                   if projects
@@ -200,8 +200,8 @@ block content
                       span(aria-hidden="true").glyphicon.glyphicon-star
                       span(aria-hidden="true").glyphicon.glyphicon-star
             - endcomment
+            h2 Settings
             .settings#settings
-              h2 Settings
               if messages
                 for message in messages
                   if message.tags = 'success'
