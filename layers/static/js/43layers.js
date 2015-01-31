@@ -9,7 +9,7 @@ $(function() {
     $('#product').textillate({
 	selector: '.texts',
 	loop: true,
-	minDisplayTime: 7000,
+	minDisplayTime: 6000,
 	in: {
 	    effect: 'fadeInDown',
 	    sync: true
