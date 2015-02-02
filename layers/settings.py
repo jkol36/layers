@@ -54,6 +54,11 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.cache.UpdateCacheMiddleware',    # This must be first on the list
+    'django.middleware.common.CommonMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    (...)
+    'django.middleware.cache.FetchFromCacheMiddleware', # This must be last
 )
 
 ROOT_URLCONF = 'layers.urls'
@@ -68,26 +73,36 @@ if DEBUG == True:
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        }
+        },
     }
 else:
     DATABASES = {
     'default': {
         'ENGINE':'django.db.backends.postgresql_psycopg2',
-        'NAME':'django_db',
+        'NAME':'layers_database',
         'USER': 'layers_django',
         'PASSWORD':'StoreTheLayers',
         'HOST':'localhost',
         'PORT':'',
+        },
+    }
+if DEBUG == True
+    CACHES = {
+        'default': {
+            'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+            'LOCATION': '127.0.0.1:11211',
         }
     }
-CACHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
-        'LOCATION': '127.0.0.1:11211',
+else:
+    CACHES = {
+        'default'{
+            'BACKEND':'redis_cache.RedisCache',
+            'LOCATION': 'var/run/redis/redis.sock',
+        },
     }
-}
 
+#SESSION DATA
+SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
 #allowed hosts
 ALLOWED_HOSTS = ['*']
 # Internationalization
