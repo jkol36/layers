@@ -94,7 +94,7 @@ if DEBUG == True:
     }
 else:
     CACHES = {
-        'default'{
+        'default': {
             'BACKEND':'redis_cache.RedisCache',
             'LOCATION': 'var/run/redis/redis.sock',
         },
