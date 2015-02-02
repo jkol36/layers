@@ -85,7 +85,7 @@ else:
         'PORT':'',
         },
     }
-if DEBUG == True
+if DEBUG == True:
     CACHES = {
         'default': {
             'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
