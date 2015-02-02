@@ -57,7 +57,6 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.cache.UpdateCacheMiddleware',    # This must be first on the list
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    (...)
     'django.middleware.cache.FetchFromCacheMiddleware', # This must be last
 )
 
