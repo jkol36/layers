@@ -11,6 +11,8 @@ from layers.projects.forms import NewProject, add_photo_form
 
 def get_started(request):
 	profile = request.session.get('profile', default='')
+	if profile == '':
+		print True
 	project = request.session.get('project', default='')
 	project_has_images = request.session.get('project_has_images', default=False)
 	
