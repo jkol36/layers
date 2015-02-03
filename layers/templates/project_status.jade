@@ -39,7 +39,10 @@ block content
 				.col-md-3
 					h1 project status:
 				.col-md-3
-					h1 {{project.project_status}}
+					{% if project.project_status == "submit_idea" %}
+					h1 submit idea
+					{% endif %}
+					
 			.row(style="margin-top:5%;")
 				.col-md-3
 				.col-md-3
