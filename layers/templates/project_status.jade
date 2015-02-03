@@ -26,9 +26,15 @@ block content
 					{% if project.project_status == "submit_idea" %}
 					li.active
 					{%endif %}
-					li
-					li
-					li
+					{% if project.project_status == "Design Center"}
+					li.active
+					{%endif %}
+					{% if project.project_status == "Shipping" %}
+					li.active
+					{%endif %}
+					{% if project.project_status == "Complete" %}
+					li.active
+					{%endif%}
 		.container
 			.row(style="margin-top:5%;")
 				.col-md-3
