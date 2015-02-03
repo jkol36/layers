@@ -54,10 +54,6 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django.middleware.cache.UpdateCacheMiddleware',    # This must be first on the list
-    'django.middleware.common.CommonMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.cache.FetchFromCacheMiddleware', # This must be last
 )
 
 ROOT_URLCONF = 'layers.urls'
@@ -67,41 +63,27 @@ WSGI_APPLICATION = 'layers.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
-if DEBUG == True:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        },
-    }
-else:
-    DATABASES = {
+#if DEBUG == True:
+  #  DATABASES = {
+    #    'default': {
+     #       'ENGINE': 'django.db.backends.sqlite3',
+      #      'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+       # },
+    #}
+DATABASES = {
     'default': {
         'ENGINE':'django.db.backends.postgresql_psycopg2',
-        'NAME':'layers_database',
+        'NAME':'layers_db',
         'USER': 'layers_django',
         'PASSWORD':'StoreTheLayers',
         'HOST':'localhost',
         'PORT':'',
         },
     }
-if DEBUG == True:
-    CACHES = {
-        'default': {
-            'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
-            'LOCATION': '127.0.0.1:11211',
-        }
-    }
-else:
-    CACHES = {
-        'default': {
-            'BACKEND':'redis_cache.RedisCache',
-            'LOCATION': 'var/run/redis/redis.sock',
-        },
-    }
 
-#SESSION DATA
-SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
+
+SESSION_ENGINE = 'redis_sessions.session'
+SESSION_REDIS_UNIX_DOMAIN_SOCKET_PATH = '/var/run/redis/redis.sock'
 #allowed hosts
 ALLOWED_HOSTS = ['*']
 # Internationalization
