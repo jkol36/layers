@@ -16,15 +16,24 @@ block content
 					.col-md-3
 						h3 2. Meet Your Designer
 							{% if project.project_status == "design_center" %}
-							a.meet.center-block(style="background:#10CB9C;")
-							{%endif%}
+							a.meet-active.center-block
+							{% else %}
 							a.meet.center-block
+							{%endif %}
 					.col-md-3
 						h3 3. View Digital Preview
+							{% if project.project_status == "Shipping" %}
+							a.view-active.center-block
+							{% else %}
 							a.view.center-block
+							{%endif %}
 					.col-md-3
 						h3 4. Hold In Your Hands
+							{% if project.project_status == "Complete" %}
+							a.hold-active.center-block
+							{% else %}
 							a.hold.center-block
+							{% endif %}
 				ul.nav.nav-pills.process-mobile
 					li.active
 					li

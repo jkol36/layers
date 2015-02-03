@@ -717,12 +717,22 @@ p {
     background: transparent url('../icons/Chat_icon_non_hover.png');
 }
 
+.submit-your-idea .meet-active {
+    background:  transparent url('../icons/Chat_icon_hover.png');
+}
+
 .submit-your-idea .view {
     background: transparent url('../icons/ScreenIcon_icon_75px.png');
+}
+.submit-your-idea .view-active{
+    background: transparent url('../icons/Screen_Hover_icon_75px.png');
 }
 
 .submit-your-idea .hold {
     background: transparent url('../icons/Holdinyourhand_icon_non_hover.png');
+}
+.submit-your-idea .hold-active {
+    background: transparent url('../icons/Hand_Hover_icon_75px.png');
 }
 
 .submit-your-idea label {
