@@ -15,6 +15,9 @@ block content
 							a.submit.center-block
 					.col-md-3
 						h3 2. Meet Your Designer
+							{% if project.project_status == "design_center" %}
+							a.meet.center-block(style="color:#10CB9C;")
+							{%endif%}
 							a.meet.center-block
 					.col-md-3
 						h3 3. View Digital Preview
