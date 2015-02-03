@@ -23,7 +23,9 @@ block content
 						h3 4. Hold In Your Hands
 							a.hold.center-block
 				ul.nav.nav-pills.process-mobile
+					{% if project.project_status == "submit_idea" %}
 					li.active
+					{%endif %}
 					li
 					li
 					li
