@@ -23,18 +23,10 @@ block content
 						h3 4. Hold In Your Hands
 							a.hold.center-block
 				ul.nav.nav-pills.process-mobile
-					{% if project.project_status == "submit_idea" %}
 					li.active
-					{%endif %}
-					{% if project.project_status == "design_center"%}
-					li.active
-					{%endif %}
-					{% if project.project_status == "Shipping" %}
-					li.active
-					{%endif %}
-					{% if project.project_status == "Complete" %}
-					li.active
-					{%endif%}
+					li
+					li
+					li
 		.container
 			.row(style="margin-top:5%;")
 				.col-md-3
