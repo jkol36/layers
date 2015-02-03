@@ -161,6 +161,7 @@ block content
                         {%endif %}
                         {% if i.project_status == "Complete" %}
                         td Compelete
+                        {%endif%}
                         td
                           form(role='form', method="GET", action="{% url 'project_status' %}")
                             input(type='hidden', name='project_id', value='{{i.id}}')
