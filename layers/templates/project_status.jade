@@ -48,8 +48,17 @@ block content
 					h1 project status:
 				.col-md-3
 					{% if project.project_status == "submit_idea" %}
-					h1 submit idea
+					h1 Submit Idea
 					{% endif %}
+					{% if project.project_status == "design_center" %}
+					h1 Design Center
+					{%end if%}
+					{% if project.project_status=="Shipping"%}
+					h1 Shipping
+					{%endif %}
+					{% if project.project_status =="Complete" %}
+					h1 Complete
+					{%endif %}
 					
 			.row(style="margin-top:5%;")
 				.col-md-3
