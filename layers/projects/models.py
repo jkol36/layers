@@ -13,7 +13,7 @@ class Project(models.Model):
 		)
 	title = models.CharField(max_length=250, blank=False)
 	description = models.CharField(max_length=400, blank=False)
-	client = models.OneToOneField(Layers_Profile, default=None, blank=True, null=True, related_name="client")
+	client = models.ForeignKey(Layers_Profile, default=None, blank=True, null=True, related_name="client")
 	designer = models.OneToOneField(Layers_Profile, default=None, blank=True, null=True, related_name="designer")
 	budget_min = models.IntegerField(null=True, blank=True)
 	budget_max = models.IntegerField(null=True, blank=True)
