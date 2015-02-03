@@ -150,7 +150,9 @@ block content
                         td {{i.title}}
                         td ${{i.budget_min}} - ${{i.budget_max}}
                         td {{i.due_date}}
-                        td {{i.project_status}}
+                        {% if i.project_status == "submit_idea" %}
+                        td submit idea
+                        {%endif %}
                         td
                           form(role='form', method="GET", action="{% url 'project_status' %}")
                             input(type='hidden', name='project_id', value='{{i.id}}')
