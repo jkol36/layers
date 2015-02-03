@@ -7,7 +7,7 @@ from sorl.thumbnail import ImageField
 class Project(models.Model):
 	STATUS_CHOICES = (
 		('submit_idea', 'Submit Idea'),
-		('Design Center', 'Design Center'),
+		('design_center', 'Design Center'),
 		('Shipping', 'Shipping'),
 		('Complete', 'Completed Order'),
 		)
