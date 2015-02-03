@@ -2,11 +2,31 @@ extends ./partials/_base.jade
 {% load thumbnail %}
 
 block title
-	title 43Layers - Prpject Status
+	title 43Layers - Project Status
 
 block content
 	include ./partials/_header.jade
 	.content
+		.submit-your-idea
+			.container
+				.row-text-center.process
+					.col-md-3
+						h3 1. Submit Your Idea
+							a.submit.center-block
+					.col-md-3
+						h3 2. Meet Your Designer
+							a.meet.center-block
+					.col-md-3
+						h3 3. View Digital Preview
+							a.view.center-block
+					.col-md-3
+						h3 4. Hold In Your Hands
+							a.hold.center-block
+				ul.nav.nav-pills.process-mobile
+					li.active
+					li
+					li
+					li
 		.container
 			.row(style="margin-top:5%;")
 				.col-md-3
