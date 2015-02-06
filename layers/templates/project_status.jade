@@ -9,15 +9,15 @@ block content
 	.content
 		.submit-your-idea
 			if project.project_status == "submit_idea"
-				h1.text-center Step 1. Submit Your Idea
+				h1.text-center Step 1: Submit Your Idea
 			elif project.project_status == "design_center"
-				h1.text-center Step 2. Design Center
+				h1.text-center Step 2: Design Center
 
 			elif project.project_status == "Shipping"
-				h1.text-center Step 4. Shipping
+				h1.text-center Step 4: Shipping
 
 			elif project.project_status == "manufacturing"
-				h1.text-center Step 3. Manufacturing
+				h1.text-center Step 3: Manufacturing
 
 			.container
 				.row-text-center.process
