@@ -65,16 +65,16 @@ block content
 					p(style="word-break:break-word; width:75%;") Thanks for submitting your project! We are in the process of assigning you the perfect designer to bring your idea to life. You will be notified by email shortly :)
 					{% endif %}
 					{% if project.project_status == "design_center" %}
-					p Thanks for submitting your project! We are in the process of assigning you the perfect designer to bring your idea to life. You will be notified by email shortly :)
+					p(style="word-break:break-word; width:75%;") Thanks for submitting your project! We are in the process of assigning you the perfect designer to bring your idea to life. You will be notified by email shortly :)
 					{%endif%}
 					{% if project.project_status == "manufacturing" %}
-					p Your product design has been completed and your product is being made! You will receive an email update as soon as we finish making it.
+					p(style="word-break:break-word; width:75%;") Your product design has been completed and your product is being made! You will receive an email update as soon as we finish making it.
 					{%endif %}
 					{% if project.project_status == "Shippinng" %}
-					p Your product has been made and is now on it's way to you! You will receive order an order tracking number by email.
+					p(style="word-break:break-word; width:75%;") Your product has been made and is now on it's way to you! You will receive order an order tracking number by email.
 					{%endif %}
 					{% if project.project_status == "Complete" %}
-					p This project has been complete!
+					p(style="word-break:break-word; width:75%;") This project has been complete!
 					{%endif%}
 					
 			.row(style="margin-top:5%;")
