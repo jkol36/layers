@@ -47,12 +47,12 @@ block content
 		
 			.row(style="margin-top:5%;")
 				.col-md-4
-					h2 project title:
+					h2 Project Name:
 				.col-md-4
 					h2 {{project.title}}
 			.row(style="margin-top:5%;")
 				.col-md-4
-					h2 project status:
+					h2 Project Status:
 				.col-md-8
 					{% if project.project_status == "submit_idea" %}
 					p Thanks for submitting your project! We are in the process of assigning you the perfect designer to bring your idea to life. You will be notified by email shortly :)
@@ -89,7 +89,7 @@ block content
 			if photos == 'None'
 				.row(style="margin-top:5%;")
 					.col-md-4
-						h2 Photos
+						h2 Inspiration Board
 					.col-md-8
 						h2 You did not submit any photos.
 			else
