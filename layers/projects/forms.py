@@ -49,12 +49,26 @@ class NewProject(forms.ModelForm):
 			return due_date
 	def clean_budget_max(self):
 		budget_max = self.cleaned_data['budget_max']
-		if '$' in budget_max:
+		if ',' and '$' in budget_max:
+			budget_cleaned = budget_max.pop(',')
+			cleaned_budget = budget_cleaned.split('$')[1]
+			if int(cleaned_budget) >= 100:
+				return cleaned_budget
+			else:
+				return forms.ValidationError("You should have a budget of at least $100")
+
+		elif not ',' in budget_max and '$' in budget_max:
 			cleaned_budget = budget_max.split('$')[1]
 			if int(cleaned_budget) >= 100:
 				return cleaned_budget
 			else:
 				raise forms.ValidationError('You should have a budget of at least $100.')
+		elif not '$' in budget_max and ',' in budget_max:
+			cleaned_budget = budget_max.pop(',')
+			if int(cleaned_budget) >= 100:
+				return cleaned_budget
+			else:
+				raise forms.ValidationError('You should have a budget of at least $100')
 		else:
 			cleaned_budget = budget_max
 			if int(cleaned_budget) >= 100:
@@ -64,18 +78,32 @@ class NewProject(forms.ModelForm):
 		
 	def clean_budget_min(self):
 		budget_min = self.cleaned_data['budget_min']
-		if '$' in budget_min:
+		if ',' and '$' in budget_miin:
+			budget_min_cleaned = budget_min.pop(',')
+			cleaned_budget_min = budget_min_cleaned.split('$')[1]
+			if int(cleaned_budget_min) >= 100:
+				return cleaned_budget_min
+			else:
+				return forms.ValidationError("You should have a budget of at least $100")
+
+		elif not ',' in budget_min and '$' in budget_min:
 			cleaned_budget_min = budget_min.split('$')[1]
 			if int(cleaned_budget_min) >= 100:
 				return cleaned_budget_min
 			else:
-				raise forms.ValidationError('You must have a budget of at least $100')
+				raise forms.ValidationError('You should have a budget of at least $100.')
+		elif not '$' in budget_min and ',' in budget_min:
+			cleaned_budget_min = budget_min.pop(',')
+			if int(cleaned_budget_min) >= 100:
+				return cleaned_budget_min
+			else:
+				raise forms.ValidationError('You should have a budget of at least $100')
 		else:
 			cleaned_budget_min = budget_min
 			if int(cleaned_budget_min) >= 100:
 				return cleaned_budget_min
 			else:
-				raise forms.ValidationError('You must have a budget of at least $100')
+				raise forms.ValidationError('You should have a budget of at least $100.')
 
 
 	def save(self):
