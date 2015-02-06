@@ -78,7 +78,7 @@ class NewProject(forms.ModelForm):
 		
 	def clean_budget_min(self):
 		budget_min = self.cleaned_data['budget_min']
-		if ',' and '$' in budget_miin:
+		if ',' and '$' in budget_min:
 			budget_min_cleaned = budget_min.pop(',')
 			cleaned_budget_min = budget_min_cleaned.split('$')[1]
 			if int(cleaned_budget_min) >= 100:
