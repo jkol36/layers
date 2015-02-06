@@ -12,7 +12,12 @@ block content
 				.row-text-center.process
 					.col-md-3
 						h3 1. Submit Your Idea
+							{% if project.project_status == "submit_idea" %}
+							a.submit-active.center-block
+							{% else %}
 							a.submit.center-block
+							{%endif %}
+
 					.col-md-3
 						h3 2. Meet Your Designer
 							{% if project.project_status == "design_center" %}

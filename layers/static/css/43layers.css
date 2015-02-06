@@ -710,6 +710,9 @@ p {
 }
 
 .submit-your-idea .submit {
+    background: transparent url('../icons/lightbulb_icon_75px.png');
+}
+.submit-your-idea .submit-active {
     background: transparent url('../icons/lightbulb_icon_75_green_hover.png');
 }
 
