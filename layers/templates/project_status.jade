@@ -8,6 +8,17 @@ block content
 	include ./partials/_header.jade
 	.content
 		.submit-your-idea
+			if project.project_status == "submit_idea"
+				h1 1. Submit Your Idea.
+			elif project.project_status == "design_center"
+				h1 2. Design Center.
+
+			elif project.project_status == "Shipping"
+				h1 4. Shipping.
+
+			elif project.project_status == "manufacturing"
+				h1 3. Manufacturing
+
 			.container
 				.row-text-center.process
 					.col-md-3
