@@ -8,6 +8,7 @@ class Project(models.Model):
 	STATUS_CHOICES = (
 		('submit_idea', 'Submit Idea'),
 		('design_center', 'Design Center'),
+		('manufacturing', "Manufacturing"),
 		('Shipping', 'Shipping'),
 		('Complete', 'Completed Order'),
 		)

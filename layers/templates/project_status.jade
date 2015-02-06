@@ -46,34 +46,31 @@ block content
 					li
 		.container
 			.row(style="margin-top:5%;")
-				.col-md-3
-				.col-md-3
+				.col-md-4
 					h1 project title:
-				.col-md-3
+				.col-md-9
 					h1 {{project.title}}
 			.row(style="margin-top:5%;")
-				.col-md-3
-				.col-md-3
+				.col-md-4
 					h1 project status:
-				.col-md-3
+				.col-md-9
 					{% if project.project_status == "submit_idea" %}
-					h1 Submit Idea
+					p Thanks for submitting your project! We are in the process of assigning you the perfect designer to bring your idea to life. You will be notified by email shortly :)
 					{% endif %}
 					{% if project.project_status == "design_center" %}
-					h1 Design Center
+					p Thanks for submitting your project! We are in the process of assigning you the perfect designer to bring your idea to life. You will be notified by email shortly :)
 					{%endif%}
 					{% if project.project_status == "Shipping" %}
-					h1 Shipping
+					p Your product design has been completed and your product is being made! You will receive an email update as soon as we finish making it.
 					{%endif %}
 					{% if project.project_status == "Complete" %}
 					h1 Complete
 					{%endif%}
 					
 			.row(style="margin-top:5%;")
-				.col-md-3
-				.col-md-3
+				.col-md-4
 					h1 Designer Assigned:
-				.col-md-3
+				.col-md-9
 					h1 {{project.designer_assigned}}
 			if photos == 'None'
 				.row(style="margin-top:5%;")
