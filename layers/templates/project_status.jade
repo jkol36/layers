@@ -81,7 +81,7 @@ block content
 				.col-md-4
 					h2 Project Details:
 				.col-md-8
-					p
+					p(style="padding-right:10px;")
 						span(style="font-weight:800; padding-right:10px;") Project Name: 
 						{{project.title}}
 					p(style="word-break:break-word;") 
@@ -90,7 +90,7 @@ block content
 					p(style="padding-right:10px;")
 						span(style="font-weight:800;") Budget:
 						${{project.budget_min}} to ${{project.budget_max}}
-					p
+					p(style="padding-right:10px;")
 						span(style="font-weight:800; padding-right:10px;") Due Date:
 						{{project.due_date}}
 			if photos == 'None'
