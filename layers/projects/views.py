@@ -57,7 +57,6 @@ def add_photo_to_project(request):
 			return render(request, 'inspiration.jade')
 	elif request.POST and not request.FILES:
 		print "the value of should_submit is {}".format(request.POST.get('should_submit', ''))
-		request.session.__delitem__('project_id')
 		return redirect('my_account')
 	elif request.POST and request.session['added_photos'] == True:
 		return redirect('my_account')
