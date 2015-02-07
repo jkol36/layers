@@ -76,7 +76,7 @@ function emailnoties() {
 
 function is_submitted() {
 	var should_submit = document.querySelector('input#should_submit');
-	console.log(should_submit);
+	should_submit.value = true;
 
 };
 
