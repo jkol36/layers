@@ -64,7 +64,8 @@ def add_photo_to_project(request):
 			p = Project.object.get(pk=project_id)
 			p.project_status = "submit_idea"
 			p.save()
-			
+			print p.project_status
+		request.session.__delitem__('project_id')
 
 
 		return redirect('my_account')
