@@ -23,6 +23,7 @@ def add_project(request):
 			forms = {'newprojectform':NewProject}
 			return render(request, 'inspiration.jade', {'forms':forms, 'add_project':True, 'project':project_id})
 		else:
+			print "not valid"
 			for t, z in form.errors.items():
 				messages.error(request, t + z.as_text())
 
