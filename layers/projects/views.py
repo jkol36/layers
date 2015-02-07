@@ -25,6 +25,7 @@ def add_project(request):
 		else:
 			print "not valid"
 			for t, z in form.errors.items():
+				print t, z
 				messages.error(request, t + z.as_text())
 
 			forms = {'newprojectform':NewProject}
