@@ -22,7 +22,7 @@ def home(request):
 
 
 def complete_signup(request):
-	profile_id = request.session['profile']
+	profile_id = request.session.get('profile', '')
 	profile = Profile.objects.get(pk=profile_id)
 	email = profile.email
 	first_name = profile.first_name
