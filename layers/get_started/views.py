@@ -86,7 +86,8 @@ def get_started(request):
 
 def submit_design(request):
 	profile = request.session.get('profile', default="")
-	
+	if request.POST.get('should_submit', '') == "true":
+		print "should submit is true"
 	if not request.FILES:
 		return redirect(reverse('complete_signup'))
 	
@@ -95,7 +96,7 @@ def submit_design(request):
 		for t, z in form.errors:
 			messages.error(request, t + z.as_text())
 	form.save()
-	return HttpResponse('success')
+	return redirect(reverse('complete_signup'))
 	
 		
 
