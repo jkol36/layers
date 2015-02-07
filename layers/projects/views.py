@@ -15,6 +15,7 @@ def add_project(request):
 		print "should submit is {}".format(request.POST.get('should_submit', ''))
 		form = NewProject(request.POST, profile=profile_id)
 		if form.is_valid():
+			print "valid"
 			instance = form.save()
 			project_id = instance.id
 			request.session['project_id'] = project_id
