@@ -50,8 +50,9 @@ class NewProject(forms.ModelForm):
 	def clean_budget_max(self):
 		budget_max = self.cleaned_data['budget_max']
 		if ',' and '$' in budget_max:
-			budget_cleaned = budget_max.lstrip(',')
-			cleaned_budget = budget_cleaned.split('$')[1]
+			budget_split = budget_max.split(',')
+			cleaned_budget_max = budget_split[0] + budget_split[1]
+			cleaned_budget = cleaned_budget_max.split('$')[1]
 			if int(cleaned_budget) >= 100:
 				return cleaned_budget
 			else:
@@ -64,7 +65,8 @@ class NewProject(forms.ModelForm):
 			else:
 				raise forms.ValidationError('You should have a budget of at least $100.')
 		elif not '$' in budget_max and ',' in budget_max:
-			cleaned_budget = budget_max.lstrip(',')
+			budget_max_split = budget_max.split(',')
+			cleaned_budget = budget_max_split[0] + budget_max_split[1]
 			if int(cleaned_budget) >= 100:
 				return cleaned_budget
 			else:
@@ -95,9 +97,10 @@ class NewProject(forms.ModelForm):
 			else:
 				raise forms.ValidationError('You should have a budget of at least $100.')
 		elif not '$' in budget_min and ',' in budget_min:
-			cleaned_budget_min = budget_min.lstrip(',')
+			cleaned_budget_min = budget_min.split(',')
+			budget_min_cleaned = cleaned_budget_min[0] + cleaned_budget_min[1]
 			if int(cleaned_budget_min) >= 100:
-				return cleaned_budget_min
+				return budget_min_cleaned
 			else:
 				raise forms.ValidationError('You should have a budget of at least $100')
 		else:
