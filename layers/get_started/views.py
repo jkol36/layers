@@ -86,8 +86,10 @@ def get_started(request):
 
 def submit_design(request):
 	profile = request.session.get('profile', default="")
-	if request.POST.get('should_submit', '') == "true":
-		print "should submit is true"
+	if not request.POST.get('should_submit', '') == "true":
+		p = Project.objects.get(pk=request.session.get('project'))
+		p.project_status = "submit_idea"
+		p.save()
 	if not request.FILES:
 		return redirect(reverse('complete_signup'))
 	
