@@ -50,7 +50,7 @@ block content
               form(action="{% url 'submit_design' %}", method="POST").dropzone#inspirationBoard
                 - csrf_token
                 input(type="hidden", name="project", value="{{project}}")
-                input(type="hidden", name="should_submit")
+                input(type="hidden", id="should_submit", name="should_submit")
         .row
           .col-md-4
             h2 Submit or Save
@@ -62,7 +62,7 @@ block content
         .row
           .col-md-8.col-md-offset-4
             .form-group
-              button.btn.btn-xlarge.btn-primary(type="submit", id="submit", form="inspirationBoard") Submit
+              button.btn.btn-xlarge.btn-primary(type="submit", id="submit", onClick='is_submitted()', form="inspirationBoard") Submit
               button.btn.btn-xlarge.btn-secondary(type="submit", form="inspirationBoard") Save
 
             

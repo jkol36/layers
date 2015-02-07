@@ -75,8 +75,8 @@ function emailnoties() {
 };
 
 function is_submitted() {
-	var submit_button = document.getElementById('submit');
-	console.log(submit_button);
+	var should_submit = document.getElementById('should_submit');
+	console.log(should_submit);
 
 };
 
