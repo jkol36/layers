@@ -21,7 +21,8 @@ class NewProject(forms.ModelForm):
 		exclude = ['budget_min', 'budget_max']
 
 
-	def __init__(self, *args, **kwargs):
+	def __init__(self, submit=False, *args, **kwargs):
+		self.submit = submit
 		try:
 			self.profile_id = kwargs.pop('profile')
 		except Exception, e:
@@ -121,7 +122,11 @@ class NewProject(forms.ModelForm):
 		budget_max = self.cleaned_data['budget_max']
 		budget_min = self.cleaned_data['budget_min']
 		due_date = self.cleaned_data['due_date']
-		new_project = Project.objects.create(title=title, description=description, project_status='design_center', budget_min=budget_min, budget_max=budget_max, due_date=due_date, client=layers_profile)
+		#submit will only be true if the user hits submit (not save)
+		if self.submit == True:
+			new_project = Project.objects.create(title=title, description=description, project_status='design_center', budget_min=budget_min, budget_max=budget_max, due_date=due_date, client=layers_profile)
+		else:
+			new_project = Project.objects.create(title=title, description=description, project_status="submit_idea", budget_min=budget_min, budget_max=budget_max, due_date=due_date, client=layers_profile)
 		new_project.save()
 		layers_profile.save()
 		return new_project

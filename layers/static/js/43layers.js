@@ -74,3 +74,9 @@ function emailnoties() {
 	console.log(input.value);
 };
 
+function is_submitted() {
+	var submit_button = document.getElementById('submit');
+	console.log(submit_button);
+
+};
+
