@@ -49,9 +49,9 @@ def get_started(request):
 			new_project = NewProject(request.POST, profile=profile)
 			if new_project.is_valid():
 				i = new_project.save()
-				project_id = i.id
+				request.session['project_id'] = i.id
 				messages.success(request, "Awesome! Now Let's add some pictures.")
-				return render(request, 'inspiration.jade', {'profile':profile, 'project':project_id})
+				return render(request, 'inspiration.jade', {'profile':profile, 'project':i.id})
 			#if our project form is not valid
 			else:
 				for t,z in new_project.errors.items():
@@ -87,7 +87,7 @@ def get_started(request):
 def submit_design(request):
 	profile = request.session.get('profile', default="")
 	if not request.POST.get('should_submit', '') == "true":
-		p = request.session.get('project', '')
+		p = Project.objects.get(pk=request.session.get('project_id', ''))
 		p.project_status = "submit_idea"
 		p.save()
 	if not request.FILES:
