@@ -87,7 +87,7 @@ def get_started(request):
 def submit_design(request):
 	profile = request.session.get('profile', default="")
 	if not request.POST.get('should_submit', '') == "true":
-		p = Project.objects.get(pk=request.session.get('project'))
+		p = request.session.get('project', '')
 		p.project_status = "submit_idea"
 		p.save()
 	if not request.FILES:
