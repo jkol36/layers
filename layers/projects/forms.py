@@ -49,7 +49,7 @@ class NewProject(forms.ModelForm):
 			return due_date
 	def clean_budget_max(self):
 		budget_max = self.cleaned_data['budget_max']
-		if ',' and '$' in budget_max:
+		if ',' in budget_max and '$' in budget_max:
 			budget_split = budget_max.split(',')
 			cleaned_budget_max = budget_split[0] + budget_split[1]
 			cleaned_budget = cleaned_budget_max.split('$')[1]
