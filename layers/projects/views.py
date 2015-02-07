@@ -61,7 +61,7 @@ def add_photo_to_project(request):
 	elif request.POST and not request.FILES:
 		print "the value of should_submit is {}".format(request.POST.get('should_submit', ''))
 		if not request.POST.get('should_submit', '') == "true":
-			p = Project.object.get(pk=project_id)
+			p = Project.objects.get(pk=project_id)
 			p.project_status = "submit_idea"
 			p.save()
 			print p.project_status
