@@ -80,7 +80,7 @@ class NewProject(forms.ModelForm):
 		
 	def clean_budget_min(self):
 		budget_min = self.cleaned_data['budget_min']
-		if ',' and '$' in budget_min:
+		if ',' in budget_min and '$' in budget_min:
 			budget_min_split = budget_min.split(',')
 			budget_min_cleaned = budget_min_split[0] + budget_min_split[1]
 			print "budget min cleaned {}".format(budget_min_cleaned)
