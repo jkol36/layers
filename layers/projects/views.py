@@ -60,8 +60,13 @@ def add_photo_to_project(request):
 			return render(request, 'inspiration.jade')
 	elif request.POST and not request.FILES:
 		print "the value of should_submit is {}".format(request.POST.get('should_submit', ''))
-		if request.POST.get('should_submit', '') == "true":
-			print "should submit is indeed true"
+		if not request.POST.get('should_submit', '') == "true":
+			p = Project.object.get(pk=project_id)
+			p.project_status = "submit_idea"
+			p.save()
+			
+
+
 		return redirect('my_account')
 	elif request.POST and request.session['added_photos'] == True:
 		return redirect('my_account')
