@@ -46,6 +46,7 @@ def complete_signup(request):
 
 @login_required
 def my_account(request):
+
 	try:
 		email = request.user.username
 	except Exception, e:
@@ -64,8 +65,10 @@ def my_account(request):
 		request.user.accounts.has_projects = True
 	else:
 		pass
-	
-	completed_projects = Project.objects.filter(client=request.user.accounts, project_status="Arrived")
+	try:
+		completed_projects = Project.objects.filter(client=request.user.accounts, project_status="Arrived")
+	except KeyError:
+		completed_projects = None
 	forms = {'UpdateSettings':UpdateSettings}
 	newsletter_status = request.user.accounts.newsletter
 	print newsletter_status
