@@ -173,22 +173,22 @@ block content
 
                 
                 a.btn.btn-default(href="{% url 'add_project' %}") Add a Project     
-            h2 Order History
-            .order-history#order-history
-              .table-responsive
-                table.table
-                  if completed_project
-                    for project in completed_project
-                      tr
-                        th Project Name
-                        th Status
-                        
-                      tr
-                        td {{project.title}}
-                        td Arrived
+              h2 Order History
+              .order-history#order-history
+                .table-responsive
+                  table.table
+                    if completed_project
+                      for project in completed_project
+                        tr
+                          th Project Name
+                          th Status
                           
-                  else
-                   p No orders have been completed to date.
+                        tr
+                          td {{project.title}}
+                          td Arrived
+                            
+                    else
+                     p No orders have been completed to date.
            
             h2 Settings
             .settings#settings
