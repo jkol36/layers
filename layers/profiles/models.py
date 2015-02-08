@@ -18,6 +18,7 @@ class Layers_Profile(models.Model):
 	is_designer = models.BooleanField(default=False)
 	has_projects = models.BooleanField(default=False)
 	notification_emails = models.BooleanField(default=True)
+	confirmed_email = models.BooleanField(default=False)
 	newsletter = models.BooleanField(default=True)
 	profile = models.OneToOneField(Profile, related_name='accounts', null = True)
 	Profile_Pic = ImageField(upload_to='/profile_pics/')
