@@ -161,14 +161,15 @@ block content
                         td Shipping
                         {%endif %}
                         
-                        td
-                          form(role='form', method="GET", action="{% url 'project_status' %}")
-                            input(type='hidden', name='project_id', value='{{i.id}}')
-                          
-                            button(type="submit", style="color:#20CB92; background:transparent; border:none;",  value="submit") View
+                        
+                        form(role='form', method="GET", action="{% url 'project_status' %}")
+                          input(type='hidden', name='project_id', value='{{i.id}}')
+                        
+                          button(type="submit", style="color:#20CB92; background:transparent; border:none;",  value="submit") View
                              
                   else
                     p No Projects have been submitted to date.
+
 
                 
                 a.btn.btn-default(href="{% url 'add_project' %}") Add a Project     
@@ -190,7 +191,7 @@ block content
                           span(aria-hidden="true").glyphicon.glyphicon-star
                           span(aria-hidden="true").glyphicon.glyphicon-star
                           span(aria-hidden="true").glyphicon.glyphicon-star-empty
-                 else
+                  else
                    p No orders have been completed to date.
            
             h2 Settings
