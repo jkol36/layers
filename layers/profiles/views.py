@@ -56,7 +56,7 @@ def my_account(request):
 		has_profile_pic = False
 		print NoAccounts
 	try:
-		projects = Project.objects.filter(client=request.user.accounts)
+		projects = Project.objects.filter(client=request.user.accounts).exclude(project_status="Arrived")
 	except Exception, NoProjects:
 		projects = False
 	print request.user

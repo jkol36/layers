@@ -160,9 +160,7 @@ block content
                         {% if i.project_status == "Shipping" %}
                         td Shipping
                         {%endif %}
-                        {% if i.project_status == "Complete" %}
-                        td Compelete
-                        {%endif%}
+                        
                         td
                           form(role='form', method="GET", action="{% url 'project_status' %}")
                             input(type='hidden', name='project_id', value='{{i.id}}')
@@ -192,7 +190,8 @@ block content
                           span(aria-hidden="true").glyphicon.glyphicon-star
                           span(aria-hidden="true").glyphicon.glyphicon-star
                           span(aria-hidden="true").glyphicon.glyphicon-star-empty
-                 p No orders have been completed to date.
+                 else
+                   p No orders have been completed to date.
            
             h2 Settings
             .settings#settings
