@@ -64,11 +64,13 @@ def my_account(request):
 		request.user.accounts.has_projects = True
 	else:
 		pass
+	
+	completed_projects = Project.objects.filter(client=request.user.accounts, status="Arrived")
 	forms = {'UpdateSettings':UpdateSettings}
 	newsletter_status = request.user.accounts.newsletter
 	print newsletter_status
 	email_notification = request.user.accounts.notification_emails
-	return render(request, 'account.jade', {'profile_pic':has_profile_pic, 'newsletter':newsletter_status, 'email_notification':email_notification, 'forms':forms, 'email':email, 'projects':projects})
+	return render(request, 'account.jade', {'profile_pic':has_profile_pic, 'completed_project':completed_projects 'newsletter':newsletter_status, 'email_notification':email_notification, 'forms':forms, 'email':email, 'projects':projects})
 
 def logout_view(request):
 	logout(request)
