@@ -70,7 +70,7 @@ def my_account(request):
 	newsletter_status = request.user.accounts.newsletter
 	print newsletter_status
 	email_notification = request.user.accounts.notification_emails
-	return render(request, 'account.jade', {'profile_pic':has_profile_pic, 'completed_project':completed_projects 'newsletter':newsletter_status, 'email_notification':email_notification, 'forms':forms, 'email':email, 'projects':projects})
+	return render(request, 'account.jade', {'profile_pic':has_profile_pic, 'completed_project':completed_projects, 'newsletter':newsletter_status, 'email_notification':email_notification, 'forms':forms, 'email':email, 'projects':projects})
 
 def logout_view(request):
 	logout(request)
