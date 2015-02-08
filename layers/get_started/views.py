@@ -50,6 +50,7 @@ def get_started(request):
 			if new_project.is_valid():
 				i = new_project.save()
 				request.session['project_id'] = i.id
+				print "request session project id is {}".format(request.session)
 				messages.success(request, "Awesome! Now Let's add some pictures.")
 				return render(request, 'inspiration.jade', {'profile':profile, 'project':i.id})
 			#if our project form is not valid
