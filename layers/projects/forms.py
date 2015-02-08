@@ -13,7 +13,7 @@ class NewProject(forms.ModelForm):
 	description = forms.CharField(label="* Give Your Project A Description", widget=forms.Textarea(attrs={"class":'form-control', 'placeholder':"This brief will be used by your designer to bring your idea to life, so the more specific the better."}))
 	budget_min = forms.CharField(widget=forms.HiddenInput(attrs={'class':'display-none'}))
 	budget_max = forms.CharField(widget=forms.HiddenInput(attrs={'class':'display-none'}))
-	due_date = forms.CharField(label="Due Date", widget=forms.DateInput(attrs={'class':'form-control', 'id':'duedate'}))
+	due_date = forms.CharField(label="* Due Date", widget=forms.DateInput(attrs={'class':'form-control', 'id':'duedate'}))
 
 	class Meta:
 		model = Project
