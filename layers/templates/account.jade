@@ -145,14 +145,14 @@ block content
                         th Project Name
                         th Budget
                         th Due Date
-                        th Ship Status
+                        th Order Status
                         th
                       tr
                         td {{i.title}}
                         td ${{i.budget_min}} - ${{i.budget_max}}
                         td {{i.due_date}}
                         {% if i.project_status == "submit_idea" %}
-                        td submit idea
+                        td Submit Idea
                         {%endif %}
                         {%if i.project_status == "design_center" %}
                         td Design Center

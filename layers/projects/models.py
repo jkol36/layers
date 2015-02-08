@@ -10,7 +10,7 @@ class Project(models.Model):
 		('design_center', 'Design Center'),
 		('manufacturing', "Manufacturing"),
 		('Shipping', 'Shipping'),
-		('Complete', 'Completed Order'),
+		('Arrived', 'Completed Order'),
 		)
 	title = models.CharField(max_length=250, blank=False)
 	description = models.CharField(max_length=400, blank=False)
