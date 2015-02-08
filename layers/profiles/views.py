@@ -7,6 +7,8 @@ from django.contrib import messages
 from .forms import UserForm, PartialProfileForm, PasswordForm, UpdateSettings
 from django.contrib.auth import login, authenticate, logout
 
+from layers.subscribe.utils import get_mailchimp_api()
+
 # Create your views here.
 
 def home(request):
