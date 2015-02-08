@@ -4,10 +4,10 @@ from django.core.validators import validate_email
 
 #used for new users to create a Profile. (For authentication purposes)
 class UserForm(forms.ModelForm):
-	name = forms.CharField(label='* Your Name', widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Your Name'}))
-	email = forms.CharField(label='* Your Email', widget=forms.EmailInput(attrs={'class':'form-control', 'placeholder':'Your Email'}))
-	password1 = forms.CharField(label='* Password', widget=forms.PasswordInput(attrs={"class":'form-control', 'placeholder':'Password'}))
-	password2 = forms.CharField(label='* Confirm Your Password', widget=forms.PasswordInput(attrs={'class':'form-control', 'placeholder':'Confirm Password'}))
+	name = forms.CharField(label='', widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Your Name'}))
+	email = forms.CharField(label='', widget=forms.EmailInput(attrs={'class':'form-control', 'placeholder':'Your Email'}))
+	password1 = forms.CharField(label='', widget=forms.PasswordInput(attrs={"class":'form-control', 'placeholder':'Password'}))
+	password2 = forms.CharField(label='', widget=forms.PasswordInput(attrs={'class':'form-control', 'placeholder':'Confirm Password'}))
 
 	class Meta:
 		model = Profile
