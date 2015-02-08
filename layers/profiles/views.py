@@ -65,7 +65,7 @@ def my_account(request):
 	else:
 		pass
 	
-	completed_projects = Project.objects.filter(client=request.user.accounts, project_status="Completed_Order")
+	completed_projects = Project.objects.filter(client=request.user.accounts, project_status="Arrived")
 	forms = {'UpdateSettings':UpdateSettings}
 	newsletter_status = request.user.accounts.newsletter
 	print newsletter_status
