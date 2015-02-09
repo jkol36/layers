@@ -4,7 +4,7 @@ from .models import Project, Photo
 # Register your models here.
 
 class ProjectAdmin(admin.ModelAdmin):
-	list_display = ['title', 'client', 'budget_min', 'budget_max', 'due_date', 'project_status']
+	list_display = ['title', 'client', 'budget_min', 'budget_max', 'due_date', 'project_status', 'time_stamp']
 
 admin.site.register(Project, ProjectAdmin)
 admin.site.register(Photo)
