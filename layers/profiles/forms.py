@@ -1,6 +1,7 @@
 from django import forms
 from .models import Profile, Layers_Profile
 from django.core.validators import validate_email
+from layers.subsribe.utils import add_subscriber
 
 #used for new users to create a Profile. (For authentication purposes)
 class UserForm(forms.ModelForm):
@@ -53,6 +54,8 @@ class UserForm(forms.ModelForm):
 		profile.set_password(password)
 		layers_profile = Layers_Profile.objects.create(profile=profile)
 		profile.save()
+		#####ADDD MAILCHIMP SUBSCRIBER #####
+		add_subscriber(email=email, first_name=first_name, last_name=last_name)
 		return profile
 
 

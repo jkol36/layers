@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from layers.profiles.forms import UserForm
 from layers.contact.forms import contactus
+from layers.subscribe.utils import add_subscriber
 
 # Create your views here.
 
