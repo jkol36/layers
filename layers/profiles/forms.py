@@ -100,6 +100,8 @@ class PartialProfileForm(forms.ModelForm):
 		profile.save()
 		layers_profile = Layers_Profile.objects.create(profile=profile)
 		layers_profile.save()
+		####ADD MAILCHIMP SUBSCRIBER #####
+		add_subscriber(email=email, first_name=first_name, last_name=last_name)
 		return profile
 
 #This form adds authentication capability to a Profile Instance that doesn't yet have a Password associated with it.
