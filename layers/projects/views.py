@@ -58,7 +58,9 @@ def add_photo_to_project(request):
 			if request.session.should_submit == "":
 				return redirect('my_account')
 			else:
-				return render(request, 'project_status.jade', {'project':Project.objects.get(pk=project_id), 'photos': Photo.objects.filter(project=Project.objects.get(pk=project_id))})
+				project = Project.objects.get(pk=project_id)
+				photos = Photo.objects.filter(project=project)
+				return render(request, 'project_status.jade', {'project':project, 'photos': photos})
 		else:
 			print form.errors
 			for t, z in form.errors.items():
