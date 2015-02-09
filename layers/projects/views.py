@@ -43,10 +43,13 @@ def add_project(request):
 
 @login_required
 def add_photo_to_project(request):
+
 	try:
 		project_id = request.session['project_id']
 	except Exception, NoProjectID:
 		project_id = False
+	project = Project.objects.get(pk=project_id)
+	photos = Photo.objects.filter(project=project)
 	if request.FILES:
 		added_photos = request.session['added_photos'] = True 
 		form = add_photo_form(request.POST, request.FILES, project_id=project_id)
@@ -54,8 +57,6 @@ def add_photo_to_project(request):
 			#if the form is valid clear the session
 			#now when the user adds another project, he'll start from the add_project view.
 			form.save()
-			project = Project.objects.get(pk=project_id)
-			photos = Photo.objects.filter(project=project)
 			return render(request, 'project_status.jade', {'project':project, 'photos': photos})
 		else:
 			print form.errors
@@ -72,9 +73,9 @@ def add_photo_to_project(request):
 		request.session.__delitem__('project_id')
 
 
-		return redirect('my_account')
+		return render(request, 'project_status.jade', {'project':project, 'photos': photos})
 	elif request.POST and request.session['added_photos'] == True:
-		return redirect('my_account')
+		return render(request, 'project_status.jade', {'project': project, 'photos':photos})
 	
 	return render(request, 'inspiration.jade', {'project':project_id})
 
