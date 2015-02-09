@@ -21,7 +21,7 @@ class Project(models.Model):
 	budget_max = models.IntegerField(null=True, blank=True)
 	due_date = models.DateField(null=False, blank=False)
 	designer_assigned = models.BooleanField(default=False, blank=True)
-	time_stamp = models.DateTimeField(auto_now_add=True)
+	time_stamp = models.DateTimeField(auto_now_add=True, null=True)
 	project_status = models.CharField(choices=STATUS_CHOICES, max_length=250, default='submit_idea', null=True, blank=True)
 	is_completed = models.BooleanField(default=False)
 	
