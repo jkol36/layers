@@ -21,8 +21,7 @@ class NewProject(forms.ModelForm):
 		exclude = ['budget_min', 'budget_max']
 
 
-	def __init__(self, should_submit=False, *args, **kwargs):
-		self.should_submit = should_submit
+	def __init__(self, *args, **kwargs):
 		try:
 			self.profile_id = kwargs.pop('profile')
 		except Exception, e:
