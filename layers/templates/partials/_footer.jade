@@ -13,8 +13,9 @@
             a(href="{% url 'contact' %}") Contact
       .col-md-4
       .col-md-4
-        #mc_embed_signup
-          .input-group.form-newsletter
+
+        .input-group.form-newsletter
+          div#mc_embed_signup
             form(role="form", id="signup_for_emails", action="{% url 'signup_for_emails' %}", method="POST")
               - csrf_token
               input.form-control.input-newsletter(type="text", name='email', placeholder="Sign up for emails")
