@@ -55,7 +55,7 @@ class UserForm(forms.ModelForm):
 		layers_profile = Layers_Profile.objects.create(profile=profile)
 		profile.save()
 		#####ADDD MAILCHIMP SUBSCRIBER #####
-		add_subscriber(email=email, first_name=first_name, last_name=last_name)
+		print add_subscriber(email=email, first_name=first_name, last_name=last_name)
 		return profile
 
 
