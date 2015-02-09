@@ -71,9 +71,11 @@ def add_photo_to_project(request):
 			p.save()
 			photos = Photo.objects.filter(project=p)
 			print p.project_status
+			request.session.__delitem__('project_id')
 			return render(request, 'project_status.jade', {'project':p, 'photos':photos})
 		p = Project.objects.get(pk=project_id)
 		photos = Photo.objects.filter(project=p)
+		request.session.__delitem__('project_id')
 		return render(request, 'project_status.jade', {'project':p, 'photos':photos})
 	elif request.POST and request.session['added_photos'] == True:
 		return redirect('my_account')
