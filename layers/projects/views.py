@@ -13,6 +13,9 @@ def add_project(request):
 	forms = {'newprojectform':NewProject}
 	if request.POST:
 		print "should submit is {}".format(request.POST.get('should_submit', ''))
+		should_submit = request.POST.get('should_submit', '')
+		if should_submit != '':
+			request.session['should_submit'] = should_submit
 		form = NewProject(request.POST, profile=profile_id)
 		if form.is_valid():
 			print "valid"
@@ -40,6 +43,7 @@ def add_project(request):
 
 @login_required
 def add_photo_to_project(request):
+	should_submit = request.session.get(should_submit, '')
 	try:
 		project_id = request.session['project_id']
 	except Exception, NoProjectID:
@@ -52,7 +56,10 @@ def add_photo_to_project(request):
 			#now when the user adds another project, he'll start from the add_project view.
 			form.save()
 			request.session.__delitem__('project_id')
-			return redirect('my_account')
+			if request.session.should_submit == "":
+				return redirect('my_account')
+			else:
+				return render(request, 'project_status.jade', {'project':Project.objects.get(pk=project_id), 'photos': Photo.objects.filter(project=Project.objects.get(pk=project_id))})
 		else:
 			print form.errors
 			for t, z in form.errors.items():
