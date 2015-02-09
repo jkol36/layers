@@ -7,7 +7,7 @@ from django.contrib import messages
 from .forms import UserForm, PartialProfileForm, PasswordForm, UpdateSettings
 from django.contrib.auth import login, authenticate, logout
 
-from layers.subscribe.utils import add_subscriber
+from layers.subscriber.utils import add_subscriber
 
 # Create your views here.
 
