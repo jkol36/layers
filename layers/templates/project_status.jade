@@ -11,13 +11,16 @@ block content
 			if project.project_status == "submit_idea"
 				h1.text-center Step 1: Submit Your Idea
 			elif project.project_status == "design_center"
-				h1.text-center Step 2: Design Center
+				h1.text-center Step 3: Design Center
 
 			elif project.project_status == "Shipping"
-				h1.text-center Step 4: Shipping
+				h1.text-center Step 4: Hold In Your Hands.
 
 			elif project.project_status == "manufacturing"
-				h1.text-center Step 3: Manufacturing
+				h1.text-center Step 4: Manufacturing
+
+			elif project.project_status == "assigning_designer"
+				h1.text-center Step 2: Assigning Designer
 
 			.container
 				.row-text-center.process
