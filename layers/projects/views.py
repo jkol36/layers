@@ -54,13 +54,9 @@ def add_photo_to_project(request):
 			#if the form is valid clear the session
 			#now when the user adds another project, he'll start from the add_project view.
 			form.save()
-			request.session.__delitem__('project_id')
-			if request.session.should_submit == "":
-				return redirect('my_account')
-			else:
-				project = Project.objects.get(pk=project_id)
-				photos = Photo.objects.filter(project=project)
-				return render(request, 'project_status.jade', {'project':project, 'photos': photos})
+			project = Project.objects.get(pk=project_id)
+			photos = Photo.objects.filter(project=project)
+			return render(request, 'project_status.jade', {'project':project, 'photos': photos})
 		else:
 			print form.errors
 			for t, z in form.errors.items():
