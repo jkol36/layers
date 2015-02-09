@@ -1,7 +1,7 @@
 from django import forms
 from .models import Profile, Layers_Profile
 from django.core.validators import validate_email
-from layers.subsriber.utils import add_subscriber
+from layers.subscribe.utils import add_subscriber
 
 #used for new users to create a Profile. (For authentication purposes)
 class UserForm(forms.ModelForm):
