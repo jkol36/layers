@@ -5,7 +5,11 @@ def get_mailchimp_api():
 
 def add_subscriber(email=None, first_name=None, last_name=None, list_id="43eaa152c3"):
 	api = get_mailchimp_api()
-	try:
-		api.lists.subscribe(list_id, {'email':email, 'FNAME':first_name, 'LNAME':last_name,}
-	except Exception, e:
-		return e
+	print email
+	print first_name
+	print last_name
+
+	#try:
+	#	api.lists.subscribe(list_id, {'email':email, 'FNAME':first_name, 'LNAME':last_name}
+	#except Exception, e:
+		#return e
