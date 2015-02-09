@@ -13,9 +13,6 @@ def add_project(request):
 	forms = {'newprojectform':NewProject}
 	if request.POST:
 		print "should submit is {}".format(request.POST.get('should_submit', ''))
-		should_submit = request.POST.get('should_submit', '')
-		if should_submit != '':
-			request.session['should_submit'] = should_submit
 		form = NewProject(request.POST, profile=profile_id)
 		if form.is_valid():
 			print "valid"
@@ -43,13 +40,10 @@ def add_project(request):
 
 @login_required
 def add_photo_to_project(request):
-
 	try:
 		project_id = request.session['project_id']
 	except Exception, NoProjectID:
 		project_id = False
-	project = Project.objects.get(pk=project_id)
-	photos = Photo.objects.filter(project=project)
 	if request.FILES:
 		added_photos = request.session['added_photos'] = True 
 		form = add_photo_form(request.POST, request.FILES, project_id=project_id)
@@ -57,7 +51,8 @@ def add_photo_to_project(request):
 			#if the form is valid clear the session
 			#now when the user adds another project, he'll start from the add_project view.
 			form.save()
-			return render(request, 'project_status.jade', {'project':project, 'photos': photos})
+			request.session.__delitem__('project_id')
+			return redirect('my_account')
 		else:
 			print form.errors
 			for t, z in form.errors.items():
@@ -73,9 +68,9 @@ def add_photo_to_project(request):
 		request.session.__delitem__('project_id')
 
 
-		return render(request, 'project_status.jade', {'project':project, 'photos': photos})
+		return redirect('my_account')
 	elif request.POST and request.session['added_photos'] == True:
-		return render(request, 'project_status.jade', {'project': project, 'photos':photos})
+		return redirect('my_account')
 	
 	return render(request, 'inspiration.jade', {'project':project_id})
 
