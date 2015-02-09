@@ -160,6 +160,12 @@ block content
                         {% if i.project_status == "Shipping" %}
                         td Shipping
                         {%endif %}
+                        {% if i.project_status == "manufacturing" %}
+                        td Manufacturing
+                        {%endif %}
+                        {% if i.project_status == "assigning_designer" %}
+                        td Assigning Designer
+                        {% endif %}
                         
                         td
                           form(role='form', method="GET", action="{% url 'project_status' %}")

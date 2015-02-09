@@ -17,8 +17,8 @@
         .input-group.form-newsletter
           form(role="form", id="signup_for_emails", action="{% url 'signup_for_emails' %}", method="POST")
             - csrf_token
-            input.form-control.input-newsletter(type="text", name='email', placeholder="Sign up for emails")
+            input.form-control.input-newsletter(type="email", value='', id="mce-EMAIL", name='email', placeholder="Sign up for emails")
           span.input-group-btn
-            button.btn.btn-primary.btn-newsletter(type="submit", value="submit", form="signup_for_emails") Submit
+            button.btn.btn-primary.btn-newsletter(type="submit", value="submit", id="mc-embedded-subscriber", form="signup_for_emails") Submit
   p.copy &copy; 2014 43Layers Photography provided by Sarah Kathleen
 
