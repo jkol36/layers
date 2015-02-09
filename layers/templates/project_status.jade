@@ -48,8 +48,7 @@ block content
 							{%endif %}
 					.col-md-3
 						h3 4. Hold In Your Hands
-							{% if project.project_status == "Complete" %}
-							{% elif project.project_status == "Manufacturing" %}
+							{% if project.project_status == "Manufacturing" %}
 							{% elif project.project_status == "Shipping" %}
 							a.hold-active.center-block
 							{% else %}
@@ -67,20 +66,21 @@ block content
 					h2 Project Status:
 				.col-md-8
 					{% if project.project_status == "submit_idea" %}
-					p(style="word-break:break-word; width:75%;") Thanks for submitting your project! We are in the process of assigning you the perfect designer to bring your idea to life. You will be notified by email shortly :)
+					p(style="word-break:break-word; width:75%;") Review or edit the project details and inspiration board below to complete your design brief.
 					{% endif %}
 					{% if project.project_status == "design_center" %}
+					p(style="word-break:break-word; width:75%;") You have been assigned a designer! You can communicate with your designer or view the latest rendering of your product over email.
+					{%endif %}
+					{% if project.project_status == "assigning_designer" %}
 					p(style="word-break:break-word; width:75%;") Thanks for submitting your project! We are in the process of assigning you the perfect designer to bring your idea to life. You will be notified by email shortly :)
 					{%endif%}
 					{% if project.project_status == "manufacturing" %}
 					p(style="word-break:break-word; width:75%;") Your product design has been completed and your product is being made! You will receive an email update as soon as we finish making it.
 					{%endif %}
 					{% if project.project_status == "Shippinng" %}
-					p(style="word-break:break-word; width:75%;") Your product has been made and is now on it's way to you! You will receive order an order tracking number by email.
+					p(style="word-break:break-word; width:75%;") Your product has been made and is now on it's way to you! You will receive an order tracking number by email.
 					{%endif %}
-					{% if project.project_status == "Complete" %}
-					p(style="word-break:break-word; width:75%;") This project has been complete!
-					{%endif%}
+					
 					
 			.row(style="margin-top:5%;")
 				.col-md-4
