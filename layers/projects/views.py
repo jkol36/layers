@@ -43,7 +43,6 @@ def add_project(request):
 
 @login_required
 def add_photo_to_project(request):
-	should_submit = request.session.get(should_submit, '')
 	try:
 		project_id = request.session['project_id']
 	except Exception, NoProjectID:
