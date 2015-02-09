@@ -7,7 +7,7 @@ from django.contrib import messages
 from .forms import UserForm, PartialProfileForm, PasswordForm, UpdateSettings
 from django.contrib.auth import login, authenticate, logout
 
-from layers.subscribe.utils import get_mailchimp_api
+from layers.subscribe.utils import add_subscriber
 
 # Create your views here.
 
@@ -44,6 +44,9 @@ def complete_signup(request):
 
 		else:
 			print form.errors
+		###### ADDD SUBSCRIBER TO MAILCHIMP #######
+		add_subscriber(email=email, first_name=first_name, last_name=profile.last_name)
+
 	return render(request, 'signup.jade', {'email':email, 'first_name':first_name, 'profile':profile_id})
 
 @login_required
