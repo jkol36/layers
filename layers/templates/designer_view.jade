@@ -18,6 +18,7 @@ block content
 							th Description
 							th Minimum Budget
 							th Maximum Budget
+							th Interested?
 
 					tbody
 						for project in projects
@@ -26,7 +27,11 @@ block content
 								td {{project.description}}
 								td {{project.budget_min}}
 								td {{project.budget_max}}
-
+								td
+									form(role='form', method="GET", action="{% url 'project_status' %}")
+                      input(type='hidden', name='project_id', value='{{project.id}}')
+                    
+                      button(type="submit", style="color:#20CB92; background:transparent; border:none;",  value="submit") View More Info
 
 
 
