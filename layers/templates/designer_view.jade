@@ -28,7 +28,8 @@ block content
 								td {{project.budget_min}}
 								td {{project.budget_max}}
 								td
-									form(role="form")
+									form(role="form", action="{% url 'project_status'%}", method="GET")
+										input(type="hidden", name="project_id", value="{{project.id}}")
 
 
 
