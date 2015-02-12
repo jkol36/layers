@@ -4,6 +4,7 @@ from .models import Project, Photo
 from django.contrib.auth.decorators import login_required
 from .forms import add_photo_form, NewProject
 from django.contrib import messages
+from django.db.models import Q
 
 # Create your views here.
 
@@ -100,5 +101,9 @@ def project_status(request):
 		photos = None
 		
 	return render(request, 'project_status.jade', {'project':project, 'photos':photos})
-	
 
+@login_required
+
+def all_projects(request):
+	projects = Project.objects.filter(Q(designer_assigned=False, project_status="submit_idea") | Q(project_status="assigning_designer"))
+	return render(request, 'designer_view.jade', {'projects':projects})

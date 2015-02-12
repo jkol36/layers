@@ -34,6 +34,7 @@ def signup_view(request):
 		return render(request, 'signup.jade', {'forms':UserForm})
 		
 	form.save()
+	
 	messages.success(request, 'Your account was successfully created! Now Login.')
 	return redirect('login')
 		

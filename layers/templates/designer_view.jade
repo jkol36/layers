@@ -1,0 +1,36 @@
+extends ./partials/_base.jade
+{% load thumbnail %}
+
+block title
+	title 43Layers - Project Status
+
+block content
+	include ./partials/_header.jade
+	.content
+		.submit-your-idea
+			table.table.table-bordered.table-hover
+				if not projects
+					p There are no projects awaiting a designer currently. :(
+				else
+					thead
+						tr
+							th Name
+							th Description
+							th Minimum Budget
+							th Maximum Budget
+
+					tbody
+						for project in projects
+							tr
+								td {{project.title}}
+								td {{project.description}}
+								td {[project.budget_min]}
+								td {{project.budget_max}}
+
+
+
+
+
+
+				
+
