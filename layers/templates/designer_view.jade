@@ -28,7 +28,10 @@ block content
 								td {{project.budget_min}}
 								td {{project.budget_max}}
 								td
-									form(role='form', method="GET", action="{% url 'project_status' %}")
+                form(role='form', method="GET", action="{% url 'project_status' %}")
+                  input(type='hidden', name='project_id', value='{{i.id}}')
+                
+                  button(type="submit", style="color:#20CB92; background:transparent; border:none;",  value="submit") View
 	                   
 
 
