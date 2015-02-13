@@ -7,6 +7,7 @@ block title
 block content
 	include ./partials/_header.jade
 	.content
+		include ./partials/models.jade
 		.submit-your-idea
 			if project.project_status == "submit_idea"
 				h1.text-center Step 1: Submit Your Idea
@@ -61,7 +62,7 @@ block content
 					li
 					li
 		
-			include ./partials/models.jade
+			
 			.row(style="margin-top:5%;")
 				.col-md-4
 					h2 Project Status:
