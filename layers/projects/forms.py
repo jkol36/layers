@@ -123,7 +123,12 @@ class NewProject(forms.ModelForm):
 		budget_max = self.cleaned_data['budget_max']
 		budget_min = self.cleaned_data['budget_min']
 		due_date = self.cleaned_data['due_date']
-		new_project = Project.objects.create(title=title, description=description, project_status='assigning_designer', budget_min=budget_min, budget_max=budget_max, due_date=due_date, client=layers_profile)
+		if due_date and budget_min and budget_max:
+			new_project = Project.objects.create(title=title, description=description, project_status='assigning_designer', budget_min=budget_min, budget_max=budget_max, due_date=due_date, client=layers_profile)
+		elif due_date:
+			new_project = Project.objects.create(title=title, description=description, due_date = due_date, project_status="assigning_designer")
+		elif budget_min and budget_max and not due_date:
+			new_project = Project.objects.create(title=title, description=description, budget_max=budget_max, budget_min=budget_min, project_status="assigning_designer")
 		new_project.save()
 		layers_profile.save()
 		return new_project
