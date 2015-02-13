@@ -80,6 +80,7 @@ class NewProject(forms.ModelForm):
 		
 	def clean_budget_min(self):
 		budget_min = self.cleaned_data['budget_min']
+		# if a comma and a cash sign are submitted
 		if ',' in budget_min and '$' in budget_min:
 			budget_min_split = budget_min.split(',')
 			budget_min_cleaned = budget_min_split[0] + budget_min_split[1]
@@ -89,13 +90,14 @@ class NewProject(forms.ModelForm):
 				return cleaned_budget_min
 			else:
 				return forms.ValidationError("You should have a budget of at least $100")
-
+		# if there's no comma but there is a cash sign 
 		elif not ',' in budget_min and '$' in budget_min:
 			cleaned_budget_min = budget_min.split('$')[1]
 			if int(cleaned_budget_min) >= 100:
 				return cleaned_budget_min
 			else:
 				raise forms.ValidationError('You should have a budget of at least $100.')
+		
 		elif not '$' in budget_min and ',' in budget_min:
 			cleaned_budget_min = budget_min.split(',')
 			budget_min_cleaned = cleaned_budget_min[0] + cleaned_budget_min[1]
