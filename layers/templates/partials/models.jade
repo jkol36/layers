@@ -4,8 +4,9 @@
 			.modal-header
 				button(type="button", class="close", data-dismiss="modal", aria-label="Close")
 					span(aria-hidden="true")&times;
-				h4.changeTitle Change the title of your project
+				h4.modal-title Change the title of your project
 			.modal-body
+				p hello
 				.form-group
 					- csrf_token
 					input.form-control(type="text", id="titleInput", name="New_Title")
