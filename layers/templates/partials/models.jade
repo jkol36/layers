@@ -1,12 +1,11 @@
-.modal.fade#editProjectTitle(role="dialog", tabindex="-1", aria-labelledby="editProjectTitle", aria-hidden="true")
+.modal.fade(role="dialog", id="editProjectTitle", tabindex="-1", aria-labelledby="changeName", aria-hidden="true")
 	.modal.dialog
 		.modal.content
 			.modal-header
 				button(type="button", class="close", data-dismiss="modal", aria-label="Close")
 					span(aria-hidden="true")&times;
-				h4.modal-title Change the title of your project
+				h4.modal-title(id="changeName") Change the title of your project
 			.modal-body
-				p hello
 				.form-group
 					- csrf_token
 					input.form-control(type="text", id="titleInput", name="New_Title")
