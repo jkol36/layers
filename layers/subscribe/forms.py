@@ -15,6 +15,7 @@ class signup_for_emails_form(forms.ModelForm):
 		s = super(signup_for_emails_form, self).save()
 		email = self.cleaned_data['email']
 		add_email = add_subscriber(email=email)
+		print add_email
 
 
 
