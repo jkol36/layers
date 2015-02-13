@@ -8,7 +8,7 @@ def add_subscriber(email=None, first_name=None, last_name=None, list_id="43eaa15
 
 	try:
 		if first_name == None and last_name == None:
-			api.lists.subscribe(list_id, {'email':email, {'FNAME':email, 'LNAME':email}})
+			api.lists.subscribe(list_id, {'email':email}, {'FNAME':email, 'LNAME':email})
 		api.lists.subscribe(list_id, {'email':email}, {'FNAME':first_name, 'LNAME':last_name})
 	except Exception, e:
 		return e
