@@ -19,7 +19,7 @@ class Project(models.Model):
 	designer = models.OneToOneField(Layers_Profile, default=None, blank=True, null=True, related_name="designer")
 	budget_min = models.IntegerField(null=True, blank=True)
 	budget_max = models.IntegerField(null=True, blank=True)
-	due_date = models.DateField(null=False, blank=False)
+	due_date = models.DateField(null=True, blank=False)
 	designer_assigned = models.BooleanField(default=False, blank=True)
 	time_stamp = models.DateTimeField(auto_now=True, null=True)
 	project_status = models.CharField(choices=STATUS_CHOICES, max_length=250, default='submit_idea', null=True, blank=True)
