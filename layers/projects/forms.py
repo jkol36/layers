@@ -35,6 +35,8 @@ class NewProject(forms.ModelForm):
 	
 	def clean_due_date(self):
 		due_date = self.cleaned_data['due_date']
+		if not due_date:
+			return None
 		year = int(due_date[0:4])
 		month = int(due_date[5:7])
 		day = int(due_date[8:])
@@ -49,6 +51,8 @@ class NewProject(forms.ModelForm):
 			return due_date
 	def clean_budget_max(self):
 		budget_max = self.cleaned_data['budget_max']
+		if not budget_max:
+			return None
 		if ',' in budget_max and '$' in budget_max:
 			budget_split = budget_max.split(',')
 			cleaned_budget_max = budget_split[0] + budget_split[1]
@@ -80,6 +84,8 @@ class NewProject(forms.ModelForm):
 		
 	def clean_budget_min(self):
 		budget_min = self.cleaned_data['budget_min']
+		if not budget_min:
+			return None
 		# if a comma and a cash sign are submitted
 		if ',' in budget_min and '$' in budget_min:
 			budget_min_split = budget_min.split(',')
