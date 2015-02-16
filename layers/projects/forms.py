@@ -185,9 +185,8 @@ class editProject(forms.ModelForm):
 	due_date = forms.CharField(required=False)
 	
 	def __init__(self, *args, **kwargs):
-		self.project_id = kwargs.pop('project_id')
-		self.fieldToChange = kwargs.pop('fieldToChange')
-		self.new_value = kwargs.pop('Change_To')
+		self.project_id = self.request.POST.get('project_id', '')
+		
 
 
 		
