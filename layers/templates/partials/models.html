@@ -7,7 +7,7 @@
       </div>
       <div class="modal-body">
         <form action="{% url 'edit_project' %}" method="POST" id="updateProjectTitle">
-			{% load csrf %}
+			{% csrf_token %}
         	<input type="hidden", value="{[project_id}}">
         	<input type="text" class="form-control" id="editProjectTitle" name="editProjectTitle">
         </form>
