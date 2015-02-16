@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from layers.profiles.models import Profile, Layers_Profile
 from .models import Project, Photo
 from django.contrib.auth.decorators import login_required
-from .forms import add_photo_form, NewProject
+from .forms import add_photo_form, NewProject, editProject
 from django.contrib import messages
 from django.db.models import Q
 
@@ -111,10 +111,12 @@ def all_projects(request):
 
 @login_required
 def edit_project(request):
-	if request.POST:
-		print request.POST
-		project_id = request.POST.get('project_id', '')
-		print project_id
-		return redirect('project_status')
+	if not request.POST:
+		return redirect('my_account')
+
+	print editProject(request.POST)
+
+	
+
 
 

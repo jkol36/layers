@@ -9,7 +9,7 @@
         <form action="{% url 'edit_project' %}" method="POST" id="updateProjectTitle">
 			{% csrf_token %}
         	<input type="hidden", name="project_id" value="{{project.id}}">
-        	<input type="text" class="form-control" id="editProjectTitle" name="editProjectTitle">
+        	<input type="text" class="form-control" id="editProjectTitle" name="newProjectTitle">
         </form>
       </div>
       <div class="modal-footer">

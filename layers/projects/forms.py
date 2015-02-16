@@ -177,6 +177,16 @@ class add_photo_form(forms.ModelForm):
 			raise forms.ValidationError(e)
 
 
+class editProject(forms.ModelForm):
+	title = forms.CharField(required=False)
+	description = forms.CharField(required=False)
+	budget_min = forms.CharField(required=False)
+	budget_max= forms.Charfield(required=False)
+	due_date = forms.Charfield(required=False)
+	def __init__(self, *args, **kwargs):
+		self.project_id = kwargs.pop('project_id')
+		self.fieldToChange = kwargs.pop('fieldToChange')
+		self.new_value = kwargs.pop('Change_To') 
 
 
 		
