@@ -115,5 +115,6 @@ def edit_project(request):
 		print request.POST
 		project_id = request.POST.get('project_id', '')
 		print project_id
+		return redirect('my_account')
 
 
