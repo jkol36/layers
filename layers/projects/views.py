@@ -88,7 +88,7 @@ def project_status(request):
 	try:
 		project_id = request.GET['project_id']
 	except Exception, NoID:
-		messages.error('No Project Id')
+		messages.error(request, 'No Project Id')
 		return redirect('my_account')
 	try:
 		project = Project.objects.get(pk=project_id)
@@ -115,6 +115,6 @@ def edit_project(request):
 		print request.POST
 		project_id = request.POST.get('project_id', '')
 		print project_id
-		return redirect('project_status')
+		return redirect(request, 'project_status')
 
 
