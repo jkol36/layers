@@ -185,7 +185,7 @@ class editProject(forms.ModelForm):
 	due_date = forms.CharField(required=False)
 	
 	def __init__(self, *args, **kwargs):
-		print dir(self)
+		self.project_id = self.data.get('project_id', '')
 		
 
 
