@@ -6,7 +6,7 @@ block title
 block content
 	include ./partials/_header.jade
 	.content
-		include ./partials/models.jade
+		include ./partials/models.html
 		.submit-your-idea
 			//- H1 UP TOP
 			if project.project_status == "submit_idea"
@@ -93,7 +93,7 @@ block content
 					p(style="padding-right:10px;")
 						span(style="font-weight:800; padding-right:10px;") Project Name: 
 						| {{project.title}}
-						button(style="color:#20CB92; background:transparent; border:none;", id="changeTitleButton", data-toggle="modal", data-target="#editProjectTitle") Change Title	
+						button(type="button", style="color:#20CB92; background:transparent; border:none;", id="#editProjectTitle", data-toggle="modal", data-target="#editProjectTitle") Change Title	
 					
 					p(style="word-break:break-word; width:75%;") 
 						span(style="font-weight:800; padding-right:10px;") Project Description:
