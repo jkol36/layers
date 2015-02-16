@@ -56,8 +56,7 @@ var currentWidth = $('.inspiration').width();
 $('.inspiration').css({'height': currentWidth+'px'});
 
 
-// Datepicker
-rome(duedate, {time: false});
+
 
 //CheckBox function
 function NewsLetter() {
