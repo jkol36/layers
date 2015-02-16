@@ -103,7 +103,17 @@ def project_status(request):
 	return render(request, 'project_status.jade', {'project':project, 'photos':photos})
 
 @login_required
-
 def all_projects(request):
 	projects = Project.objects.filter(Q(designer_assigned=False, project_status="submit_idea") | Q(project_status="assigning_designer"))
 	return render(request, 'designer_view.jade', {'projects':projects})
+
+
+
+@login_required
+def edit_project(request):
+	if request.POST:
+		print request.POST
+		project_id = request.POST.get('project_id', '')
+		print project_id
+
+
