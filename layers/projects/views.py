@@ -115,6 +115,8 @@ def edit_project(request):
 		return redirect('my_account')
 
 	print request.POST
+	form = editProject(request.POST)
+	print dir(form)
 
 
 	

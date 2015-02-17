@@ -183,10 +183,12 @@ class editProject(forms.ModelForm):
 	budget_min = forms.CharField(required=False)
 	budget_max= forms.CharField(required=False)
 	due_date = forms.CharField(required=False)
+
+	class Meta:
+		model = Project
+
 	
-	def __init__(self, *args, **kwargs):
-		self.project_id = kwargs.pop('project_id')
-		print self.project_id
+	
 		
 
 
