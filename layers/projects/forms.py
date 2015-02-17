@@ -201,6 +201,7 @@ class editProject(forms.ModelForm):
 
 		if "newProjectTitle" in self.data:
 			new_title = self.data.get("newProjectTitle", '')
+			print new_title
 			return new_title
 
 		elif "newProjectDescription" in self.data:
