@@ -215,17 +215,7 @@ class editProject(forms.ModelForm):
 			new_budget_max = self.data('newBudgetMax', '')
 			return new_budget_max
 
-	def clean_budget_min(self):
-		return "cleaning budget min"
-
-	def clean_budget_max(self):
-		return "cleaning budget max"
-
-	def clean_description(self):
-		return "cleaning description"
-
-	def clean_title(self):
-		return "cleaning title"
+	
 
 
 	
