@@ -115,7 +115,10 @@ def edit_project(request):
 		return redirect('my_account')
 
 	form = editProject(request.POST)
-	print form.is_valid()
+	if form.is_valid():
+		print "form is valid"
+	else:
+		print form.errors
 
 	
 
