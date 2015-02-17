@@ -197,7 +197,35 @@ class editProject(forms.ModelForm):
 		valid = super(editProject, self).is_valid()
 		if valid == False:
 			return valid
-		print "form is valid"
+
+		if "newProjectTitle" in self.data:
+			new_title = self.data.get("newProjectTitle", '')
+			return new_title
+
+		elif "newProjectDescription" in self.data:
+			new_description = self.data.get("newProjectDescription", '')
+			return new_description
+
+		elif "newBudgetMin" in self.data:
+			new_budget_min = self.data.get("newBudgetMin", '')
+			return new_budget_min
+
+		elif "newBudgetMax" in self.data:
+			new_budget_max = self.data('newBudgetMax', '')
+			return new_budget_max
+
+	def clean_budget_min(self):
+		return "cleaning budget min"
+
+	def clean_budget_max(self):
+		return "cleaning budget max"
+
+	def clean_description(self):
+		return "cleaning description"
+
+	def clean_title(self):
+		return "cleaning title"
+
 
 	
 	
