@@ -188,9 +188,8 @@ class editProject(forms.ModelForm):
 		model = Project
 
 		def __init__(self, *args, **kwargs):
-			return super(editProject, self).__init__(*args, **kwargs)
-
-		print({"data":self.data})
+			super(editProject, self).__init__(*args, **kwargs)
+			print({"data":self.data})
 
 	
 	
