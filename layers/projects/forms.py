@@ -187,6 +187,11 @@ class editProject(forms.ModelForm):
 	class Meta:
 		model = Project
 
+		def __init__(self, *args, **kwargs):
+			return super(editProject, self).__init__(*args, **kwargs)
+
+		print({"data":self.data})
+
 	
 	
 		
