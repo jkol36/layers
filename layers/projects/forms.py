@@ -200,6 +200,90 @@ class editProject(forms.ModelForm):
 		new_title = self.data.get('newProjectTitle')
 		return new_title
 
+	def clean_description(self):
+		if not "newProjectDescription" in self.data:
+			return None
+
+		new_description = self.data.get("newProjectDescription")
+		return new_description
+
+	def clean_budget_min(self):
+		if not "newBudgetMin" in self.data:
+			return None
+		budget_min = self.data.get('newBudgetMin')
+		if ',' in budget_min and '$' in budget_min:
+			budget_min_split = budget_min.split(',')
+			budget_min_cleaned = budget_min_split[0] + budget_min_split[1]
+			print "budget min cleaned {}".format(budget_min_cleaned)
+			cleaned_budget_min = budget_min_cleaned.split('$')[1]
+			if int(cleaned_budget_min) >= 100:
+				return cleaned_budget_min
+			else:
+				return forms.ValidationError("You should have a budget of at least $100")
+		# if there's no comma but there is a cash sign 
+		elif not ',' in budget_min and '$' in budget_min:
+			cleaned_budget_min = budget_min.split('$')[1]
+			if int(cleaned_budget_min) >= 100:
+				return cleaned_budget_min
+			else:
+				raise forms.ValidationError('You should have a budget of at least $100.')
+		
+		elif not '$' in budget_min and ',' in budget_min:
+			cleaned_budget_min = budget_min.split(',')
+			budget_min_cleaned = cleaned_budget_min[0] + cleaned_budget_min[1]
+			if int(cleaned_budget_min) >= 100:
+				return budget_min_cleaned
+			else:
+				raise forms.ValidationError('You should have a budget of at least $100')
+		else:
+			cleaned_budget_min = budget_min
+			if int(cleaned_budget_min) >= 100:
+				return cleaned_budget_min
+			else:
+				raise forms.ValidationError('You should have a budget of at least $100.')
+
+
+	def clean_budget_max(self):
+		if not "newBudgetMax" in self.data:
+			return None
+
+		budget_max = self.data.get("newBudgetMax")
+		if ',' in budget_max and '$' in budget_max:
+			budget_split = budget_max.split(',')
+			cleaned_budget_max = budget_split[0] + budget_split[1]
+			cleaned_budget = cleaned_budget_max.split('$')[1]
+			if int(cleaned_budget) >= 100:
+				return cleaned_budget
+			else:
+				return forms.ValidationError("You should have a budget of at least $100")
+
+		elif not ',' in budget_max and '$' in budget_max:
+			cleaned_budget = budget_max.split('$')[1]
+			if int(cleaned_budget) >= 100:
+				return cleaned_budget
+			else:
+				raise forms.ValidationError('You should have a budget of at least $100.')
+		elif not '$' in budget_max and ',' in budget_max:
+			budget_max_split = budget_max.split(',')
+			cleaned_budget = budget_max_split[0] + budget_max_split[1]
+			if int(cleaned_budget) >= 100:
+				return cleaned_budget
+			else:
+				raise forms.ValidationError('You should have a budget of at least $100')
+		else:
+			cleaned_budget = budget_max
+			if int(cleaned_budget) >= 100:
+				return cleaned_budget
+			else:
+				raise forms.ValidationError('You should have a budget of at least $100.')
+
+
+
+
+		
+
+
+
 
 	
 
