@@ -186,6 +186,7 @@ class editProject(forms.ModelForm):
 
 	class Meta:
 		model = Project
+		fields = ['title', 'description', 'budget_min', 'budget_max', 'due_date']
 
 	def __init__(self, *args, **kwargs):
 		super(editProject, self).__init__(*args, **kwargs)
