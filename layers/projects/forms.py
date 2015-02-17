@@ -189,7 +189,10 @@ class editProject(forms.ModelForm):
 
 	def __init__(self, *args, **kwargs):
 		super(editProject, self).__init__(*args, **kwargs)
-		print self.data
+		
+		self.project_id = self.data.get('project_id')
+		if "newProjectTitle" in self.data:
+			print "new project title in self data"
 
 	
 	
