@@ -116,7 +116,7 @@ block content
 							a(href="{% url 'add_photo' project.id %}", style="color:#20CB92; padding-left:10px; background:transparent; border:none;") Add some Pics
 					
 					for i in photos
-						img(src="{{i.image.url}}", width="300", height="300")
+						img(src="{{MEDIA_URL}} {{i.image}}", width="300", height="300")
 						
 						
 					
