@@ -106,6 +106,24 @@ block content
 					p(style="padding-right:10px;")
 						span(style="font-weight:800; padding-right:10px;") Due Date:
 						{{project.due_date}}
+
+					if project.been_submitted == 'False'
+						.row
+				          .col-md-4
+				            h2 Submit or Save
+				          .col-md-8
+				            p Are you ready to start your design project?
+				            ul
+				             li Click Submit if you are ready to begin.
+				             li Click Save if you want to keep brainstorming and come back to your project at a later date.
+				        .row
+				          .col-md-8.col-md-offset-4
+				            .form-group
+			            	  input(type="hidden", name="should_submit", value="True")
+				              button.btn.btn-xlarge.btn-primary(type="submit", id="submit", onClick='is_submitted()', form="inspirationBoard") Submit
+				           	.form-group
+				           		input(type="hidden", name="should_submit", value="False")
+				              button.btn.btn-xlarge.btn-secondary(type="submit", form="inspirationBoard") Save
 			if photos == 'None'
 				.row(style="margin-top:5%;")
 					.col-md-4

@@ -91,6 +91,7 @@ def submit_design(request):
 	if not request.POST.get('should_submit', '') == "true":
 		p = Project.objects.get(pk=request.session.get('project_id', ''))
 		p.project_status = "submit_idea"
+		p.been_submitted = False
 		p.save()
 	if not request.FILES:
 		return redirect(reverse('complete_signup'))
