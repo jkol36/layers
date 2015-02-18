@@ -42,7 +42,11 @@ def add_project(request):
 
 @login_required
 # adds a photo to a project
-def add_photo_to_project(request):
+def add_photo_to_project(request, project_id=None):
+	if project_id == None:
+		project_id = request.session.get('project_id', '')
+	else:
+		project_id = project_id
 	try:
 		if request.GET:
 			return render(request, 'inspiration.jade', {'project_id':project_id})
@@ -66,7 +70,7 @@ def add_photo_to_project(request):
 				return redirect('add_photo_to_project', project_id)
 
 		elif request.POST and not request.FILES:
-			return redirect('project_status')
+			return redirect('project_status', project_id)
 	except ValueError:
 		pass
 
