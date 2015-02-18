@@ -191,7 +191,7 @@ class editProject(forms.ModelForm):
 	def __init__(self, *args, **kwargs):
 		super(editProject, self).__init__(*args, **kwargs)
 		
-		self.project_id = self.data.get('project_id', '')
+		self.project_id = kwargs.pop('project_id')
 		self.project = Project.objects.get(pk=self.project_id)
 	
 	def clean_title(self):

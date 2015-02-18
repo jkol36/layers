@@ -70,7 +70,7 @@ def add_photo_to_project(request, project_id=None):
 				return redirect('add_photo_to_project', project_id)
 
 		elif request.POST and not request.FILES:
-			print dir(request.session)
+			request.session.__delitem__('project_id')
 			return redirect('project_status', project_id)
 	except ValueError:
 		pass
@@ -111,7 +111,7 @@ def edit_project(request, project_id):
 				messages.error(request, t + z.as_text())
 			return redirect('project_status', project_id)
 
-	form = editProject(request.POST)
+	form = editProject(request.POST, project_id=project_id)
 	if form.is_valid():
 		form.save()
 		messages.success(request, 'Project Updated!')
