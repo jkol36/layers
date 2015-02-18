@@ -119,7 +119,7 @@ def edit_project(request, project_id):
 	else:
 		print form.errors
 
-	return redirect('project_status')
+	return redirect('project_status', project_id)
 
 	
 
