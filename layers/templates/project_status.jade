@@ -113,7 +113,9 @@ block content
 					h2 Inspiration Board
 				.col-md-8
 					if not photos
-						p(style="padding-right:10px;") You have not submitted any pictures.
+						p(style="padding-right:10px;") You have not submitted any pictures. {{request}}
 							a(href="{% url 'add_photo' %}", style="color:#20CB92; padding-left:10px; background:transparent; border:none;") Add some Pics
+						
+						
 					
 				
