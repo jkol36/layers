@@ -41,11 +41,13 @@ def add_project(request):
 
 @login_required
 def add_photo_to_project(request, project_id=None):
-	print project_id
-	try:
-		project_id = request.session['project_id']
-	except Exception, NoProjectID:
-		project_id = False
+	if project_id == None:
+		try:
+			project_id = request.session['project_id']
+		except Exception, NoProjectID:
+			project_id = False
+	else:
+		project_id = project_id
 	if request.FILES:
 		added_photos = request.session['added_photos'] = True 
 		form = add_photo_form(request.POST, request.FILES, project_id=project_id)
