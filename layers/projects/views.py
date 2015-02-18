@@ -51,7 +51,7 @@ def add_photo_to_project(request, project_id=None):
 		except Exception, NoId:
 			project_id = False
 
-	if request.POST and request.FILES:
+	elif request.POST and request.FILES:
 		added_photos = request.session['added_photos'] = True 
 		form = add_photo_form(request.POST, request.FILES, project_id=project_id)
 		if form.is_valid():
