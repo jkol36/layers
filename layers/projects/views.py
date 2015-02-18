@@ -120,6 +120,8 @@ def edit_project(request):
 	else:
 		print form.errors
 
+	return redirect('project_status')
+
 	
 
 
