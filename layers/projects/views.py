@@ -44,7 +44,7 @@ def add_project(request):
 # adds a photo to a project
 def add_photo_to_project(request):
 	if request.Method == "GET":
-		return render(request, 'inspiration.jade', 'project_id':project_id)
+		return render(request, 'inspiration.jade', {'project_id':project_id})
 
 	if request.Method== "POST" and request.FILES:
 		form = add_photo_form(request.POST, request.FILES, project_id=project_id)
