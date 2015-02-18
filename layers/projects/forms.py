@@ -189,10 +189,12 @@ class editProject(forms.ModelForm):
 		fields = ['title', 'description', 'budget_min', 'budget_max', 'due_date']
 
 	def __init__(self, *args, **kwargs):
-		super(editProject, self).__init__(*args, **kwargs)
-		
 		self.project_id = kwargs.pop('project_id')
 		self.project = Project.objects.get(pk=self.project_id)
+		
+		super(editProject, self).__init__(*args, **kwargs)
+		
+		
 	
 	def clean_title(self):
 		if not "newProjectTitle" in self.data:
