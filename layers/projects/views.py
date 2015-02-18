@@ -13,16 +13,13 @@ def add_project(request):
 	profile_id = request.user.id
 	forms = {'newprojectform':NewProject}
 	if request.POST:
-		print "should submit is {}".format(request.POST.get('should_submit', ''))
 		form = NewProject(request.POST, profile=profile_id)
 		if form.is_valid():
-			print "valid"
 			instance = form.save()
 			project_id = instance.id
 			request.session['project_id'] = project_id
 			messages.success(request, "Awesome! Now let's add some pics.")
-			forms = {'newprojectform':NewProject}
-			return render(request, 'inspiration.jade', {'forms':forms, 'add_project':True, 'project':project_id})
+			return redirect('add_photo_to_project', project_id=project_id)
 		else:
 			print "not valid"
 			for t, z in form.errors.items():
