@@ -43,7 +43,7 @@ def add_project(request):
 def add_photo_to_project(request, project_id=None):
 	
 	if request.method == "GET" and project_id != None:
-		return render(request, "inspiration.jade", {'project': project_id, 'add_project': True} )
+		return render(request, "inspiration.jade", {'project_id': project_id, 'add_project': True} )
 
 	elif request.method=="GET" and project_id == None:
 		try:

@@ -43,7 +43,7 @@ block content
         .row
           .col-md-8.col-md-offset-4
             if add_project
-              form(action="{% url 'add_photo' project %}", enctype="multipart/form-data", method="POST").dropzone#inspirationBoard
+              form(action="{% url 'add_photo' project_id %}", enctype="multipart/form-data", method="POST").dropzone#inspirationBoard
                 - csrf_token
                 input(type="hidden", name="project", value="{{project}}")
                 input(type="hidden", name="should_submit", id="should_submit")
