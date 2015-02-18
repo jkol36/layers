@@ -65,26 +65,7 @@ block content
 					li
 			//- END OF COMMENTS UP TOP
 			
-			.row(style="margin-top:5%;")
-				//- PROJECT STATUS DIV
-				.col-md-4
-					h2 Project Status:
-				.col-md-8
-					{% if project.project_status == "submit_idea" %}
-					p(style="word-break:break-word; width:75%;") Review or edit the project details and inspiration board below to complete your design brief.
-					{% endif %}
-					{% if project.project_status == "design_center" %}
-					p(style="word-break:break-word; width:75%;") You have been assigned a designer! You can communicate with your designer or view the latest rendering of your product over email.
-					{%endif %}
-					{% if project.project_status == "assigning_designer" %}
-					p(style="word-break:break-word; width:75%;") Thanks for submitting your project! We are in the process of assigning you the perfect designer to bring your idea to life. You will be notified by email shortly :)
-					{%endif%}
-					{% if project.project_status == "manufacturing" %}
-					p(style="word-break:break-word; width:75%;") Your product design has been completed and your product is being made! You will receive an email update as soon as we finish making it.
-					{%endif %}
-					{% if project.project_status == "Shipping" %}
-					p(style="word-break:break-word; width:75%;") Your product has been made and is now on it's way to you! You will receive an order tracking number by email.
-					{%endif %}
+			
 			
 		
 		
