@@ -66,7 +66,7 @@ def add_photo_to_project(request):
 				return redirect('add_photo_to_project', project_id)
 
 		elif request.POST and not request.FILES:
-			return redirect('project_status', project_id)
+			return redirect('project_status')
 	except ValueError:
 		pass
 
