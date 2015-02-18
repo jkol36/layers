@@ -23,7 +23,91 @@ block content
 			elif project.project_status == "assigning_designer"
 				h1.text-center Step 2: Meet Your Designer
 				h1 hello
-		
+			//- END OF H1 UP TOP
+			.container
+				//- ICONS UP TOP
+				.row-text-center.process
+					.col-md-3
+						h3 1. Submit Your Idea
+							{% if project.project_status == "submit_idea" %}
+							a.submit-active.center-block
+							{% else %}
+							a.submit.center-block
+							{%endif %}
+
+					.col-md-3
+						h3 2. Meet Your Designer
+							{% if project.project_status == "assigning_designer" %}
+							a.meet-active.center-block
+							{% else %}
+							a.meet.center-block
+							{%endif %}
+					.col-md-3
+						h3 3. View Digital Preview
+							{% if project.project_status == "design_center" %}
+							a.view-active.center-block
+							{% else %}
+							a.view.center-block
+							{%endif %}
+					.col-md-3
+						h3 4. Hold In Your Hands
+							{% if project.project_status == "manufacturing" %}
+							a.hold-active.center-block
+							{% elif project.project_status == "Shipping" %}
+							a.hold-active.center-block
+							{% else %}
+							a.hold.center-block
+							{% endif %}
+				ul.nav.nav-pills.process-mobile
+					li.active
+					li
+					li
+					li
+			//- END OF COMMENTS UP TOP
+			
+			.row(style="margin-top:5%;")
+				//- PROJECT STATUS DIV
+				.col-md-4
+					h2 Project Status:
+				.col-md-8
+					{% if project.project_status == "submit_idea" %}
+					p(style="word-break:break-word; width:75%;") Review or edit the project details and inspiration board below to complete your design brief.
+					{% endif %}
+					{% if project.project_status == "design_center" %}
+					p(style="word-break:break-word; width:75%;") You have been assigned a designer! You can communicate with your designer or view the latest rendering of your product over email.
+					{%endif %}
+					{% if project.project_status == "assigning_designer" %}
+					p(style="word-break:break-word; width:75%;") Thanks for submitting your project! We are in the process of assigning you the perfect designer to bring your idea to life. You will be notified by email shortly :)
+					{%endif%}
+					{% if project.project_status == "manufacturing" %}
+					p(style="word-break:break-word; width:75%;") Your product design has been completed and your product is being made! You will receive an email update as soon as we finish making it.
+					{%endif %}
+					{% if project.project_status == "Shipping" %}
+					p(style="word-break:break-word; width:75%;") Your product has been made and is now on it's way to you! You will receive an order tracking number by email.
+					{%endif %}
+			
+			//- PROJECT DETAILS DIV		
+			.row(style="margin-top:5%;")
+				.col-md-4
+					h2 Project Details:
+				.col-md-8
+					p(style="padding-right:10px;")
+						span(style="font-weight:800; padding-right:10px;") Project Name: 
+						| {{project.title}}
+						button(type="button", style="color:#20CB92; background:transparent; border:none;", data-toggle="modal", data-target="#editProjectTitle") Change Title	
+					
+					p(style="word-break:break-word; width:75%;") 
+						span(style="font-weight:800; padding-right:10px;") Project Description:
+						| {{project.description}}
+						button(type="button", style="color:#20CB92; background:transparent; border:none;", data-toggle="modal", data-target="#editProjectDescription") Change Description
+
+					p(style="padding-right:10px;")
+						span(style="font-weight:800; padding-right:10px;") Budget:
+						${{project.budget_min}} to ${{project.budget_max}}
+					p(style="padding-right:10px;")
+						span(style="font-weight:800; padding-right:10px;") Due Date:
+						{{project.due_date}}
+
 					
 
 			
