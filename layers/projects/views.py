@@ -40,7 +40,8 @@ def add_project(request):
 		return render(request, 'idea.jade', {'forms':forms, 'add_project':True})
 
 @login_required
-def add_photo_to_project(request):
+def add_photo_to_project(request, project_id=None):
+	print project_id
 	try:
 		project_id = request.session['project_id']
 	except Exception, NoProjectID:
