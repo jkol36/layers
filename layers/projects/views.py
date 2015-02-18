@@ -64,7 +64,7 @@ def add_photo_to_project(request):
 				messages.error(request, t+z.as_text())
 			return redirect('add_photo_to_project', project_id)
 
-	elif request.Method == "POST" and not request.FILES:
+	elif request.POST and not request.FILES:
 		return redirect('project_status', project_id)
 
 
