@@ -13,13 +13,16 @@ def add_project(request):
 	profile_id = request.user.id
 	forms = {'newprojectform':NewProject}
 	if request.POST:
+		print "should submit is {}".format(request.POST.get('should_submit', ''))
 		form = NewProject(request.POST, profile=profile_id)
 		if form.is_valid():
+			print "valid"
 			instance = form.save()
 			project_id = instance.id
 			request.session['project_id'] = project_id
 			messages.success(request, "Awesome! Now let's add some pics.")
-			return redirect('add_photo_to_project', project_id=project_id)
+			forms = {'newprojectform':NewProject}
+			return render(request, 'inspiration.jade', {'forms':forms, 'add_project':True, 'project':project_id})
 		else:
 			print "not valid"
 			for t, z in form.errors.items():
@@ -37,18 +40,12 @@ def add_project(request):
 		return render(request, 'idea.jade', {'forms':forms, 'add_project':True})
 
 @login_required
-def add_photo_to_project(request, project_id=None):
-	
-	if request.method == "GET" and project_id != None:
-		return render(request, "inspiration.jade", {'project_id': project_id, 'add_project': True} )
-
-	elif request.method=="GET" and project_id == None:
-		try:
-			project_id = request.session.get('project_id', '')
-		except Exception, NoId:
-			project_id = False
-
-	elif request.POST and request.FILES:
+def add_photo_to_project(request):
+	try:
+		project_id = request.session['project_id']
+	except Exception, NoProjectID:
+		project_id = False
+	if request.FILES:
 		added_photos = request.session['added_photos'] = True 
 		form = add_photo_form(request.POST, request.FILES, project_id=project_id)
 		if form.is_valid():
@@ -126,7 +123,6 @@ def edit_project(request):
 		print form.errors
 
 	return redirect('project_status')
-
 
 	
 
