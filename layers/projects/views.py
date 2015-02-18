@@ -41,15 +41,16 @@ def add_project(request):
 
 @login_required
 def add_photo_to_project(request, project_id=None):
-	if project_id == None:
+	
+	if request.method == "GET" and project_id != None:
 		try:
 			project_id = request.session['project_id']
 		except Exception, NoProjectID:
 			project_id = False
-	else:
-		project_id = project_id
-		return render(request, 'inspiration.jade', {"project":project_id, 'add_project':True})
-	if request.FILES:
+		return render(request, "inspiration.jade", {'project': project_id, 'add_project': True} )
+
+
+	if request.POST and request.FILES:
 		added_photos = request.session['added_photos'] = True 
 		form = add_photo_form(request.POST, request.FILES, project_id=project_id)
 		if form.is_valid():
@@ -127,6 +128,7 @@ def edit_project(request):
 		print form.errors
 
 	return redirect('project_status')
+
 
 	
 
