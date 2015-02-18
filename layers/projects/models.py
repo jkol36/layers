@@ -22,6 +22,7 @@ class Project(models.Model):
 	due_date = models.DateField(null=True, blank=False)
 	designer_assigned = models.BooleanField(default=False, blank=True)
 	time_stamp = models.DateTimeField(auto_now=True, null=True)
+	been_submitted = models.BooleanField(default=False)
 	project_status = models.CharField(choices=STATUS_CHOICES, max_length=250, default='submit_idea', null=True, blank=True)
 	is_completed = models.BooleanField(default=False)
 	
