@@ -58,7 +58,6 @@ def add_photo_to_project(request):
 				p.save()
 				photos = Photo.objects.filter(project=p)
 			project = Project.objects.get(pk=project_id)
-			request.session.__delitem__('project_id')
 			return render(request, 'project_status.jade', {'project':project, 'photos':photos})
 		else:
 			print form.errors
