@@ -35,4 +35,32 @@ block content
 							a.submit.center-block
 							{%endif %}
 
-					
+					.col-md-3
+						h3 2. Meet Your Designer
+							{% if project.project_status == "assigning_designer" %}
+							a.meet-active.center-block
+							{% else %}
+							a.meet.center-block
+							{%endif %}
+					.col-md-3
+						h3 3. View Digital Preview
+							{% if project.project_status == "design_center" %}
+							a.view-active.center-block
+							{% else %}
+							a.view.center-block
+							{%endif %}
+					.col-md-3
+						h3 4. Hold In Your Hands
+							{% if project.project_status == "manufacturing" %}
+							a.hold-active.center-block
+							{% elif project.project_status == "Shipping" %}
+							a.hold-active.center-block
+							{% else %}
+							a.hold.center-block
+							{% endif %}
+				ul.nav.nav-pills.process-mobile
+					li.active
+					li
+					li
+					li
+			
