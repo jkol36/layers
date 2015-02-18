@@ -70,7 +70,10 @@ def add_photo_to_project(request, project_id=None):
 			return redirect('add_photo_to_project', project_id)
 
 	elif request.method == "POST" and not request.FILES:
-		request.session.__delitem__('project_id')
+		try:
+			request.session.__delitem__('project_id')
+		except KeyError:
+			pass
 		return redirect('project_status', project_id)
 	
 
