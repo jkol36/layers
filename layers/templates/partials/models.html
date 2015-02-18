@@ -19,3 +19,26 @@
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+
+
+<div class="modal fade" id="editProjectDescription">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Edit your project description</h4>
+      </div>
+      <div class="modal-body">
+        <form action="{% url 'edit_project' %}" method="POST" id="updateProjectDescription">
+      {% csrf_token %}
+          <input type="hidden", name="project_id" value="{{project.id}}">
+          <textarea rows="4", cols="50" class="form-control" id="editProjectDescription" name="newProjectDescription">
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" value="submit" form="updateProjectDescription" class="btn btn-primary">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
