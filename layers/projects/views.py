@@ -51,7 +51,7 @@ def add_photo_to_project(request, project_id=None):
 	if request.method == "GET":
 		return render(request, 'inspiration.jade', {'project_id':project_id})
 
-	elif request.POST== "POST" and request.FILES:
+	elif request.method =="POST" and request.FILES:
 		form = add_photo_form(request.POST, request.FILES, project_id=project_id)
 		if form.is_valid():
 			#if the form is valid clear the session
@@ -69,7 +69,7 @@ def add_photo_to_project(request, project_id=None):
 				messages.error(request, t+z.as_text())
 			return redirect('add_photo_to_project', project_id)
 
-	elif request.POST and not request.FILES:
+	elif request.method == "POST" and not request.FILES:
 		request.session.__delitem__('project_id')
 		return redirect('project_status', project_id)
 	
