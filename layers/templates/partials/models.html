@@ -29,9 +29,8 @@
         <h4 class="modal-title">Edit your project description</h4>
       </div>
       <div class="modal-body">
-        <form action="{% url 'edit_project' %}" method="POST" id="updateProjectDescription">
+        <form action="{% url 'edit_project' project.id %}" method="POST" id="updateProjectDescription">
       {% csrf_token %}
-          <input type="hidden", name="project_id" value="{{project.id}}">
           <textarea rows="4", cols="50" class="form-control" id="editProjectDescription" name="newProjectDescription"></textarea>
         </form>
       </div>
