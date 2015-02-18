@@ -48,7 +48,7 @@ def add_photo_to_project(request, project_id=None):
 	else:
 		project_id = project_id
 	
-	if request.GET:
+	if request.method == "GET":
 		return render(request, 'inspiration.jade', {'project_id':project_id})
 
 	elif request.POST== "POST" and request.FILES:
