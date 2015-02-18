@@ -47,33 +47,32 @@ def add_photo_to_project(request, project_id=None):
 		project_id = request.session.get('project_id', '')
 	else:
 		project_id = project_id
-	try:
-		if request.GET:
-			return render(request, 'inspiration.jade', {'project_id':project_id})
+	
+	if request.GET:
+		return render(request, 'inspiration.jade', {'project_id':project_id})
 
-		if request.POST== "POST" and request.FILES:
-			form = add_photo_form(request.POST, request.FILES, project_id=project_id)
-			if form.is_valid():
-				#if the form is valid clear the session
-				#now when the user adds another project, he'll start from the add_project view.
-				form.save()
-				if not request.POST.get('should_submit', '') == "true":
-					p = Project.objects.get(pk=project_id)
-					p.project_status = "submit_idea"
-					p.save()
-					photos = Photo.objects.filter(project=p)
-				return redirect('project_status', project_id)
-
-			else:
-				for t, z in form.errors.items():
-					messages.error(request, t+z.as_text())
-				return redirect('add_photo_to_project', project_id)
-
-		elif request.POST and not request.FILES:
-			request.session.__delitem__('project_id')
+	if request.POST== "POST" and request.FILES:
+		form = add_photo_form(request.POST, request.FILES, project_id=project_id)
+		if form.is_valid():
+			#if the form is valid clear the session
+			#now when the user adds another project, he'll start from the add_project view.
+			form.save()
+			if not request.POST.get('should_submit', '') == "true":
+				p = Project.objects.get(pk=project_id)
+				p.project_status = "submit_idea"
+				p.save()
+				photos = Photo.objects.filter(project=p)
 			return redirect('project_status', project_id)
-	except ValueError:
-		pass
+
+		else:
+			for t, z in form.errors.items():
+				messages.error(request, t+z.as_text())
+			return redirect('add_photo_to_project', project_id)
+
+	elif request.POST and not request.FILES:
+		request.session.__delitem__('project_id')
+		return redirect('project_status', project_id)
+	
 
 
 @login_required
