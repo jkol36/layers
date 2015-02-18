@@ -283,29 +283,33 @@ class editProject(forms.ModelForm):
 
 		else:
 			self.project.budget_min = self.cleaned_data['budget_min']
+			self.project.save()
 		if not "newBudgetMax" in self.cleaned_data:
 			pass
 
 		else:
 			self.project.budget_max = self.cleaned_data['budget_max']
+			self.project.save()
 
 		if not "newProjectTitle" in self.cleaned_data:
 			pass
 
 		else:
 			self.project.title = self.cleaned_data['title']
+			self.project.save()
 		if not "newProjectDescription" in self.cleaned_data:
 			pass
 
 		else:
 			self.project.description = self.cleaned_data['description']
+			self.project.save()
 
 		if not "newProjectDueData" in self.cleaned_data:
 			pass
 		else:
 			self.project.due_date = self.cleaned_data['due_date']
+			self.project.save()
 
-		self.project.save()
 		return self.project
 
 
