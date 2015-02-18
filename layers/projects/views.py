@@ -115,7 +115,7 @@ def edit_project(request, project_id):
 	if form.is_valid():
 		form.save()
 		messages.success(request, 'Project Updated!')
-		return redirect('project_status')
+		return redirect('project_status', project_id)
 	else:
 		print form.errors
 
