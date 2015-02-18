@@ -24,4 +24,15 @@ block content
 				h1.text-center Step 2: Meet Your Designer
 				h1 hello
 			//- END OF H1 UP TOP
-			
+			.container
+				//- ICONS UP TOP
+				.row-text-center.process
+					.col-md-3
+						h3 1. Submit Your Idea
+							{% if project.project_status == "submit_idea" %}
+							a.submit-active.center-block
+							{% else %}
+							a.submit.center-block
+							{%endif %}
+
+					
