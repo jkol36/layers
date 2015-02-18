@@ -43,12 +43,13 @@ def add_project(request):
 def add_photo_to_project(request, project_id=None):
 	
 	if request.method == "GET" and project_id != None:
-		try:
-			project_id = request.session['project_id']
-		except Exception, NoProjectID:
-			project_id = False
 		return render(request, "inspiration.jade", {'project': project_id, 'add_project': True} )
 
+	elif request.method=="GET" and project_id == None:
+		try:
+			project_id = request.session['project_id']
+		except Exception, NoId:
+			project_id = False
 
 	if request.POST and request.FILES:
 		added_photos = request.session['added_photos'] = True 
