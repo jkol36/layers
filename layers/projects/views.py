@@ -47,7 +47,7 @@ def add_photo_to_project(request, project_id=None):
 
 	elif request.method=="GET" and project_id == None:
 		try:
-			project_id = request.session['project_id']
+			project_id = request.session.get('project_id', '')
 		except Exception, NoId:
 			project_id = False
 
