@@ -116,7 +116,7 @@ def edit_project(request):
 
 	form = editProject(request.POST)
 	if form.is_valid():
-		form.save()
+		print form.save()
 	else:
 		print form.errors
 
