@@ -114,7 +114,7 @@ block content
 				.col-md-8
 					if not photos
 						p(style="padding-right:10px;") You have not submitted any pictures.
-							a(href="{% url 'add_photo' '{{project_id}}' %}", style="color:#20CB92; padding-left:10px; background:transparent; border:none;") Add some Pics
+							a(href="{% url 'add_photo' project.id %}", style="color:#20CB92; padding-left:10px; background:transparent; border:none;") Add some Pics
 						
 						
 						
