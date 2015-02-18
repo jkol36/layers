@@ -35,7 +35,7 @@ def add_project(request):
 	
 	try:
 		project_id =  request.session['project_id']
-		return render(request, 'inspiration.jade', {'forms':forms, 'project':project_id, 'add_project':True})
+		return render(request, 'inspiration.jade', {'forms':forms, 'project_id':project_id, 'add_project':True})
 	except Exception, NoId:
 		forms = {'newprojectform':NewProject}
 		return render(request, 'idea.jade', {'forms':forms, 'add_project':True})
