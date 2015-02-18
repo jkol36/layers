@@ -58,7 +58,7 @@ def add_photo_to_project(request):
 				p.save()
 				photos = Photo.objects.filter(project=p)
 			request.session.__delitem__('project_id')
-			return render(request, 'p_status.jade', {'project':project, 'photos':photos})
+			return render(request, 'project_status.jade', {'project':project, 'photos':photos})
 		else:
 			print form.errors
 			for t, z in form.errors.items():
@@ -73,11 +73,11 @@ def add_photo_to_project(request):
 			photos = Photo.objects.filter(project=p)
 			print p.project_status
 			request.session.__delitem__('project_id')
-			return render(request, 'p_status.jade', {'project':p, 'photos':photos})
+			return render(request, 'project_status.jade', {'project':p, 'photos':photos})
 		p = Project.objects.get(pk=project_id)
 		photos = Photo.objects.filter(project=p)
 		request.session.__delitem__('project_id')
-		return render(request, 'p_status.jade', {'project':p, 'photos':photos})
+		return render(request, 'project_status.jade', {'project':p, 'photos':photos})
 	elif request.POST and request.session['added_photos'] == True:
 		return redirect('my_account')
 	
@@ -100,7 +100,7 @@ def project_status(request):
 	except Exception, e:
 		photos = None
 		
-	return render(request, 'p_status.jade', {'project':project, 'photos':photos})
+	return render(request, 'project_status.jade', {'project':project, 'photos':photos})
 
 @login_required
 def all_projects(request):
