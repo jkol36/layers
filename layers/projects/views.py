@@ -49,7 +49,7 @@ def add_photo_to_project(request, project_id=None):
 		project_id = project_id
 	
 	if request.method == "GET":
-		return render(request, 'inspiration.jade', {'project_id':project_id, 'add_photo':True})
+		return render(request, 'inspiration.jade', {'project_id':project_id, 'add_project':True})
 
 	elif request.method =="POST" and request.FILES:
 		form = add_photo_form(request.POST, request.FILES, project_id=project_id)
