@@ -113,16 +113,17 @@ def edit_project(request, project_id):
 			for t, z in form.errors.items():
 				messages.error(request, t + z.as_text())
 			return redirect('project_status', project_id)
+	elif request.POST and not request.FILES:
+		form = editProject(request.POST, project_id=project_id)
+		if form.is_valid():
+			print "valid"
+			form.save()
+			messages.success(request, 'Project Updated!')
+			return redirect('project_status', project_id)
+		else:
+			print form.errors
 
-	form = editProject(request.POST, project_id=project_id)
-	if form.is_valid():
-		form.save()
-		messages.success(request, 'Project Updated!')
 		return redirect('project_status', project_id)
-	else:
-		print form.errors
-
-	return redirect('project_status', project_id)
 
 	
 
