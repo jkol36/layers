@@ -209,7 +209,7 @@ class editProject(forms.ModelForm):
 		return new_description
 
 	def clean_budget_min(self):
-		if not "new_budget_min" in self.data:
+		if not "new_budget_min" in self.data == '' or self.data['new_budget_min'] == '':
 			return None
 		budget_min = self.data.get('new_budget_min')
 		if ',' in budget_min and '$' in budget_min:
@@ -245,7 +245,7 @@ class editProject(forms.ModelForm):
 
 
 	def clean_budget_max(self):
-		if not "new_budget_max" in self.data:
+		if not "new_budget_max" in self.data or self.data['new_budget_max'] == '':
 			return None
 
 		budget_max = self.data.get("new_budget_max")
@@ -282,11 +282,11 @@ class editProject(forms.ModelForm):
 		if self.cleaned_data.get('title'):
 			self.project.title = self.cleaned_data['title']
 		
-		elif self.cleaned_data.get('budget_min'):
+		elif self.cleaned_data.get('budget_min') != '' or self.cleaned_data.get('budget_min') != None:
 			print self.cleaned_data.get('budget_min')
 			self.project.budget_min = self.cleaned_data['budget_min']
 
-		elif self.cleaned_data.get('budget_max'):
+		elif self.cleaned_data.get('budget_max') != '' or self.cleaned_data.get('budget_max') != None:
 			print self.cleaned_data.get('budget_max')
 			self.project.budget_max = self.cleaned_data['budget_max']
 
