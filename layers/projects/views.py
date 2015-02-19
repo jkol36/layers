@@ -101,6 +101,7 @@ def all_projects(request):
 
 @login_required
 def edit_project(request, project_id):
+	print request.POST
 	if not request.POST:
 		return redirect('my_account')
 
