@@ -3,9 +3,7 @@
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active"><a href="#openProjects" aria-controls="openProjects" role="tab" data-toggle="tab">Open Projects</a></li>
-    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
-    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
-    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
+    <li role="presentation"><a href="#myProjects" aria-controls="myProjects" role="tab" data-toggle="tab">My Projects</a></li>
   </ul>
 
   <!-- Tab panes -->
@@ -15,9 +13,12 @@
       
     </div>
     {% endblock tab_active %}
-    <div role="tabpanel" class="tab-pane" id="profile">...</div>
-    <div role="tabpanel" class="tab-pane" id="messages">...</div>
-    <div role="tabpanel" class="tab-pane" id="settings">...</div>
+    {% block tab_myprojects}
+    <div role="tabpanel" class="tab-pane" id="myProjects">...
+  
+    </div>
+    {% endblock tab_myprojects %}
+   
   </div>
 
 </div>
