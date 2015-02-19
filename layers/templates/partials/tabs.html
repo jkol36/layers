@@ -10,7 +10,11 @@
 
   <!-- Tab panes -->
   <div class="tab-content">
-    <div role="tabpanel" class="tab-pane active" id="home">...</div>
+    {% block tab_active %}
+    <div role="tabpanel" class="tab-pane active" id="Open Projects">
+      
+    </div>
+    {% block tab_active %}
     <div role="tabpanel" class="tab-pane" id="profile">...</div>
     <div role="tabpanel" class="tab-pane" id="messages">...</div>
     <div role="tabpanel" class="tab-pane" id="settings">...</div>
