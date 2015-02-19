@@ -13,6 +13,7 @@ from django.db.models import Q
 def add_project(request):
 	profile_id = request.user.id
 	forms = {'newprojectform':NewProject}
+	print request.GET
 	if request.POST:
 		print "should submit is {}".format(request.POST.get('should_submit', ''))
 		form = NewProject(request.POST, profile=profile_id)
