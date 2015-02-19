@@ -32,7 +32,7 @@ block content
 										td ${{project.budget_max}}
 										td
 											form(role="form", action="{% url 'project_status' project.id%}", method="GET")
-												input(type="hidden", name="project_id", value="{{project.id}}")
+												input(type="hidden", name="is_designer", value="True")
 												button(type="submit", style="color:#20CB92; background:transparent; border:none;") View More Info
 				div(role="tab-panel", class="tab-pane", id="myProjects")
 					if not my_projects
