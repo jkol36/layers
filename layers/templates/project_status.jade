@@ -126,10 +126,10 @@ block content
 					h2 Are you ready to start your project?
 
 				.col-md-8
-					form(role="form", id="start_project", action="{% url 'start_project' project.id%}", method="POST")
+					form(role="form", id="start_project", action="{% url 'start_project' project.id %}", method="POST")
 						button.btn.btn-xlarge.btn-primary(type="submit", value="submit") Yes!
 
-					a.btn.btn-xlarge.btn-secondary(href="{% 'my_account' %}") Not Yet.
+					a.btn.btn-xlarge.btn-secondary(href="{% url 'my_account' %}") Not Yet.
 
 					
 				
