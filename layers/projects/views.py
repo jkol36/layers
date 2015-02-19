@@ -124,6 +124,16 @@ def edit_project(request, project_id):
 
 		return redirect('project_status', project_id)
 
+
+def start_project(request, project_id):
+	if not request.POST:
+		return redirect('my_account')
+
+	else:
+		project = Project.objects.get(pk=project_id)
+		project.project_status = "assigning_designer"
+		project.save()
+		return redirect('my_account')
 	
 
 

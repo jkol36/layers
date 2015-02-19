@@ -26,7 +26,8 @@ urlpatterns = patterns('',
      url(r'^project_status/(\d+)/$', 'layers.projects.views.project_status', name='project_status'),
      url(r'^signup_for_emails$', 'layers.subscribe.views.signup_for_emails', name='signup_for_emails'),
      url(r'^all_projects$', 'layers.projects.views.all_projects', name='all_projects'),
-      url(r'^edit_project/(\d+)/$', 'layers.projects.views.edit_project', name='edit_project'),
+     url(r'^edit_project/(\d+)/$', 'layers.projects.views.edit_project', name='edit_project'),
+     url(r'^start_project/(\d+)/$', 'layers.projects.views.start_project', name='start_project'),
 
     # url(r'^blog/', include('blog.urls')),
 
