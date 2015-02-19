@@ -146,7 +146,10 @@ def start_project(request, project_id):
 	
 
 def bid_project(request, project_id):
-	pass
+	try:
+		pass
+	except ValueError:
+		pass
 
 
 
