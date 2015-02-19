@@ -10,29 +10,29 @@ block content
 		.submit-your-idea
 			include ./partials/tabs.html
 			- block tab_active
-			table.table.table-bordered.table-hover
-				if not projects
-					p There are no projects awaiting a designer currently. :(
-				else
-					thead
-						tr
-							th Name
-							th Description
-							th Minimum Budget
-							th Maximum Budget
-							th Interested?
-
-					tbody
-						for project in projects
+				table.table.table-bordered.table-hover
+					if not projects
+						p There are no projects awaiting a designer currently. :(
+					else
+						thead
 							tr
-								td {{project.title}}
-								td {{project.description}}
-								td ${{project.budget_min}}
-								td ${{project.budget_max}}
-								td
-									form(role="form", action="{% url 'project_status' project.id%}", method="GET")
-										input(type="hidden", name="project_id", value="{{project.id}}")
-										button(type="submit", style="color:#20CB92; background:transparent; border:none;") View More Info
+								th Name
+								th Description
+								th Minimum Budget
+								th Maximum Budget
+								th Interested?
+
+						tbody
+							for project in projects
+								tr
+									td {{project.title}}
+									td {{project.description}}
+									td ${{project.budget_min}}
+									td ${{project.budget_max}}
+									td
+										form(role="form", action="{% url 'project_status' project.id%}", method="GET")
+											input(type="hidden", name="project_id", value="{{project.id}}")
+											button(type="submit", style="color:#20CB92; background:transparent; border:none;") View More Info
 			
 			- endblock 
 
