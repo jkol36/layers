@@ -48,7 +48,7 @@ block content
                 input(type="hidden", name="project", value="{{project_id}}")
                 input(type="hidden", name="should_submit", id="should_submit")
             if not add_project
-              form(action="{% url 'submit_design' project %}", method="POST").dropzone#inspirationBoard
+              form(action="{% url 'submit_design' %}", method="POST").dropzone#inspirationBoard
                 - csrf_token
                 input(type="hidden", name="project", value="{{project}}")
                 input(type="hidden", id="should_submit", name="should_submit")
