@@ -80,6 +80,7 @@ def add_photo_to_project(request, project_id=None):
 
 @login_required
 def project_status(request, project_id):
+	print request.GET
 	try:
 		project = Project.objects.get(pk=project_id)
 	except Exception, NoProject:
