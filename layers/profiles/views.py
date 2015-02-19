@@ -99,6 +99,7 @@ def update_settings(request):
 	return redirect('my_account')
 
 
+
 		
 
 
