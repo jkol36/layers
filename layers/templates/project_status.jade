@@ -140,7 +140,7 @@ block content
 						form(role="form" id="bidProject", action="{% url 'bid_project' project.id %}", method="POST")
 							- csrf_token
 							button.btn.btn-xlarge.btn-primary(type="submit", form="bidProject", style="width:200px;", value="submit") I'll work on this.
-						a.btn.btn-xlarge.btn-secondary(href="{% url 'all_projects' %}", style="width:200px;") Keep Looking
+						a.btn.btn-xlarge.btn-secondary(href="{% url 'all_projects' %}", style="width:200px; margin-top:0;") Keep Looking
 
 					
 				
