@@ -98,8 +98,7 @@ def project_status(request, project_id):
 	try:
 		if request.GET["is_designer"] == "True":
 			return render(request, 'project_status.jade', {'project':project, 'photos':photos, 'is_designer':True})
-	except MultiValueDictKeyError:
-		
+	except Exception:
 		return render(request, 'project_status.jade', {'project':project, 'photos':photos})
 
 @login_required
