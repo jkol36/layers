@@ -44,7 +44,7 @@ block content
               {%endfor%}
               {%endif%}
               if request.user.is_authenticated
-                form#background_info(role='form', action="{% url 'add_project' %}", method="POST")
+                form#authenticated(role='form', action="{% url 'add_project' %}", method="POST")
                   - csrf_token
                   if forms.newprojectform
                     for field in forms.newprojectform
@@ -64,7 +64,7 @@ block content
                           input.form-control#budgetmax(name="budget_max", placeholder="eg. $1000")
                   .form-group
                     p.subheading(style="font-weight:800") * Indicates Required Field
-                    button.btn.btn-xlarge.btn-primary(type="submit", value="submit", form="background_info") Next
+                    button.btn.btn-xlarge.btn-primary(type="submit", value="submit", form="authenticated") Next
 
               else
                 form#background_info(role="form", action="{% url 'get_started' %}", method="POST")

@@ -13,7 +13,14 @@ from django.db.models import Q
 def add_project(request):
 	profile_id = request.user.id
 	forms = {'newprojectform':NewProject}
-	print request.GET
+	if request.GET:
+		try:
+			project_id =  request.session['project_id']
+			return render(request, 'inspiration.jade', {'forms':forms, 'project_id':project_id, 'add_project':True})
+		except Exception, NoId:
+			forms = {'newprojectform':NewProject}
+			return render(request, 'idea.jade', {'forms':forms, 'add_project':True})
+
 	if request.POST:
 		print "should submit is {}".format(request.POST.get('should_submit', ''))
 		form = NewProject(request.POST, profile=profile_id)
@@ -34,12 +41,7 @@ def add_project(request):
 			forms = {'newprojectform':NewProject}
 			return render(request, 'idea.jade', {'forms':forms, 'add_project':True})
 	
-	try:
-		project_id =  request.session['project_id']
-		return render(request, 'inspiration.jade', {'forms':forms, 'project_id':project_id, 'add_project':True})
-	except Exception, NoId:
-		forms = {'newprojectform':NewProject}
-		return render(request, 'idea.jade', {'forms':forms, 'add_project':True})
+	
 
 @login_required
 # adds a photo to a project
