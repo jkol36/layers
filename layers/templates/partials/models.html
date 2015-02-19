@@ -8,7 +8,7 @@
       <div class="modal-body">
         <form action="{% url 'edit_project' project.id %}" method="POST" id="updateProjectTitle">
 			{% csrf_token %}
-        	<input type="text" class="form-control" id="editProjectTitle" name="newProjectTitle">
+        	<input type="text" class="form-control" placeholder="New Project Title" id="editProjectTitle" name="newProjectTitle">
         </form>
       </div>
       <div class="modal-footer">
@@ -30,7 +30,7 @@
       <div class="modal-body">
         <form action="{% url 'edit_project' project.id %}" method="POST" id="updateProjectDescription">
       {% csrf_token %}
-          <textarea rows="4", cols="50" class="form-control" id="editProjectDescription" name="newProjectDescription"></textarea>
+          <textarea rows="4", cols="50" placeholder="New Project Description" class="form-control" id="editProjectDescription" name="newProjectDescription"></textarea>
         </form>
       </div>
       <div class="modal-footer">
@@ -52,8 +52,8 @@
         <form action="{% url 'edit_project' project.id %}" method="POST" id="updateProjectBudget">
       {% csrf_token %}
           <input type="hidden" id="newProjectBudget" name="newProjectBudget"> 
-          <input type="number" id="budget_min" name="new_budget_min">
-          <input type="number" id="budget_max" name="new_budget_max">
+          <input type="number" id="budget_min" placeholder="Enter a Number" name="new_budget_min">
+          <input type="number" id="budget_max" placeholder="Enter a Number" name="new_budget_max">
         </form>
       </div>
       <div class="modal-footer">
