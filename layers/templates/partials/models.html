@@ -64,4 +64,27 @@
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
+<div class="modal fade" id="editProjectBudget">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Change your budget</h4>
+      </div>
+      <div class="modal-body">
+        <form action="{% url 'edit_project' project.id %}" method="POST" id="updateProjectBudget">
+      {% csrf_token %}
+          <input type="hidden" id="newProjectBudget" name="newProjectBudget"> 
+          <input type="number" id="budget_min" placeholder="Enter a Number" name="new_budget_min">
+          <input type="number" id="budget_max" placeholder="Enter a Number" name="new_budget_max">
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" value="submit" form="updateProjectBudget" class="btn btn-primary">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
 
