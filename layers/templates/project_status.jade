@@ -139,8 +139,8 @@ block content
 					.col-md-8
 						form(role="form" id="bidProject", action="{% url 'bid_project' project.id %}", method="POST")
 							- csrf_token
-							button.btn.btn-xlarge.btn-primary(type="submit", form="bidProject", value="submit") I'll work on this. Get me in touch with the Client!
-					a.btn.btn-xlarge.btn-secondary(href="{% url 'all_projects' %}") Go Back
+							button.btn.btn-xlarge.btn-primary(type="submit", form="bidProject", value="submit") I'll work on this.
+						a.btn.btn-xlarge.btn-secondary(href="{% url 'all_projects' %}") Go Back
 
 					
 				
