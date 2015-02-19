@@ -37,6 +37,23 @@ block content
 				div(role="tab-panel", class="tab-pane", id="myProjects")
 					if not my_projects
 						p You do not currently have any projects. 
+
+					else
+						thead
+								tr
+									th Name
+									th Description
+									th Minimum Budget
+									th Maximum Budget
+									th Interested?
+
+							tbody
+								for project in my_projects
+									tr
+										td {{project.title}}
+										td {{project.description}}
+										td ${{project.budget_min}}
+										td ${{project.budget_max}}
 			
 
 
