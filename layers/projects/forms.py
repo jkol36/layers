@@ -191,7 +191,6 @@ class editProject(forms.ModelForm):
 	def __init__(self, *args, **kwargs):
 		self.project_id = kwargs.pop('project_id')
 		self.project = Project.objects.get(pk=self.project_id)
-		
 		super(editProject, self).__init__(*args, **kwargs)
 		
 		
@@ -210,9 +209,9 @@ class editProject(forms.ModelForm):
 		return new_description
 
 	def clean_budget_min(self):
-		if not "newBudgetMin" in self.data:
+		if not "new_budget_min" in self.data:
 			return None
-		budget_min = self.data.get('newBudgetMin')
+		budget_min = self.data.get('new_budget_min')
 		if ',' in budget_min and '$' in budget_min:
 			budget_min_split = budget_min.split(',')
 			budget_min_cleaned = budget_min_split[0] + budget_min_split[1]
@@ -246,10 +245,10 @@ class editProject(forms.ModelForm):
 
 
 	def clean_budget_max(self):
-		if not "newBudgetMax" in self.data:
+		if not "new_budget_max" in self.data:
 			return None
 
-		budget_max = self.data.get("newBudgetMax")
+		budget_max = self.data.get("new_budget_max")
 		if ',' in budget_max and '$' in budget_max:
 			budget_split = budget_max.split(',')
 			cleaned_budget_max = budget_split[0] + budget_split[1]
