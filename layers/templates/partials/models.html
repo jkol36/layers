@@ -75,7 +75,7 @@
         <form action="{% url 'edit_project' project.id %}" method="POST" id="updateProjectDueDate">
       {% csrf_token %}
           <input type="hidden" id="newProjectBudget" name="newProjectDueDate"> 
-          <input type="text" placeholder="mm--dd--yy" name="due_date">
+          <input type="text" placeholder="mm--dd--yyyy" name="due_date">
         </form>
       </div>
       <div class="modal-footer">
