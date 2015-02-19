@@ -146,10 +146,7 @@ def start_project(request, project_id):
 	
 
 def bid_project(request, project_id):
-	try:
-		pass
-	except ValueError:
-		pass
+	return redirect('all_projects')
 
 
 
