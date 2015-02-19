@@ -17,6 +17,18 @@
     <div role="tabpanel" class="tab-pane" id="myProjects">...
   
     </div>
+    <script type="text/javascript"> 
+    $("#myProjects a").click(function(e){
+      e.preventDefault()
+      $(this).tab("show")
+    });
+    </script>
+     <script type="text/javascript"> 
+     $("#openProjects a").click(function(e){
+      e.preventDefault()
+      $(this).tab("show")
+     });
+     </script>
     {% endblock tab_myprojects %}
    
   </div>
