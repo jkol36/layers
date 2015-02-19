@@ -285,6 +285,7 @@ class editProject(forms.ModelForm):
 		if not due_date:
 			return None
 		year = int(due_date[6:])
+		print "year{}".format(year)
 		month = int(due_date[3:5])
 		day = int(due_date[:2])
 		due_date_object = date(year, month, day)
