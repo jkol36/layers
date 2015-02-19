@@ -13,7 +13,6 @@ from django.db.models import Q
 def add_project(request):
 	profile_id = request.user.id
 	forms = {'newprojectform':NewProject}
-	
 
 	if request.POST:
 		print "should submit is {}".format(request.POST.get('should_submit', ''))
@@ -25,7 +24,7 @@ def add_project(request):
 			request.session['project_id'] = project_id
 			messages.success(request, "Awesome! Now let's add some pics.")
 			forms = {'newprojectform':NewProject}
-			return render(request, 'inspiration.jade', {'forms':forms, 'add_project':True, 'project':project_id})
+			return redirect('add_photo_to_project', project_id)
 		else:
 			print "not valid"
 			for t, z in form.errors.items():
