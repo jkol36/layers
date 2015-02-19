@@ -279,6 +279,24 @@ class editProject(forms.ModelForm):
 				else:
 					raise forms.ValidationError('You should have a budget of at least $100.')
 
+	
+	def clean_due_date(self):
+		due_date = self.cleaned_data['due_date']
+		if not due_date:
+			return None
+		year = int(due_date[0:4])
+		month = int(due_date[5:7])
+		day = int(due_date[8:])
+		due_date_object = date(year, month, day)
+		print due_date_object
+		today = date.fromtimestamp(time.time())
+		print today
+		ship_date = abs(due_date_object - today).days
+		if ship_date < 14:
+			raise forms.ValidationError('Your order will take at least 2 weeks to design and develop. Please select a later date.')
+		else:
+			return due_date
+		
 	def save(self):
 		if self.cleaned_data.get('title'):
 			self.project.title = self.cleaned_data['title']
