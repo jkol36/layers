@@ -93,7 +93,7 @@ def project_status(request, project_id):
 
 
 	if request.GET["is_designer"] == "True":
-		return render(reqesut, 'project_status.jade', {'project':project, 'photos':photos, 'is_designer':True})
+		return render(request, 'project_status.jade', {'project':project, 'photos':photos, 'is_designer':True})
 
 	else:
 		
