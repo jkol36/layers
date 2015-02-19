@@ -296,7 +296,7 @@ class editProject(forms.ModelForm):
 		if ship_date < 14:
 			raise forms.ValidationError('Your order will take at least 2 weeks to design and develop. Please select a later date.')
 		else:
-			return due_date
+			return due_date_object
 
 	def save(self):
 		if self.cleaned_data.get('title'):
