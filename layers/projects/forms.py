@@ -283,6 +283,7 @@ class editProject(forms.ModelForm):
 			self.project.title = self.cleaned_data['title']
 		
 		elif self.cleaned_data.get('budget_min'):
+			print self.cleaned_data.get('budget_min')
 			self.project.budget_min = self.cleaned_data['budget_min']
 
 		elif self.cleaned_data.get('budget_max'):
