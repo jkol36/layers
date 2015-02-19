@@ -52,8 +52,8 @@
         <form action="{% url 'edit_project' project.id %}" method="POST" id="updateProjectDescription">
       {% csrf_token %}
           <input type="hidden" id="newProjectBudget" name="newProjectBudget"> 
-          <input type="number" class="form-control" id="budget_min" name="new_budget_min">
-          <input type="number" class="form-control" id="budget_max" name="new_budget_max">
+          <input type="number" id="budget_min" name="new_budget_min">
+          <input type="number" id="budget_max" name="new_budget_max">
         </form>
       </div>
       <div class="modal-footer">
