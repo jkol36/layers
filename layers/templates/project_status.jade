@@ -122,15 +122,25 @@ block content
 						img(src="{{MEDIA_URL}}{{i.image}}", style="padding-right:10px;", width="300", height="300")
 						
 			.row
-				.col-md-4
-					h2 Are you ready to start your project?
+				if not is_designer
+					.col-md-4
+						h2 Are you ready to start your project?
 
-				.col-md-8
-					form(role="form", id="start_project", action="{% url 'start_project' project.id %}", method="POST")
-						- csrf_token
-						button.btn.btn-xlarge.btn-primary(type="submit", value="submit") Yes!
+					.col-md-8
+						form(role="form", id="start_project", action="{% url 'start_project' project.id %}", method="POST")
+							- csrf_token
+							button.btn.btn-xlarge.btn-primary(type="submit", value="submit") Yes!
 
-					a.btn.btn-xlarge.btn-secondary(href="{% url 'my_account' %}") Not Yet.
+						a.btn.btn-xlarge.btn-secondary(href="{% url 'my_account' %}") Not Yet.
+				else
+					.col-md-4
+						h2 Actions
+
+					.col-md-8
+						form(role="form" id="bidProject", action="{% url 'bid_project' project.id %}", method="POST")
+							- csrf_token
+							button.btn.btn-xlarge.btn-primary(type="submit", form="bidProject" value="submit") I'll work on this. Get me in touch with the Client!
+					a.btn.btn-xlarge.btn-secondary(href="{% url 'designer_view' %}") Go Back
 
 					
 				

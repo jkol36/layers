@@ -80,7 +80,7 @@ def add_photo_to_project(request, project_id=None):
 
 @login_required
 def project_status(request, project_id):
-	print request.GET
+	
 	try:
 		project = Project.objects.get(pk=project_id)
 	except Exception, NoProject:
@@ -90,8 +90,14 @@ def project_status(request, project_id):
 		photos = project.photo_set.all()
 	except Exception, e:
 		photos = None
+
+
+	if request.GET("is_designer", '') == "True":
+		return render(reqesut, 'project_status.jade', {'project':project, 'photos':photos, 'is_designer':True})
+
+	else:
 		
-	return render(request, 'project_status.jade', {'project':project, 'photos':photos})
+		return render(request, 'project_status.jade', {'project':project, 'photos':photos})
 
 @login_required
 def all_projects(request):
