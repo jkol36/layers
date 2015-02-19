@@ -122,17 +122,7 @@ block content
 						img(src="{{MEDIA_URL}}{{i.image}}", style="padding-right:10px;", width="300", height="300")
 						
 			.row
-				if not is_designer
-					.col-md-4
-						h2 Are you ready to start your project?
-
-					.col-md-8
-						form(role="form", id="start_project", action="{% url 'start_project' project.id %}", method="POST")
-							- csrf_token
-							button.btn.btn-xlarge.btn-primary(type="submit", value="submit") Yes!
-
-						a.btn.btn-xlarge.btn-secondary(href="{% url 'my_account' %}") Not Yet.
-				else
+				if is_designer
 					.col-md-4
 						h2 Actions
 
@@ -142,5 +132,16 @@ block content
 							button.btn.btn-xlarge.btn-primary(type="submit", form="bidProject", style="width:200px;", value="submit") I'll work on this.
 						a.btn.btn-xlarge.btn-secondary(href="{% url 'all_projects' %}", style="width:200px; margin-top:0;") Keep Looking
 
+				else
+					.col-md-4
+						h2 Are you ready to start your project?
+
+					.col-md-8
+						form(role="form", id="start_project", action="{% url 'start_project' project.id %}", method="POST")
+							- csrf_token
+							button.btn.btn-xlarge.btn-primary(type="submit", value="submit") Yes!
+
+						a.btn.btn-xlarge.btn-secondary(href="{% url 'my_account' %}") Not Yet.
+			
 					
 				
