@@ -50,6 +50,7 @@ def add_photo_to_project(request, project_id=None):
 		project_id = project_id
 	
 	if request.method == "GET":
+		print dir(request)
 		return render(request, 'inspiration.jade', {'project_id':project_id, 'add_project':True})
 
 	elif request.method =="POST" and request.FILES:
@@ -63,7 +64,9 @@ def add_photo_to_project(request, project_id=None):
 				p.project_status = "submit_idea"
 				p.save()
 				photos = Photo.objects.filter(project=p)
-			return redirect('project_status', project_id)
+				return redirect('project_status', project_id)
+			else:
+				return redirect('my_account')
 
 		else:
 			for t, z in form.errors.items():
