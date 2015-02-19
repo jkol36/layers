@@ -49,10 +49,10 @@ def add_photo_to_project(request, project_id=None):
 	else:
 		project_id = project_id
 	
-	if request.method == "GET":
-		print request.is_ajax
+	if request.method == "GET" and not request.is_ajax():
 		return render(request, 'inspiration.jade', {'project_id':project_id, 'add_project':True})
-
+	elif request.method =="GET" and request.is_ajax():
+		pass
 	elif request.method =="POST" and request.FILES:
 		form = add_photo_form(request.POST, request.FILES, project_id=project_id)
 		if form.is_valid():
