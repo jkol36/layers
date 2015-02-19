@@ -73,8 +73,7 @@
       </div>
       <div class="modal-body">
         <form action="{% url 'edit_project' project.id %}" method="POST" id="updateProjectDueDate">
-      {% csrf_token %}
-          <input type="hidden" id="newProjectDueDate" name="newProjectDueDate"> 
+          {% csrf_token %}
           <input type="text" placeholder="New Due Date" id="duedate" name="due_date">
         </form>
       </div>
