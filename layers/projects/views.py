@@ -95,7 +95,7 @@ def project_status(request, project_id):
 @login_required
 def all_projects(request):
 	all_projects = Project.objects.filter(Q(designer_assigned=False, project_status="submit_idea") | Q(project_status="assigning_designer"))
-	my_projects = Project.objects.filter(designer=request.user)
+	my_projects = Project.objects.filter(designer=request.user.accounts)
 	print dir(request.user.accounts)
 	return render(request, 'designer_view.jade', {'projects':all_projects, 'my_projects':my_projects})
 
