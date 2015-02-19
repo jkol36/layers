@@ -1,5 +1,17 @@
 <div role="tabpanel">
  <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+ <script type="text/javascript"> 
+    $("#myProjects a").click(function(e){
+      e.preventDefault()
+      $(this).tab("show")
+    });
+    </script>
+     <script type="text/javascript"> 
+     $("#openProjects a").click(function(e){
+      e.preventDefault()
+      $(this).tab("show")
+     });
+     </script>
 
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
@@ -18,19 +30,8 @@
     <div role="tabpanel" class="tab-pane" id="myProjects">...
   
     </div>
-    <script type="text/javascript"> 
-    $("#myProjects a").click(function(e){
-      e.preventDefault()
-      $(this).tab("show")
-    });
-    </script>
-     <script type="text/javascript"> 
-     $("#openProjects a").click(function(e){
-      e.preventDefault()
-      $(this).tab("show")
-     });
-     </script>
-    {% endblock tab_myprojects %}
+     {% endblock tab_myprojects %}
+
    
   </div>
 
