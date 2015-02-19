@@ -145,6 +145,8 @@ def start_project(request, project_id):
 		return redirect('my_account')
 	
 
+def bid_project(request, project_id):
+	pass
 
 
 

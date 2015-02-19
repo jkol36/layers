@@ -28,6 +28,7 @@ urlpatterns = patterns('',
      url(r'^all_projects$', 'layers.projects.views.all_projects', name='all_projects'),
      url(r'^edit_project/(\d+)/$', 'layers.projects.views.edit_project', name='edit_project'),
      url(r'^start_project/(\d+)/$', 'layers.projects.views.start_project', name='start_project'),
+     url(r'^bid_project/(\d+)/$', 'layers.projects.views.bid_project', name='bid_project'),
 
     # url(r'^blog/', include('blog.urls')),
 
