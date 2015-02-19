@@ -24,7 +24,7 @@ def add_project(request):
 			request.session['project_id'] = project_id
 			messages.success(request, "Awesome! Now let's add some pics.")
 			forms = {'newprojectform':NewProject}
-			return redirect('add_photo_to_project', project_id)
+			return redirect('add_photo', project_id)
 		else:
 			print "not valid"
 			for t, z in form.errors.items():
