@@ -287,7 +287,9 @@ class editProject(forms.ModelForm):
 		year = int(due_date[6:])
 		print "year{}".format(year)
 		month = int(due_date[3:5])
+		print "month{}".format(month)
 		day = int(due_date[:2])
+		print "day{}".format(day)
 		due_date_object = date(year, month, day)
 		print due_date_object
 		today = date.fromtimestamp(time.time())
