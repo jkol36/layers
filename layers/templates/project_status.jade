@@ -131,10 +131,10 @@ block content
 						h2 Actions
 
 					.col-md-8
-						.col-md-4
+						.col-md-3
 							form(role="form" id="bidProject", action="{% url 'bid_project' project.id %}", method="POST")
 								- csrf_token
-								button.btn.btn-xlarge.btn-primary(type="submit", form="bidProject", style="width:200px;", value="submit") I'll work on this.
+								button.btn.btn-xlarge.btn-primary(type="submit", form="bidProject", style="width:200px;", value="submit") Apply for Job
 						.col-md-4
 							a.btn.btn-xlarge.btn-secondary(href="{% url 'all_projects' %}", style="width:200px;") Keep Looking
 
