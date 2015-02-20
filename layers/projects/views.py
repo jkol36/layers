@@ -53,7 +53,7 @@ def add_photo_to_project(request, project_id=None):
 		return render(request, 'inspiration.jade', {'project_id':project_id, 'add_project':True})
 	elif request.method =="GET" and request.is_ajax():
 		pass
-	elif request.method =="POST" and request.FILES:
+	if request.method =="POST" and request.FILES:
 		form = add_photo_form(request.POST, request.FILES, project_id=project_id)
 		if form.is_valid():
 			#if the form is valid clear the session
@@ -63,7 +63,6 @@ def add_photo_to_project(request, project_id=None):
 				p = Project.objects.get(pk=project_id)
 				p.project_status = "submit_idea"
 				p.save()
-				photos = Photo.objects.filter(project=p)
 				return redirect('project_status', project_id)
 			else:
 				return redirect('my_account')
@@ -74,6 +73,12 @@ def add_photo_to_project(request, project_id=None):
 			return redirect('add_photo_to_project', project_id)
 
 	elif request.method == "POST" and not request.FILES:
+		if not request.POST.get("should_submit", '') == "true":
+			p = Project.objects.get(pk=project_id)
+			p.project_status = "submit_idea"
+			p.save()
+			return redirect('project_status', project_id)
+
 		try:
 			request.session.__delitem__('project_id')
 		except KeyError:
