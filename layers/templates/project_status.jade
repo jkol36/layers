@@ -145,9 +145,9 @@ block content
 						.col-md-2
 							form(role="form", id="start_project", action="{% url 'start_project' project.id %}", method="POST")
 								- csrf_token
-								button.btn.btn-xlarge.btn-primary(type="submit", value="submit") Yes!
+								button.btn.btn-xlarge.btn-primary(type="submit", value="submit") Submit
 						.col-md-4
-							a.btn.btn-xlarge.btn-secondary(href="{% url 'my_account' %}") Not Yet.
+							a.btn.btn-xlarge.btn-secondary(href="{% url 'my_account' %}") Save
 					{%endif %}
 					
 				
