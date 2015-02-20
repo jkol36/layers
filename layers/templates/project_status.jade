@@ -142,11 +142,12 @@ block content
 						h2 Are you ready to start your project?
 
 					.col-md-8
-						form(role="form", id="start_project", action="{% url 'start_project' project.id %}", method="POST")
-							- csrf_token
-							button.btn.btn-xlarge.btn-primary(type="submit", value="submit") Yes!
-
-						a.btn.btn-xlarge.btn-secondary(href="{% url 'my_account' %}") Not Yet.
+						.col-md-4
+							form(role="form", id="start_project", action="{% url 'start_project' project.id %}", method="POST")
+								- csrf_token
+								button.btn.btn-xlarge.btn-primary(type="submit", value="submit") Yes!
+						.col-md-4
+							a.btn.btn-xlarge.btn-secondary(href="{% url 'my_account' %}") Not Yet.
 					{%endif %}
 					
 				
