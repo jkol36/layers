@@ -142,7 +142,7 @@ block content
 						h2 Are you ready to start your project?
 
 					.col-md-8
-						.col-md-4
+						.col-md-2
 							form(role="form", id="start_project", action="{% url 'start_project' project.id %}", method="POST")
 								- csrf_token
 								button.btn.btn-xlarge.btn-primary(type="submit", value="submit") Yes!
