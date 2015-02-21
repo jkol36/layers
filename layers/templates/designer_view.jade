@@ -59,40 +59,43 @@ block content
 						.row
 							.col-md-8
 								p Your Projects
-								thead
-									th Name
-									th Description
-									th Minimum Budget
-									th Maximum Budget
-								tbody
-									for project in my_projects
-										tr
-											td {{project.title}}
-											td {{project.description}}
-											td ${{project.budget_min}}
-											td ${{project.budget_max}}
+								table.table-bordered.hover
+									thead
+										th Name
+										th Description
+										th Minimum Budget
+										th Maximum Budget
+									tbody
+										for project in my_projects
+											tr
+												td {{project.title}}
+												td {{project.description}}
+												td ${{project.budget_min}}
+												td ${{project.budget_max}}
 
 							.col-md-4
 								p These projects you've applied to.
-								thead
-									th Name
-									th Status
+								table.table-bordered.hover
+									thead
+										th Name
+										th Status
 
-								tbody
-									for project in pending_projects
-										tr {{project.project.title}}
-										tr Pending
+									tbody
+										for project in pending_projects
+											tr {{project.project.title}}
+											tr Pending
 
 					elif not pending_projects and my_projects
 						.row
 							.col-md-8
 								p Your Projects
-								thead
-									th Name
-									th Description
-									th Minimum Budget
-									th Maximum Budget
-								tbody
+									table.table-bordered.hover
+									thead
+										th Name
+										th Description
+										th Minimum Budget
+										th Maximum Budget
+									tbody
 									for project in my_projects
 										tr {{project.title}}
 										tr {{project.description}}
@@ -102,14 +105,16 @@ block content
 							.col-md-4
 								p Projects pending approval
 
-								thead
-									th Name
-									th Status
+								table.table-bordered.hover
 
-								tbody
-									for project in pending_projects
-										tr {{project.project.title}}
-										tr Pending
+									thead
+										th Name
+										th Status
+
+									tbody
+										for project in pending_projects
+											tr {{project.project.title}}
+											tr Pending
 
 
 			
