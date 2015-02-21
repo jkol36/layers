@@ -1,5 +1,5 @@
 from django.db import models
-from layers.profiles.models import *
+from layers.profiles.models import Layers_Profile
 from sorl.thumbnail import ImageField
 
 # Create your models here.
@@ -49,6 +49,11 @@ class Photo(models.Model):
 	caption = models.CharField(max_length=250, blank=True, null=True)
 	image = ImageField(upload_to='project_pics/', blank=True, null=True)
 	project = models.ForeignKey(Project)
+
+
+class Project_Applicant(models.Model):
+	project = models.ForeignKey(Project, related_name="projects_applied_to")
+	designer = models.ForeignKey(Layers_Profile)
 
 	
 
