@@ -152,8 +152,10 @@ def start_project(request, project_id):
 		return redirect('my_account')
 	
 
-def bid_project(request, project_id):
-	return redirect('all_projects')
+def bid_project(request, project_id, designer_id):
+	if request.POST:
+		print request.POST
+	
 
 
 
