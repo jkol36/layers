@@ -101,7 +101,7 @@ def project_status(request, project_id):
 		photos = None
 
 	try:
-		request.GET["is_designer"]:
+		request.GET["is_designer"]
 	except Exception:
 		return render(request, 'project_status.jade', {'project':project, 'photos':photos})
 	return render(request, 'project_status.jade', {'project':project, 'photos':photos, 'is_designer':True})
