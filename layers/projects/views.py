@@ -156,7 +156,6 @@ def bid_project(request, project_id, designer_id):
 		project = Project.objects.get(pk=project_id)
 		designer = Layers_Profile.objects.get(pk=designer_id)
 		project_applicant = Project_Applicant.objects.get_or_create(project=project, designer=designer)
-		project_applicant.save()
 		messages.success(request, "We've recieved your request to work on this project. You should here from us shortly!")
 		return redirect('all_projects')
 	else:
