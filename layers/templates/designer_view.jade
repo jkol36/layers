@@ -46,14 +46,15 @@ block content
 
 							.col-md-4
 								p Projects pending approval
-								thead
-									th Name
-									th Status
+								table.table-bordered.hover
+									thead
+										th Name
+										th Status
 
-								tbody
-									for project in pending_projects
-										tr {{project.project.title}}
-										tr Pending
+									tbody
+										for project in pending_projects
+											tr {{project.project.title}}
+											tr Pending
 									
 					elif my_projects and pending_projects
 						.row
@@ -106,7 +107,6 @@ block content
 								p Projects pending approval
 
 								table.table-bordered.hover
-
 									thead
 										th Name
 										th Status
