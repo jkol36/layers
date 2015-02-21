@@ -101,11 +101,10 @@ def project_status(request, project_id):
 		photos = None
 
 	try:
-		if request.GET["is_designer"]:
-			return render(request, 'project_status.jade', {'project':project, 'photos':photos, 'is_designer':True})
+		request.GET["is_designer"]:
 	except Exception:
 		return render(request, 'project_status.jade', {'project':project, 'photos':photos})
-
+	return render(request, 'project_status.jade', {'project':project, 'photos':photos, 'is_designer':True})
 @login_required
 def all_projects(request):
 	all_projects = Project.objects.filter(Q(designer_assigned=False, project_status="submit_idea") | Q(project_status="assigning_designer")).exclude(Q(client=request.user.accounts) | Q(designer=request.user.accounts))
