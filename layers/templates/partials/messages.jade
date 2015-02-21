@@ -1,0 +1,6 @@
+if messages
+    for message in messages
+      if message.tags = 'success'
+        div.alert.alert-success {{message}}
+      if message.tags = 'error'
+        div.alert.alert-danger {{message}}
