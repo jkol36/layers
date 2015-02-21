@@ -109,6 +109,7 @@ def project_status(request, project_id):
 def all_projects(request):
 	all_projects = Project.objects.filter(Q(designer_assigned=False, project_status="submit_idea") | Q(project_status="assigning_designer")).exclude(Q(client=request.user.accounts) | Q(designer=request.user.accounts))
 	my_projects = Project.objects.filter(designer=request.user.accounts)
+	projects_applied_to = Project_Applicant.objects.filter(designer=request.user.accounts)
 	print dir(request.user.accounts)
 	return render(request, 'designer_view.jade', {'projects':all_projects, 'my_projects':my_projects})
 
