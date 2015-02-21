@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from layers.profiles.models import Profile, Layers_Profile
-from .models import Project, Photo
+from .models import Project, Photo, Project_Applicant
 from django.contrib.auth.decorators import login_required
 from .forms import add_photo_form, NewProject, editProject
 from django.contrib import messages
@@ -153,7 +153,14 @@ def start_project(request, project_id):
 
 def bid_project(request, project_id, designer_id):
 	if request.POST:
-		print request.POST
+		project = Project.objects.get(pk=project_id)
+		designer = Layers_Profile.objects.get(pk=designer_id)
+		project_applicant = Project_Applicant.objects.get_or_create(project=project, designer=designer)
+		project_applicant.save()
+		messages.success(request, "We've recieved your request to work on this project. You should here from us shortly!")
+		return redirect('all_projects')
+	else:
+		return redirect('all_projects')
 	
 
 
