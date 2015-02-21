@@ -13,7 +13,7 @@ block content
 			.tab-content
 				div(role="tab-panel", class="tab-pane active", id="openProjects")
 					table.table.table-bordered.table-hover
-						if not projects
+						if not projects 
 							p There are no projects awaiting a designer currently. :(
 						else
 							thead
@@ -36,27 +36,84 @@ block content
 												input(type="hidden", name="is_designer", value="True")
 												button(type="submit", style="color:#20CB92; background:transparent; border:none;") View More Info
 				div(role="tab-panel", class="tab-pane", id="myProjects")
-					if not my_projects
+					if not my_projects and not pending_projects
 						p You do not currently have any projects. 
 
-					else
-						thead
-								tr
+					elif not my_projects and pending_projects
+						.row
+							.col-md-8
+									p You do not currently have any projects.
+
+							.col-md-4
+								p Projects pending approval
+								thead
+									th Name
+									th Status
+
+								tbody
+									for project in pending_projects
+										tr {{project.project.title}}
+										tr Pending
+									
+					elif my_projects and pending_projects
+						.row
+							.col-md-8
+								p Your Projects
+								thead
 									th Name
 									th Description
 									th Minimum Budget
 									th Maximum Budget
-									th Interested?
+								tbody
+									for project in my_projects
+										tr
+											td {{project.title}}
+											td {{project.description}}
+											td ${{project.budget_min}}
+											td ${{project.budget_max}}
 
-							tbody
-								for project in my_projects
-									tr
-										td {{project.title}}
-										td {{project.description}}
-										td ${{project.budget_min}}
-										td ${{project.budget_max}}
+							.col-md-4
+								p These projects you've applied to.
+								thead
+									th Name
+									th Status
+
+								tbody
+									for project in pending_projects
+										tr {{project.project.title}}
+										tr Pending
+
+					elif not pending_projects and my_projects
+						.row
+							.col-md-8
+								p Your Projects
+								thead
+									th Name
+									th Description
+									th Minimum Budget
+									th Maximum Budget
+								tbody
+									for project in my_projects
+										tr {{project.title}}
+										tr {{project.description}}
+										tr {{project.budget_min}}
+										tr {{project.budget_max}}
+							
+							.col-md-4
+								p Projects pending approval
+
+								thead
+									th Name
+									th Status
+
+								tbody
+									for project in pending_projects
+										tr {{project.project.title}}
+										tr Pending
+
+
 			
-
+				
 
 
 				
