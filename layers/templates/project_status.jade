@@ -58,10 +58,33 @@ block content
 							a.hold.center-block
 							{% endif %}
 				ul.nav.nav-pills.process-mobile
+					{% if project.project_status == "submit_idea"}
 					li.active
 					li
 					li
 					li
+					{% elif project.project_status == "assigning_designer" %}
+					li
+					li.active
+					li
+					li
+					{% elif project.project_status == "design_center" %}
+					li
+					li
+					li.active
+					li
+					{% elif project.project_status == "manufacturing" %}
+					li
+					li
+					li.active
+					li
+					{% elif project.project_status == "shipping" %}
+					li
+					li
+					li
+					li.active
+					{%endif %}
+
 			//- END OF COMMENTS UP TOP
 			
 			.row(style="margin-top:5%;")
