@@ -167,7 +167,12 @@ block content
 						h2 Are you ready to start your project?
 
 					.col-md-8
-						.col-md-2
+						p Are you ready to start your design project?
+						ul
+							li Click Submit if you are ready to begin.
+							li Click Save if you want to keep brainstorming and come back to your project at a later date.
+					.row
+						.col-md-8.col-md-offset-4
 							form(role="form", id="start_project", action="{% url 'start_project' project.id %}", method="POST")
 								- csrf_token
 								button.btn.btn-xlarge.btn-primary(type="submit", value="submit") Submit
