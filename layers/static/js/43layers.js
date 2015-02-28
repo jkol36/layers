@@ -56,8 +56,6 @@ var currentWidth = $('.inspiration').width();
 $('.inspiration').css({'height': currentWidth+'px'});
 
 
-// Datepicker
-rome(duedate, {time: false});
 
 
 //CheckBox function
@@ -81,4 +79,7 @@ function is_submitted() {
 	should_submit.value = true;
 
 };
+
+// Datepicker
+rome(duedate, {time: false});
 
