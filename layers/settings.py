@@ -22,6 +22,8 @@ SECRET_KEY = 'xtr$+&)$@h28=qc%=z%wqhlf5%t=jinxl0zil%8qp3dvy3+#$n'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+LOCAL = True
+
 TEMPLATE_DEBUG = True
 
 
@@ -63,27 +65,29 @@ WSGI_APPLICATION = 'layers.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
-#if DEBUG == True:
-  #  DATABASES = {
-    #    'default': {
-     #       'ENGINE': 'django.db.backends.sqlite3',
-      #      'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-       # },
-    #}
-DATABASES = {
-    'default': {
-        'ENGINE':'django.db.backends.postgresql_psycopg2',
-        'NAME':'layers_db',
-        'USER': 'layers_django',
-        'PASSWORD':'StoreTheLayers',
-        'HOST':'localhost',
-        'PORT':'',
+if DEBUG == True and LOCAL == True:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         },
     }
 
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE':'django.db.backends.postgresql_psycopg2',
+            'NAME':'layers_db',
+            'USER': 'layers_django',
+            'PASSWORD':'StoreTheLayers',
+            'HOST':'localhost',
+            'PORT':'',
+            },
+        }
 
-SESSION_ENGINE = 'redis_sessions.session'
-SESSION_REDIS_UNIX_DOMAIN_SOCKET_PATH = '/var/run/redis/redis.sock'
+if LOCAL == False:
+    SESSION_ENGINE = 'redis_sessions.session'
+    SESSION_REDIS_UNIX_DOMAIN_SOCKET_PATH = '/var/run/redis/redis.sock'
 #allowed hosts
 ALLOWED_HOSTS = ['*']
 # Internationalization
