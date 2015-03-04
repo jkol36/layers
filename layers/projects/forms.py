@@ -105,9 +105,10 @@ class NewProject(forms.ModelForm):
 				raise forms.ValidationError('You should have a budget of at least $100.')
 		
 		elif not '$' in budget_min and ',' in budget_min:
+			print "holla at me motha fucka"
 			cleaned_budget_min = budget_min.split(',')
 			budget_min_cleaned = cleaned_budget_min[0] + cleaned_budget_min[1]
-			if int(cleaned_budget_min) >= 100:
+			if int(budget_min_cleaned) >= 100:
 				return budget_min_cleaned
 			else:
 				raise forms.ValidationError('You should have a budget of at least $100')
@@ -284,6 +285,7 @@ class editProject(forms.ModelForm):
 		due_date = self.cleaned_data['due_date']
 		if not due_date:
 			return None
+		
 		year = int(due_date[6:])
 		print "year{}".format(year)
 		month = int(due_date[:2])
