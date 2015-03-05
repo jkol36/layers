@@ -43,3 +43,7 @@ if settings.DEBUG:
             'document_root': settings.MEDIA_ROOT,
         }),
    )
+
+handler404 = 'layers.profiles.views.handle404'
+handler500 = 'layers.profiles.views.handle404'
+handler400 = 'layers.profiles.views.handle404'

@@ -105,9 +105,7 @@ USE_TZ = True
 
 ### 404 error page
 
-handler404 = 'layers.profiles.views.handle404'
-handler500 = 'layers.profiles.views.handle404'
-handler400 = 'layers.profiles.views.handle404'
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
