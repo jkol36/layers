@@ -20,11 +20,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = 'xtr$+&)$@h28=qc%=z%wqhlf5%t=jinxl0zil%8qp3dvy3+#$n'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-LOCAL = True
+LOCAL = False
 
-TEMPLATE_DEBUG = True
+TEMPLATE_DEBUG = False
 
 
 
@@ -103,6 +103,11 @@ USE_L10N = True
 
 USE_TZ = True
 
+### 404 error page
+
+handler404 = 'layers.views.handle404'
+handler500 = 'layers.views.handle404'
+handler400 = 'layers.views.handle404'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/

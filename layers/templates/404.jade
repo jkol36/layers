@@ -1,0 +1,22 @@
+extends ./partials/_base.jade
+block title
+	title Uh-Oh something went wrong :(
+
+block content
+	include ./partials/_header.jade
+
+	.content
+		.container-fluid
+			.row
+				.col-md-12
+					h1 Nope, that definitely doesn't look right...
+					p 404: Page not found.
+					
+					h2 Perhaps you are here because:
+					ul
+						li The page you are looking for no longer exists.
+						li The page was moved.
+						li You love 404 pages.
+					a(href="{% url 'home' %}") Return Home
+
+					img(src="{{STAITC_URL}}/images/404.png")
