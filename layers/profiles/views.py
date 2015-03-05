@@ -23,6 +23,8 @@ def home(request):
 	return render(request, 'index.jade', {'forms':forms})
 
 
+def handle404(request):
+	return render(request, '404.jade')
 def complete_signup(request):
 	profile_id = request.session.get('profile', '')
 	profile = Profile.objects.get(pk=profile_id)
