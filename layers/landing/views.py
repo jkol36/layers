@@ -4,7 +4,7 @@ from django.contrib import messages
 from layers.profiles.forms import UserForm
 from layers.contact.forms import contactus
 from layers.subscribe.utils import add_subscriber
-import logger
+import logging
 logger = logging.getLogger(__name__)
 
 # Create your views here.
