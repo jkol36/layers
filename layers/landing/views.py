@@ -4,6 +4,8 @@ from django.contrib import messages
 from layers.profiles.forms import UserForm
 from layers.contact.forms import contactus
 from layers.subscribe.utils import add_subscriber
+import logger
+logger = logging.getLogger(__name__)
 
 # Create your views here.
 
@@ -31,6 +33,7 @@ def signup_view(request):
 	if not form.is_valid():
 		for t,z in form.errors.items():
 			messages.error(request, t + z.as_text())
+			logger.error(t+z.as_text())
 		return render(request, 'signup.jade', {'forms':UserForm})
 		
 	form.save()
@@ -65,6 +68,7 @@ def contact(request):
 	if not form.is_valid():
 		for t,z in form.errors.items():
 			messages.error(request, t + z.as_text())
+			logger.error(t+z.as_text())
 		return render(request, 'contact.jade')
 		
 	form.save()

@@ -6,6 +6,8 @@ from layers.profiles.models import Profile, Layers_Profile
 from layers.profiles.forms import PartialProfileForm
 from layers.projects.models import Project
 from layers.projects.forms import NewProject, add_photo_form
+import logger
+logger = logging.getLogger(__name__)
 
 
 # Create your views here.
@@ -36,6 +38,7 @@ def get_started(request):
 		else:
 			for i, z in form.errors.items():
 				messages.error(request, i + z.as_text())
+				logger.error(i+z.as_text())
 			#create a new instance of the project form
 			forms = {'newprojectform':NewProject}
 			#render the template again, this time with the profile fields filled out.
@@ -59,12 +62,14 @@ def get_started(request):
 			else:
 				for t,z in new_project.errors.items():
 					messages.error(request, t + z.as_text())
+					logger.error(t+z.as_text())
 				forms = {'newprojectform':NewProject}
 				return render(request, 'idea.jade', {'forms':forms, 'profile':profile})
 		#if our user form is not valid
 		else:
 			for t, z in form.errors.items():
 				messages.error(request, t + z.as_text())
+				logger.error(t+z.as_text())
 			forms = {'newprojectform':NewProject, 'userform':PartialProfileForm}
 			return render(request, 'idea.jade', {'forms':forms} )
 
@@ -101,6 +106,7 @@ def submit_design(request):
 	if not form.is_valid():
 		for t, z in form.errors:
 			messages.error(request, t + z.as_text())
+			logger.error(t+z.as_text())
 	form.save()
 	return redirect(reverse('complete_signup'))
 	

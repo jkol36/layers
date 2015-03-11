@@ -6,8 +6,9 @@ from layers.projects.models import Project
 from django.contrib import messages
 from .forms import UserForm, PartialProfileForm, PasswordForm, UpdateSettings
 from django.contrib.auth import login, authenticate, logout
-
 from layers.subscribe.utils import add_subscriber
+import logger
+logger = logging.getLogger(__name__)
 
 # Create your views here.
 
@@ -19,6 +20,7 @@ def home(request):
 			userform.save()
 		else:
 			print userform.errors
+			logger.error(userform.errors)
 	forms  = {'userform':PartialProfileForm}
 	return render(request, 'index.jade', {'forms':forms})
 
@@ -41,11 +43,13 @@ def complete_signup(request):
 				return redirect('my_account')
 			else:
 				messages.error(request, 'something went wrong')
+				logger.error(form.errors)
 				return render(request, 'signup.jade')
 
 
 		else:
 			print form.errors
+			logger.error(form.errors)
 		###### ADDD SUBSCRIBER TO MAILCHIMP #######
 		add_subscriber(email=email, first_name=first_name, last_name=profile.last_name)
 
@@ -97,6 +101,7 @@ def update_settings(request):
 		else:
 			for t, z in form.errors.items():
 				messages.error(request, t + z.as_text())
+				logger.error(t+z.as_text())
 			return redirect('my_account')
 	return redirect('my_account')
 

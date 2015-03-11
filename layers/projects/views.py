@@ -5,6 +5,8 @@ from django.contrib.auth.decorators import login_required
 from .forms import add_photo_form, NewProject, editProject
 from django.contrib import messages
 from django.db.models import Q
+import logger
+logger = logging.getLogger(__name__)
 
 # Create your views here.
 
@@ -30,6 +32,7 @@ def add_project(request):
 			for t, z in form.errors.items():
 				print t, z
 				messages.error(request, t + z.as_text())
+				logger.error(t + z.as_text())
 
 			forms = {'newprojectform':NewProject}
 			return render(request, 'idea.jade', {'forms':forms, 'add_project':True})
@@ -70,6 +73,7 @@ def add_photo_to_project(request, project_id=None):
 		else:
 			for t, z in form.errors.items():
 				messages.error(request, t+z.as_text())
+				logger.error(t+z.as_text())
 			return redirect('add_photo_to_project', project_id)
 
 	elif request.method == "POST" and not request.FILES:
@@ -127,6 +131,7 @@ def edit_project(request, project_id):
 		else:
 			for t, z in form.errors.items():
 				messages.error(request, t + z.as_text())
+				logger.error(t+z.as_text())
 			return redirect('project_status', project_id)
 	elif request.POST and not request.FILES:
 		form = editProject(request.POST, project_id=project_id)
@@ -137,6 +142,7 @@ def edit_project(request, project_id):
 			return redirect('project_status', project_id)
 		else:
 			print form.errors
+			logger.error(form.errors)
 
 		return redirect('project_status', project_id)
 
