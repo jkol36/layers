@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from .forms import add_photo_form, NewProject, editProject
 from django.contrib import messages
 from django.db.models import Q
-import logger
+import logging
 logger = logging.getLogger(__name__)
 
 # Create your views here.

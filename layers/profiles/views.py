@@ -7,7 +7,7 @@ from django.contrib import messages
 from .forms import UserForm, PartialProfileForm, PasswordForm, UpdateSettings
 from django.contrib.auth import login, authenticate, logout
 from layers.subscribe.utils import add_subscriber
-import logger
+import logging
 logger = logging.getLogger(__name__)
 
 # Create your views here.

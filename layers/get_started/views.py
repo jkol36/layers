@@ -6,7 +6,7 @@ from layers.profiles.models import Profile, Layers_Profile
 from layers.profiles.forms import PartialProfileForm
 from layers.projects.models import Project
 from layers.projects.forms import NewProject, add_photo_form
-import logger
+import logging
 logger = logging.getLogger(__name__)
 
 
